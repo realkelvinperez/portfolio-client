@@ -13,6 +13,7 @@ const HeaderWrap = styled.div`
     @media (min-width: ${media.desktop2k}){
        height: 40vw;
        padding: 5rem;
+      border-radius: 6rem;
     }
     @media (max-width: ${media.tablet}){
       padding: 2rem;

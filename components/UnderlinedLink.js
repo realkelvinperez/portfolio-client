@@ -4,11 +4,11 @@ import media from "../utilities/mediaQueries";
 const UnderlinedWrap = styled.span`
   display: inline-block;
   position: relative;
-  margin: 0 10px;
   cursor: pointer;
 `
 
-const Underline = styled.div`
+const Underline = styled.span`
+  display: inline-block;
   background: linear-gradient(90deg, rgba(113,57,185,1) 0%, rgb(30, 170, 231) 100%);
   position: absolute;
   bottom: 0px;
@@ -18,19 +18,15 @@ const Underline = styled.div`
   width: 60%;
   
   @media(min-width: ${media.desktop2k}){
-    width: 20vw;
-    height: 25px;
-    bottom: 2px;
+    height: 30px;
   }
   
   @media (max-width: ${media.tablet}){
-    width: 30vw;
+    height: 9px;
   }
 
   @media (max-width: ${media.mobileL}){
-    width: 30vw;
-    left: -0.5rem;
-    bottom: -3px;
+    height: 12px;
   }
 `
 

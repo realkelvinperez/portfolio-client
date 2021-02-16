@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import Halo from 'vanta/dist/vanta.halo.min'
 import Header from '../components/Header'
+import media from "../utilities/mediaQueries";
 
 export default function Vanta() {
     const [vantaEffect, setVantaEffect] = useState(0)
@@ -12,8 +13,7 @@ export default function Vanta() {
             }))
         }
         myRef.current.style.cssText += `
-              border-radius: 2.2rem;
-              background-color: #14193b;
+              border-radius: 3rem;
               overflow: hidden;
               width: 83%;
           `
