@@ -27,6 +27,7 @@ const Perez = styled.div`
   filter: drop-shadow(0px 0px 9px white);
   line-height: 7rem;
   letter-spacing: 1.7rem;
+  
   @media (min-width: ${media.desktop2k}){
     font-size: 8vw;
     margin-bottom: 5rem;

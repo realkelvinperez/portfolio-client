@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Halo from 'vanta/dist/vanta.halo.min'
 import Header from '../components/Header'
 

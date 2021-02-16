@@ -2,6 +2,7 @@ import Head from 'next/head'
 import styled, { createGlobalStyle } from 'styled-components'
 import Vanta from "../components/Vanta";
 import media from "../utilities/mediaQueries";
+import About from "../components/About";
 
 const HeaderFlexWrap = styled.div`
     height: 100vh;
@@ -17,6 +18,7 @@ const ScrollProgress = styled.div`
     position: fixed;
     top: 0;
     left: 0;
+    z-index:9999;
   @media (min-width: ${media.desktop2k}){
     height: .8vw;
   }
@@ -26,6 +28,7 @@ const MyGlobalStyle = createGlobalStyle`
   html {
     background: #141A43;
   }
+  body{ margin: 0; }
 `;
 
 export default function Home() {
@@ -37,9 +40,12 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
         <MyGlobalStyle />
+        {/* Hero Section */}
         <HeaderFlexWrap>
             <Vanta />
         </HeaderFlexWrap>
+        {/* About Me Section */}
+        <About />
         <ScrollProgress />
     </div>
   )

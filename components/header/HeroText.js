@@ -44,9 +44,8 @@ const Underline = styled.div`
     left: -0.5rem;
     bottom: -3px;
   }
-  
-  
 `
+
 export default function HeroTextTagline() {
     return (
         <HeroTextWrap>
