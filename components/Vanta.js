@@ -11,7 +11,6 @@ export default function Vanta() {
                 el: myRef.current
             }))
         }
-        console.log({myRef})
         myRef.current.style.cssText += `
               border-radius: 2.2rem;
               background-color: #14193b;

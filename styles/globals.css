@@ -6,3 +6,7 @@
     font-family: "Coolvetica";
     src: url('../public/fonts/coolvetica.ttf');
 }
+
+.vanta-canvas {
+    height: 100% !important;
+}

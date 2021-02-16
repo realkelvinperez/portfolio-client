@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import styled, { createGlobalStyle } from 'styled-components'
 import Vanta from "../components/Vanta";
+import media from "../utilities/mediaQueries";
 
 const HeaderFlexWrap = styled.div`
     height: 100vh;
@@ -16,8 +17,10 @@ const ScrollProgress = styled.div`
     position: fixed;
     top: 0;
     left: 0;
+  @media (min-width: ${media.desktop2k}){
+    height: .8vw;
+  }
 `
-
 
 const MyGlobalStyle = createGlobalStyle`
   html {

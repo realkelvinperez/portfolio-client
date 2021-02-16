@@ -7,20 +7,35 @@ const Kelvin = styled.div`
   font-size: 8rem;
   margin: 0;
   line-height: 7rem;
+  @media (min-width: ${media.desktop2k}){
+    font-size: 8vw;
+    line-height: 11vw;
+  }
+  @media (max-width: ${media.tablet}){
+    font-size: 13vw;
+    line-height: 1;
+  }
 `
 
 const Perez = styled.div`
   margin: 0;
   font-family: Soulmaze, sans-serif;
   font-size: 8rem;
-  -webkit-text-stroke: white 2px;
+  -webkit-text-stroke: white 3px;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   filter: drop-shadow(0px 0px 9px white);
   line-height: 7rem;
   letter-spacing: 1.7rem;
-  @media (min-width: ${media.tablet}){
-    -webkit-text-stroke: white 3px;
+  @media (min-width: ${media.desktop2k}){
+    font-size: 8vw;
+    margin-bottom: 5rem;
+  }
+  @media (max-width: ${media.tablet}){
+    -webkit-text-stroke: white 2px;
+    line-height: 1;
+    font-size: 13vw;
+    letter-spacing: 0.7rem;
   }
 `
 
