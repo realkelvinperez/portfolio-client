@@ -1,0 +1,48 @@
+import styled from "styled-components";
+
+const ScrollDownWrap = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
+
+const ScrollDownIcon = styled.div`
+ margin: 0 1rem; 
+`
+
+const ScrollDownText = styled.text`
+  color: white;
+  font-family: Coolvetica, sans-serif;
+  letter-spacing: 0.2rem;
+  font-size: 1.3rem;
+  opacity: 0.4;
+`
+
+export default function ScrollDown() {
+    return (
+        <ScrollDownWrap>
+            <ScrollDownText>
+                Scroll
+            </ScrollDownText>
+            <ScrollDownIcon>
+                <svg width="40" height="85" viewBox="0 0 40 85" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fillRule="evenodd" clipRule="evenodd" d="M0 19.5591C0 8.7569 8.95431 0 20 0C31.0457 0 40 8.75691 40 19.5591V65.4409C40 76.2431 31.0457 85 20 85C8.95431 85 0 76.2431 0 65.4409V19.5591ZM20 3.00909C10.6536 3.00909 3.07692 10.4188 3.07692 19.5591V65.4409C3.07692 74.5812 10.6536 81.9909 20 81.9909C29.3464 81.9909 36.9231 74.5812 36.9231 65.4409V19.5591C36.9231 10.4188 29.3464 3.00909 20 3.00909Z" fill="url(#paint0_linear)"/>
+                    <rect className="scroll-down-ball" x="10.5" y="9.46326" width="20" height="20" rx="10" fill="url(#paint1_linear)"/>
+                    <defs>
+                        <linearGradient id="paint0_linear" x1="20" y1="1.50455" x2="20" y2="83.4955" gradientUnits="userSpaceOnUse">
+                            <stop stopColor="#AC38D5"/>
+                            <stop offset="1" stopColor="#4CF0F0"/>
+                        </linearGradient>
+                        <linearGradient id="paint1_linear" x1="20.5" y1="9.46326" x2="20.5" y2="29.4633" gradientUnits="userSpaceOnUse">
+                            <stop stopColor="#AC38D5"/>
+                            <stop offset="1" stopColor="#1EAAE7"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
+            </ScrollDownIcon>
+            <ScrollDownText>
+                Down
+            </ScrollDownText>
+        </ScrollDownWrap>
+    );
+}

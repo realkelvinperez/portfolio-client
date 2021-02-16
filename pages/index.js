@@ -9,6 +9,16 @@ const HeaderFlexWrap = styled.div`
     justify-content: center;
 `
 
+const ScrollProgress = styled.div`
+    width: 50%;
+    height: 13px;
+    background: linear-gradient(270deg, rgba(113,57,185,1) 0%, rgb(30, 170, 231) 100%);
+    position: fixed;
+    top: 0;
+    left: 0;
+`
+
+
 const MyGlobalStyle = createGlobalStyle`
   html {
     background: #141A43;
@@ -27,6 +37,7 @@ export default function Home() {
         <HeaderFlexWrap>
             <Vanta />
         </HeaderFlexWrap>
+        <ScrollProgress />
     </div>
   )
 }
