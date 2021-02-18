@@ -30,6 +30,9 @@ const SectionHeading = styled.div`
       margin-top: 7vw;
       position: relative;
       z-index: 99;
+    @media (min-width: ${media.desktop2k}) {
+      margin-bottom: -20rem;
+    }
     @media (max-width: ${media.mobileL}) {
       margin-bottom: -32vw;
       font-size: 16vw;
