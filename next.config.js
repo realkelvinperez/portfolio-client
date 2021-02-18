@@ -1,9 +1,11 @@
-const path = require('path');
 const withImages = require('next-images')
+const withPlugins = require('next-compose-plugins');
+const plugins = [withImages]
 
-module.exports = withImages({
-  // exclude: path.resolve(__dirname, 'public/assets/svg'),
-  webpack(config) {
-    return config
-  }
-})
+const nextConfiguration = {
+    webpack(config) {
+        return config
+    }
+}
+
+module.exports = withPlugins([...plugins], nextConfiguration);
