@@ -33,13 +33,13 @@ export default function About() {
                            Thank you for stopping by. I appreciate your time.
                        </AboutBioText>
                        <AboutBioText>
-                           I'm a Professional UI/UX Designer & Full-Stack Web Developer from <UnderlinedLink text='Miami, Fl' /> that loves creating digital experiences for businesses that align with there brand
+                           I'm a UI/UX Designer & Full-Stack Web Developer from <UnderlinedLink text='Miami, Fl' /> that loves creating digital experiences for businesses that align with their brand
                        </AboutBioText>
                        <AboutBioText>
                            I love collaborating and working with teams and building really dope projects together.
                        </AboutBioText>
                        <AboutBioText>
-                           A little bit more about me...Before finding my passion in Tech my interests have been <UnderlinedLink text='Art,' /> <UnderlinedLink text='RPG Games, ' /><UnderlinedLink text='Hip-Hop & Electronic Music,' /> <UnderlinedLink text='Sci-Fi Movies...' />annnnnnnd <UnderlinedLink text='Asian Food 🍱!' />
+                           A bit more about me...Before finding my passion in Tech my interests have been <UnderlinedLink text='Art,' /> <UnderlinedLink text='RPG Games, ' /><UnderlinedLink text='Hip-Hop & Electronic Music,' /> <UnderlinedLink text='Sci-Fi Movies...' />annnnnnnd <UnderlinedLink text='Asian Food 🍱!' />
                        </AboutBioText>
                    </div>
                </div>

@@ -23,8 +23,6 @@ const SectionHeading = styled.div`
     font-size: 13vw;
     letter-spacing: 0.7rem;
   }
-  @media (max-width: ${media.mobileL}) {
-  }
   ${props => props.work && css`
       margin-bottom: -16vw;
       margin-top: 7vw;
@@ -35,6 +33,17 @@ const SectionHeading = styled.div`
     }
     @media (max-width: ${media.mobileL}) {
       margin-bottom: -32vw;
+      font-size: 16vw;
+    }
+  `}
+  ${props => props.skills && css`
+    margin-top: -20vw;
+    position: relative;
+    z-index: 99;
+    margin-bottom: 12rem;
+    @media (min-width: ${media.desktop2k}) {
+    }
+    @media (max-width: ${media.mobileL}) {
       font-size: 16vw;
     }
   `}

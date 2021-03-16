@@ -81,7 +81,7 @@ export default function Projects() {
                     </NumberWrap>
                     <ProjectText>
                         <AboutHeading>
-                            Bizy Bug Tracker
+                            ViViFi App
                             <TitleUnderline />
                         </AboutHeading>
                         <AboutBioText>
@@ -98,7 +98,7 @@ export default function Projects() {
                     </NumberWrap>
                     <ProjectText right>
                         <AboutHeading>
-                                Better Budgets
+                                Financial Freedom
                             <TitleUnderline />
                         </AboutHeading>
                         <AboutBioText>

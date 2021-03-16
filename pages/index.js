@@ -5,6 +5,8 @@ import media from "../utilities/mediaQueries";
 import About from "../components/About";
 import Projects from "../components/Projects";
 import SectionHeading from "../elements/SectionHeading";
+import Skills from "../components/Skills";
+import Quote from "../components/Quote";
 
 const HeaderFlexWrap = styled.div`
     height: 100vh;
@@ -48,12 +50,20 @@ export default function Home() {
         </HeaderFlexWrap>
         {/* About Me Section */}
         <About />
-        {/* Projects Me Section */}
+        {/* My Work Section */}
         <SectionHeading work>
           My Work
         </SectionHeading>
         <Projects />
-        <ScrollProgress />
+        {/* My Skills Section */}
+        <SectionHeading skills>
+            My Skills
+        </SectionHeading>
+        <Skills />
+        {/* Quote Section */}
+        <Quote />
+        {/* My Resume Section */}
+      <ScrollProgress />
     </div>
   )
 }
