@@ -1,9 +1,10 @@
 import styled from 'styled-components'
 import Heading from "./Heading";
 import Circle from '../public/assets/svg/resume/resume-circle.svg'
+import ResumeCTA from '../components/ResumeCTA'
 
 const ResumeSection = styled.section`
-  width: 83.33%;
+  width: 90%;
   margin: 10rem auto 10rem auto;
 `
 
@@ -11,7 +12,8 @@ const ResumeWrapper = styled.div`
   display: grid;
   grid-template-columns: 45% 10% 45%;
   align-items: center;
-  grid-gap: 2rem;
+  margin-bottom: 10rem;
+  margin-top: 20rem;
 `
 
 const InfoWrapper = styled.div`
@@ -19,6 +21,7 @@ const InfoWrapper = styled.div`
   position: relative;
   overflow: hidden;
   padding: 6px;
+  margin: 0 3rem;
   &:before {
     content: "";
     position: absolute;
@@ -73,6 +76,17 @@ const JobDescription = styled.div`
   font-size: 1.4rem;
 `
 
+const ResumeCTAwrapper = styled.div`
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  padding: 5rem;
+`
+
+const ResumeRelative = styled.div`
+  position: relative;
+`
+
 const resumeData = [
         {
             year: "2015",
@@ -106,7 +120,7 @@ const resumeData = [
             jobTitle: "WordPress Developer",
             jobLocation: "iGreen Marketing",
             jobDescription:  `After Learning the power of WordPress and working on many clients websites i wanted a new 
-            challenege and to grow. I reached out to another company and began to work with them to create custom designed 
+            challenge and to grow. I reached out to another company and began to work with them to create custom designed 
             WordPress sites and JavaScript Apps with their team.`
         },
         {
@@ -116,59 +130,86 @@ const resumeData = [
             jobDescription:  `
             Now with 3 years as a Developer & a burning curiosity for entrepreneurship, I want to venture out on my 
             own and see what it was like to start and run my own agency name ViViFi. With my own agency I would design, 
-            build and market business websites.`
+            build and market business websites.
+        `
+        },
+        {
+            year: "2020",
+            jobTitle: "Entrepreneur",
+            jobLocation: "ViViFi",
+            jobDescription:  `
+                Now with 3 years as a Developer & a burning curiosity for entrepreneurship, I want to venture out on my 
+                own and see what it was like to start and run my own agency name ViViFi. With my own agency I would design, 
+                build and market business websites.
+            `
+        },
+        {
+            year: "2021",
+            jobTitle: "Entrepreneur",
+            jobLocation: "ViViFi",
+            jobDescription:  `
+                    Now with 3 years as a Developer & a burning curiosity for entrepreneurship, I want to venture out on my 
+                    own and see what it was like to start and run my own agency name ViViFi. With my own agency I would design, 
+                    build and market business websites.
+            `
         },
 ]
 
-
 export default function Resume() {
     return (
-        <ResumeSection>
-            {
-                resumeData.map(( item, i ) => {
-                    if(i % 2 !== 0){
-                    return (
-                        <ResumeWrapper key={i}>
-                            <ResumeYear>
-                                {item.year}
-                            </ResumeYear>
-                            <ResumeCircle src={Circle} />
-                            <InfoWrapper>
-                                    <ResumeInfo>
-                                    <Heading text='Student' />
-                                        <JobLocation>
-                                            {item.jobLocation}
-                                        </JobLocation>
-                                        <JobDescription>
-                                            {item.jobDescription}
-                                        </JobDescription>
-                                    </ResumeInfo>
-                                    </InfoWrapper>
-                        </ResumeWrapper>
-                        )
-                    }else {
-                        return (
-                            <ResumeWrapper key={i}>
-                                <InfoWrapper>
-                                    <ResumeInfo>
-                                        <Heading text='Student' />
-                                        <JobLocation>
-                                            {item.jobLocation}
-                                        </JobLocation>
-                                        <JobDescription>
-                                            {item.jobDescription}
-                                        </JobDescription>
-                                    </ResumeInfo>
-                                </InfoWrapper>
-                                <ResumeCircle src={Circle} />
-                                <ResumeYear>
-                                    {item.year}
-                                </ResumeYear>
-                            </ResumeWrapper>
-                        )
+        <>
+            <ResumeRelative>
+                <ResumeSection>
+                    {
+                        resumeData.map(( item, i ) => {
+                            if(i % 2 !== 0){
+                                return (
+                                    <ResumeWrapper key={i}>
+                                        <ResumeYear>
+                                            {item.year}
+                                        </ResumeYear>
+                                        <ResumeCircle src={Circle} />
+                                        <InfoWrapper>
+                                            <ResumeInfo>
+                                                <Heading text='Student' />
+                                                <JobLocation>
+                                                    {item.jobLocation}
+                                                </JobLocation>
+                                                <JobDescription>
+                                                    {item.jobDescription}
+                                                </JobDescription>
+                                            </ResumeInfo>
+                                        </InfoWrapper>
+                                    </ResumeWrapper>
+                                )
+                            }else {
+                                return (
+                                    <ResumeWrapper key={i}>
+                                        <InfoWrapper>
+                                            <ResumeInfo>
+                                                <Heading text='Student' />
+                                                <JobLocation>
+                                                    {item.jobLocation}
+                                                </JobLocation>
+                                                <JobDescription>
+                                                    {item.jobDescription}
+                                                </JobDescription>
+                                            </ResumeInfo>
+                                        </InfoWrapper>
+                                        <ResumeCircle src={Circle} />
+                                        <ResumeYear>
+                                            {item.year}
+                                        </ResumeYear>
+                                    </ResumeWrapper>
+                                )
+                            }
+                        })
                     }
-                })
-            }
-        </ResumeSection>
+                </ ResumeSection>
+                <ResumeCTAwrapper>
+                    <ResumeCTA style={{cursor: 'pointer'}} />
+                </ResumeCTAwrapper>
+            </ResumeRelative>
+        </>
     );
 }

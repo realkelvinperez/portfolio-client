@@ -36,6 +36,23 @@ const MyGlobalStyle = createGlobalStyle`
   body{ margin: 0; }
 `;
 
+const ResumeWrapper = styled.div`
+  position: relative;
+`
+
+const ResumeLine = styled.div`
+  position: absolute;
+  top: 0;
+  left: 50%;
+  //background: red;
+  width: 10px;
+  height: 94%;
+  background: linear-gradient(180deg, rgba(172,56,212,0) 0%, rgba(172,56,212,1) 17%, rgba(76,240,240,1) 82%, rgba(76,240,240,0) 100%);
+  padding: 5rem 0;
+  transform: translateX(-50%);
+  z-index: -1;
+`
+
 export default function Home() {
   return (
     <div>
@@ -64,10 +81,13 @@ export default function Home() {
         {/* Quote Section */}
         <Quote />
         {/* My Resume Section */}
-        <SectionHeading>
-            My Resume
-        </SectionHeading>
-        <Resume />
+        <ResumeWrapper>
+            <SectionHeading>
+                My Resume
+            </SectionHeading>
+            <Resume />
+            <ResumeLine />
+        </ResumeWrapper>
       <ScrollProgress />
     </div>
   )
