@@ -7,6 +7,7 @@ import Projects from "../components/Projects";
 import SectionHeading from "../elements/SectionHeading";
 import Skills from "../components/Skills";
 import Quote from "../components/Quote";
+import Resume from "../components/resume";
 
 const HeaderFlexWrap = styled.div`
     height: 100vh;
@@ -63,6 +64,10 @@ export default function Home() {
         {/* Quote Section */}
         <Quote />
         {/* My Resume Section */}
+        <SectionHeading>
+            My Resume
+        </SectionHeading>
+        <Resume />
       <ScrollProgress />
     </div>
   )

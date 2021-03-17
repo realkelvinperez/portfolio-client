@@ -5,9 +5,9 @@ import LearningIcon from '../public/assets/svg/learning-icon.svg'
 import FrontEndIcon from '../public/assets/svg/frontend-dev-icon.svg'
 import BackEndIcon from '../public/assets/svg/backend-dev-icon.svg'
 
-const SkillsWrapper = styled.div`
+const SkillsWrapper = styled.section`
   margin-top: 4rem;
-  margin-bottom: 40rem;
+  margin-bottom: 53rem;
 `
 const SkillCardWrapper = styled.div`
   display: grid;
@@ -106,7 +106,7 @@ const frontendList = [
     'jQuery',
     'React.js',
     'Redux (State Mgmt)',
-    'Vuejs',
+    'Vue.js',
     'SCSS + Less'
 ]
 
@@ -120,7 +120,7 @@ const backendDevList = [
     'MySQL',
     'MongoDB',
     'Firebase',
-    'MeiliSearch'
+    'MelliSearch'
 ]
 
 export default function Skills() {
@@ -131,9 +131,9 @@ export default function Skills() {
                    <InnerCardWrap>
                        <SkillCardContentWrap>
                            <Heading text='UI/UX Designer' />
-                           { UIList.map( item => {
+                           { UIList.map( (item, i) => {
                               return (
-                                  <SkillCardContent>
+                                  <SkillCardContent key={i}>
                                       { item }
                                   </SkillCardContent>
                               )
@@ -142,9 +142,9 @@ export default function Skills() {
                        </SkillCardContentWrap>
                        <SkillCardContentWrap>
                            <Heading text='Learning' />
-                           { LearningList.map( item => {
+                           { LearningList.map( (item , i) => {
                                return (
-                                   <SkillCardContent>
+                                   <SkillCardContent key={i}>
                                        { item }
                                    </SkillCardContent>
                                )
@@ -157,9 +157,9 @@ export default function Skills() {
                     <InnerCardWrap>
                         <SkillCardContentWrap>
                             <Heading text='Front-End Dev' />
-                            { frontendList.map( item => {
+                            { frontendList.map( (item , i) => {
                                 return (
-                                    <SkillCardContent>
+                                    <SkillCardContent key={i}>
                                         { item }
                                     </SkillCardContent>
                                 )
@@ -172,9 +172,9 @@ export default function Skills() {
                     <InnerCardWrap>
                         <SkillCardContentWrap>
                             <Heading text='Backend Dev' />
-                            { backendDevList.map( item => {
+                            { backendDevList.map( (item, i) => {
                                 return (
-                                    <SkillCardContent>
+                                    <SkillCardContent key={i}>
                                         { item }
                                     </SkillCardContent>
                                 )

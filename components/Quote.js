@@ -7,6 +7,7 @@ const QuoteSection = styled.section`
   align-items: center;
   justify-content: center;
   padding: 0px 18rem;
+  margin-bottom: 20rem;
 `
 
 const QuoteWrapper = styled.div`
@@ -15,20 +16,31 @@ const QuoteWrapper = styled.div`
   font-size: 3.5vw;
   position: relative;
 `
+
 const QuoteText = styled.div``
+
 const QuoteHighlighted = styled.span`
     display: inline-block;
+    background: linear-gradient(270deg,#AC38D4,#4CF0F0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 `
+
 const QuoteAuthor = styled.div`
   display: flex;
   align-items: center;
 `
+
 const AuthorLine = styled.span`
   display: inline-block;
   background: linear-gradient(90deg,#AC38D4,#4CF0F0);
   height: 10px;
   width: 50px;
   margin-right: 1rem;
+`
+
+const AuthorName = styled.span`
+    color: #4CF0F0
 `
 
 const Quotes = styled.img`
@@ -43,7 +55,7 @@ const Quotes = styled.img`
     }
 `
 
-export default function Quote(props) {
+export default function Quote() {
     return (
         <QuoteSection>
             <QuoteWrapper>
@@ -53,7 +65,7 @@ export default function Quote(props) {
                 </QuoteText>
                 <QuoteAuthor>
                     <AuthorLine/>
-                    <span>Steve Jobs</span>
+                    <AuthorName>Steve Jobs</AuthorName>
                 </QuoteAuthor>
                 <Quotes className="down" src={DownQuotes} />
             </QuoteWrapper>
