@@ -103,9 +103,9 @@ const resumeData = [
             jobTitle: "Intern",
             jobLocation: "Doctors Best Weight Loss",
             jobDescription: `After a few months of training and study my butt off i 
-            wanted to gain real world experience and so i decided the best option was 
-            to get an internship. I searched on craig’s list and saw an ad for an 
-            internship and applied, and I’m grateful that i was able to get that opportunity.`
+            wanted to gain real world experience, and so I decided the best option was 
+            to get an internship. I searched on craigs list and saw an ad for an 
+            internship and applied, and I’m grateful that I was able to get that opportunity.`
         },
         {
             year: "2017",
@@ -138,24 +138,25 @@ const resumeData = [
             jobTitle: "Entrepreneur",
             jobLocation: "ViViFi",
             jobDescription:  `
-                Now with 3 years as a Developer & a burning curiosity for entrepreneurship, I want to venture out on my 
-                own and see what it was like to start and run my own agency name ViViFi. With my own agency I would design, 
-                build and market business websites.
+                After working and managing clients websites and applications I came the realization that as much as I 
+                like working on web projects my passion with in the ideation and execution of idea’s. I choose to finish 
+                my remaining contracts and no longer take on client work.
             `
         },
         {
             year: "2021",
-            jobTitle: "Entrepreneur",
-            jobLocation: "ViViFi",
+            jobTitle: "Full Stack Developer",
+            jobLocation: "FREE AGENT",
             jobDescription:  `
-                    Now with 3 years as a Developer & a burning curiosity for entrepreneurship, I want to venture out on my 
-                    own and see what it was like to start and run my own agency name ViViFi. With my own agency I would design, 
-                    build and market business websites.
+            The present Day. In my journey as a developer I’ve had high’s and lows. I have learned my fair share from 
+            massive failures and success but now, I am ready to bring my experience and expertise as a Full Stack Developer 
+            and Entrepreneur to your team and add massive value. I can’t wait to begin.
             `
         },
 ]
 
 export default function Resume() {
+
     return (
         <>
             <ResumeRelative>
@@ -171,7 +172,7 @@ export default function Resume() {
                                         <ResumeCircle src={Circle} />
                                         <InfoWrapper>
                                             <ResumeInfo>
-                                                <Heading text='Student' />
+                                                <Heading text={`${item.jobTitle}`} />
                                                 <JobLocation>
                                                     {item.jobLocation}
                                                 </JobLocation>
@@ -187,7 +188,7 @@ export default function Resume() {
                                     <ResumeWrapper key={i}>
                                         <InfoWrapper>
                                             <ResumeInfo>
-                                                <Heading text='Student' />
+                                                <Heading text={`${item.jobTitle}`} />
                                                 <JobLocation>
                                                     {item.jobLocation}
                                                 </JobLocation>

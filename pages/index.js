@@ -8,6 +8,8 @@ import SectionHeading from "../elements/SectionHeading";
 import Skills from "../components/Skills";
 import Quote from "../components/Quote";
 import Resume from "../components/resume";
+import LetsTalk from "../components/LetsTalk";
+import Footer from "../components/FooterText";
 
 const HeaderFlexWrap = styled.div`
     height: 100vh;
@@ -88,7 +90,13 @@ export default function Home() {
             <Resume />
             <ResumeLine />
         </ResumeWrapper>
-      <ScrollProgress />
+        {/* Let's Talk Section */}
+        <LetsTalk />
+        <SectionHeading>
+            The End
+        </SectionHeading>
+        <Footer />
+        <ScrollProgress />
     </div>
   )
 }
