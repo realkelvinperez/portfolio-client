@@ -49,9 +49,8 @@ const ResumeLine = styled.div`
   //background: red;
   width: 10px;
   height: 94%;
-  background: linear-gradient(180deg, rgba(172,56,212,0) 0%, rgba(172,56,212,1) 17%, rgba(76,240,240,1) 82%, rgba(76,240,240,0) 100%);
-  padding: 5rem 0;
-  transform: translateX(-50%);
+  background: linear-gradient(180deg,rgba(172,56,212,0) 0%,rgba(172,56,212,1) 20%,rgba(76,240,240,1) 80%,rgba(76,240,240,0) 100%);
+  transform: translate(-50%, 3%);
   z-index: -1;
 `
 

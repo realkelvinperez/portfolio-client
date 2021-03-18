@@ -156,7 +156,6 @@ const resumeData = [
 ]
 
 export default function Resume() {
-
     return (
         <>
             <ResumeRelative>
