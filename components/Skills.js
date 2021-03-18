@@ -4,6 +4,7 @@ import DesignIcon from '../public/assets/svg/design-icon.svg'
 import LearningIcon from '../public/assets/svg/learning-icon.svg'
 import FrontEndIcon from '../public/assets/svg/frontend-dev-icon.svg'
 import BackEndIcon from '../public/assets/svg/backend-dev-icon.svg'
+import media from "../utilities/mediaQueries";
 
 const SkillsWrapper = styled.section`
   margin-top: 4rem;
@@ -14,7 +15,22 @@ const SkillCardWrapper = styled.div`
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 5rem;
   padding: 0 5rem;
+  @media (max-width: ${media.laptop}){
+    grid-gap: 2rem;
+  }
+  @media (max-width: ${media.tablet}){
+    display: block;
+    width: 50%;
+    margin: 0 auto;
+    padding: 0;
+  }
+  
+  @media (max-width: ${media.mobileL}){
+    width: 75%;
+  }
+  
 `
+
 const SkillCard = styled.div`
   border-radius: 20px;
   margin: 0 auto;
@@ -27,13 +43,22 @@ const SkillCard = styled.div`
   overflow: hidden;
   padding: 6px;
   &.first {
-    transform: translate(0, -120px); 
+    transform: translate(0, -120px);
+    @media (max-width: ${media.tablet}){
+      transform: translate(0, 0);
+    }
   }
   &.second {
     transform: translate(0px, 450px);
+    @media (max-width: ${media.tablet}){
+      transform: translate(0, 0);
+    }
   }
   &.third {
     transform: translate(0px, 180px);
+    @media (max-width: ${media.tablet}){
+      transform: translate(0, 0);
+    }
   }
   &:before {
     content: "";
@@ -45,6 +70,16 @@ const SkillCard = styled.div`
     background: linear-gradient(115deg,#AC38D4,#4CF0F0);
     background-size: 50% 100%;
   }
+  @media (min-width: ${media.desktop2k}){
+  }
+  @media (max-width: ${media.laptopL}){
+    width: 100%;
+  }
+  @media (max-width: ${media.tablet}){
+    margin-bottom: 3rem;
+  }
+  @media (max-width: ${media.mobileL}){
+  }
 `
 
 const SkillCardContent = styled.p`
@@ -55,11 +90,21 @@ const SkillCardContent = styled.p`
   opacity: 0.8;
   margin: 1rem 0px;
   cursor: pointer;
+  @media (max-width: ${media.tablet}){
+    font-size: 3vw;
+  }
+  @media (max-width: ${media.tablet}){
+    font-size: 5vw;
+  }
 `
 
 const SkillCardContentWrap = styled.div`
   padding: 3rem;
   position: relative;
+  box-sizing: border-box;
+  @media (max-width: ${media.laptop}){
+    padding: 2rem;
+  }
 `
 
 const InnerCardWrap = styled.div`
@@ -76,6 +121,7 @@ const CardBG = styled.img`
   top: 25%;
   left: 20%;
   width: 55%;
+  z-index: -1;
   &.bigger {
     width: 75%;
     top: 30%;
@@ -130,7 +176,7 @@ export default function Skills() {
                <SkillCard className="first">
                    <InnerCardWrap>
                        <SkillCardContentWrap>
-                           <Heading text='UI/UX Designer' />
+                           <Heading text='UI/UX' />
                            { UIList.map( (item, i) => {
                               return (
                                   <SkillCardContent key={i}>
@@ -156,7 +202,7 @@ export default function Skills() {
                 <SkillCard className="second">
                     <InnerCardWrap>
                         <SkillCardContentWrap>
-                            <Heading text='Front-End Dev' />
+                            <Heading text='Front-End' />
                             { frontendList.map( (item , i) => {
                                 return (
                                     <SkillCardContent key={i}>
@@ -171,7 +217,7 @@ export default function Skills() {
                 <SkillCard className="third">
                     <InnerCardWrap>
                         <SkillCardContentWrap>
-                            <Heading text='Backend Dev' />
+                            <Heading text='Backend' />
                             { backendDevList.map( (item, i) => {
                                 return (
                                     <SkillCardContent key={i}>

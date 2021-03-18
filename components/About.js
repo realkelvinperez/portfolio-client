@@ -25,7 +25,7 @@ export default function About() {
                 </AboutPicWrapper>
                <div>
                    <AboutHeading>
-                       Hey 👋🏽, i'm Kelvin Perez
+                       Hey 👋🏽, I'm Kelvin Perez
                        <TitleUnderline />
                    </AboutHeading>
                    <div>

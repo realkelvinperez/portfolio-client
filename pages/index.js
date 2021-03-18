@@ -9,6 +9,7 @@ import Skills from "../components/Skills";
 import Quote from "../components/Quote";
 import Resume from "../components/resume";
 import LetsTalk from "../components/LetsTalk";
+import TheEnd from "../components/TheEnd";
 import Footer from "../components/FooterText";
 
 const HeaderFlexWrap = styled.div`
@@ -46,7 +47,6 @@ const ResumeLine = styled.div`
   position: absolute;
   top: 0;
   left: 50%;
-  //background: red;
   width: 10px;
   height: 94%;
   background: linear-gradient(180deg,rgba(172,56,212,0) 0%,rgba(172,56,212,1) 20%,rgba(76,240,240,1) 80%,rgba(76,240,240,0) 100%);
@@ -71,12 +71,12 @@ export default function Home() {
         <About />
         {/* My Work Section */}
         <SectionHeading work>
-          My Work
+            Work
         </SectionHeading>
         <Projects />
         {/* My Skills Section */}
         <SectionHeading skills>
-            My Skills
+            Skills
         </SectionHeading>
         <Skills />
         {/* Quote Section */}
@@ -84,16 +84,14 @@ export default function Home() {
         {/* My Resume Section */}
         <ResumeWrapper>
             <SectionHeading>
-                My Resume
+                Resume
             </SectionHeading>
             <Resume />
             <ResumeLine />
         </ResumeWrapper>
         {/* Let's Talk Section */}
         <LetsTalk />
-        <SectionHeading>
-            The End
-        </SectionHeading>
+        <TheEnd />
         <Footer />
         <ScrollProgress />
     </div>

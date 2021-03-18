@@ -3,14 +3,14 @@ import CopywriteSVG from '../public/assets/svg/Copywrite-logo.svg'
 import HeartSVG from '../public/assets/svg/footer-heart.svg'
 
 const Img = styled.img`
-  margin: 0 1rem;
+  margin: 0 0.5rem;
+  width: 1.8%;
 `
 const FooterWrapper = styled.div`
   display: flex;
-  align-items: center;
   justify-content: center;
   margin-top: 20rem;
-  margin-bottom: 10rem;
+  margin-bottom: 2rem;
 `
 const FooterText = styled.span`
   display: inline-block;
@@ -20,12 +20,12 @@ const FooterText = styled.span`
   letter-spacing: 3px;
 `
 
-export default function Footer(props) {
+export default function Footer() {
     return (
         <FooterWrapper>
             <Img src={CopywriteSVG}/>
             <FooterText>
-                Made With Love
+                {new Date().getFullYear()} Made With Love
             </FooterText>
             <Img src={HeartSVG}/>
             <FooterText>

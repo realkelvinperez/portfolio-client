@@ -43,8 +43,13 @@ const SectionHeading = styled.div`
     margin-bottom: 12rem;
     @media (min-width: ${media.desktop2k}) {
     }
+    @media (max-width: ${media.tablet}) {
+      font-size: 12vw;
+      margin-bottom: 1rem; 
+    }
     @media (max-width: ${media.mobileL}) {
       font-size: 16vw;
+      transform: translate(0, -73px);
     }
   `}
 `

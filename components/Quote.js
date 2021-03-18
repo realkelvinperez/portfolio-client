@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import UpQuotes from '../public/assets/svg/UpQuotes.svg'
 import DownQuotes from '../public/assets/svg/DownQuotes.svg'
+import media from '../utilities/mediaQueries'
 
 const QuoteSection = styled.section`
   display: flex;
@@ -8,6 +9,9 @@ const QuoteSection = styled.section`
   justify-content: center;
   padding: 0px 18rem;
   margin-bottom: 20rem;
+  @media (max-width: ${media.tablet}) {
+    padding: 0;
+  }
 `
 
 const QuoteWrapper = styled.div`

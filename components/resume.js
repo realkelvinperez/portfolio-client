@@ -36,7 +36,7 @@ const InfoWrapper = styled.div`
 `
 
 const ResumeInfo = styled.div`
-  border-radius: 20px;
+  border-radius: 15px;
   padding: 2rem 3rem;
   background: linear-gradient(103.8deg, #283274 0%, rgba(40, 50, 116, 1) 100%);
 `

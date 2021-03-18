@@ -11,20 +11,15 @@ const Underline = styled.div`
   height: 20px;
   
   @media(min-width: ${media.desktop2k}){
-    width: 20vw;
-    bottom: 2px;
-    height: 60px;
+    
   }
 
   @media (max-width: ${media.tablet}){
-    width: 30vw;
+    
   }
 
   @media (max-width: ${media.mobileL}){
-    width: 60%;
-    left: -0.5rem;
-    bottom: 0px;
-    height: 17px;
+    font-size: 7vw;    
   }
 `
 
@@ -47,6 +42,12 @@ const HeadingText = styled.span`
   transform: translate(10px, -9px);
   font-size: 2vw;
   text-transform: uppercase;
+  @media (max-width: ${media.tablet}){
+    font-size: 4vw;
+  }
+  @media (max-width: ${media.mobileL}){
+    font-size: 7vw;
+  }
 `
 
 export default function Heading({ text }) {
