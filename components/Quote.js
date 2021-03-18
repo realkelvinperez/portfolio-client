@@ -7,7 +7,7 @@ const QuoteSection = styled.section`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0px 18rem;
+  padding: 0 18rem;
   margin-bottom: 20rem;
   @media (max-width: ${media.tablet}) {
     padding: 0;
@@ -55,7 +55,7 @@ const Quotes = styled.img`
     }
     &.down {
       top: 0;
-      right: 0;
+      right: -40px;
     }
 `
 
