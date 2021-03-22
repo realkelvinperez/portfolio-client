@@ -1,4 +1,3 @@
-// noinspection CssInvalidPropertyValue
 import styled, {css} from "styled-components";
 import media from "../utilities/mediaQueries";
 
@@ -16,6 +15,9 @@ const SectionHeading = styled.div`
   @media (min-width: ${media.desktop2k}) {
     font-size: 8vw;
     margin-bottom: 5rem;
+  }
+  @media (max-width: ${media.laptop}) {
+    font-size: 5.5rem;
   }
   @media (max-width: ${media.tablet}) {
     -webkit-text-stroke: white 2px;

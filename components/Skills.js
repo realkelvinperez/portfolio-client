@@ -9,6 +9,12 @@ import media from "../utilities/mediaQueries";
 const SkillsWrapper = styled.section`
   margin-top: 4rem;
   margin-bottom: 53rem;
+  @media (max-width: ${media.tablet}){
+    margin-bottom: 24rem;
+  }
+  @media (max-width: ${media.tablet}){
+    margin-bottom: 12rem;
+  }
 `
 const SkillCardWrapper = styled.div`
   display: grid;
@@ -94,7 +100,10 @@ const SkillCardContent = styled.p`
     font-size: 3vw;
   }
   @media (max-width: ${media.tablet}){
-    font-size: 5vw;
+    font-size: 4vw;
+  }
+  @media (max-width: ${media.mobileL}){
+    font-size: 6vw;
   }
 `
 

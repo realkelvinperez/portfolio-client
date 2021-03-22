@@ -1,7 +1,8 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import Heading from "./Heading";
 import Circle from '../public/assets/svg/resume/resume-circle.svg'
 import ResumeCTA from '../components/ResumeCTA'
+import media from "../utilities/mediaQueries";
 
 const ResumeSection = styled.section`
   width: 90%;
@@ -14,6 +15,12 @@ const ResumeWrapper = styled.div`
   align-items: center;
   margin-bottom: 10rem;
   margin-top: 20rem;
+  @media (max-width: ${media.tablet}){
+    grid-template-columns: 1fr;
+    grid-gap: 4rem;
+    margin-bottom: 5rem;
+    margin-top: 5rem;
+  }
 `
 
 const InfoWrapper = styled.div`
@@ -33,17 +40,33 @@ const InfoWrapper = styled.div`
     background-size: 50% 100%;
     z-index: -1;
   }
+  @media (max-width: ${media.laptopL}){
+    font-size: 11rem;
+    margin: 0 1rem;
+  }
+  ${props => props.odd && css`
+    @media (max-width: ${media.tablet}){
+      grid-row-start: 3;
+    }
+  `}
 `
 
 const ResumeInfo = styled.div`
   border-radius: 15px;
   padding: 2rem 3rem;
   background: linear-gradient(103.8deg, #283274 0%, rgba(40, 50, 116, 1) 100%);
+  @media (max-width: ${media.tablet}){
+    padding: 2rem 2rem;
+  }
 `
 
 const ResumeCircle = styled.img`
   align-self: center;
   justify-self: center;
+  ${props => props.odd && css`
+    
+  `}
+  
 `
 
 const ResumeYear = styled.div`
@@ -58,6 +81,29 @@ const ResumeYear = styled.div`
   -webkit-text-fill-color: transparent;
   line-height: 7rem;
   letter-spacing: 1.7rem;
+  @media (max-width: ${media.laptopL}){
+    font-size: 11rem;
+  }
+  @media (max-width: ${media.laptop}){
+    font-size: 7rem;
+  }
+  @media (max-width: ${media.tablet}){
+    justify-self: center;
+  }
+  @media (max-width: ${media.mobileL}){
+    font-size: 6rem;
+  }
+  @media (max-width: ${media.mobileM}){
+    font-size: 5rem;
+  }
+  @media (max-width: ${media.mobileS}){
+    font-size: 4rem;
+  }
+  ${props => props.odd && css`
+    @media (max-width: ${media.tablet}){
+      grid-row-start: 1;
+    }
+  `}
 `
 
 const JobLocation = styled.div`
@@ -65,6 +111,9 @@ const JobLocation = styled.div`
   color: #4AE6F0;
   font-size: 1.5rem;
   letter-spacing: 2.5px;
+  @media (max-width: ${media.laptop}){
+    font-size: 1rem;
+  }
 `
 
 const JobDescription = styled.div`
@@ -74,6 +123,9 @@ const JobDescription = styled.div`
   letter-spacing: 1px;
   opacity: 0.7;
   font-size: 1.4rem;
+  @media (max-width: ${media.laptop}){
+    font-size: 1.1rem;
+  }
 `
 
 const ResumeCTAwrapper = styled.div`
@@ -162,7 +214,7 @@ export default function Resume() {
                 <ResumeSection>
                     {
                         resumeData.map(( item, i ) => {
-                            if(i % 2 !== 0){
+                            if(i % 2 === 0 ){
                                 return (
                                     <ResumeWrapper key={i}>
                                         <ResumeYear>
@@ -171,7 +223,7 @@ export default function Resume() {
                                         <ResumeCircle src={Circle} />
                                         <InfoWrapper>
                                             <ResumeInfo>
-                                                <Heading text={`${item.jobTitle}`} />
+                                                <Heading text={item.jobTitle} />
                                                 <JobLocation>
                                                     {item.jobLocation}
                                                 </JobLocation>
@@ -182,12 +234,12 @@ export default function Resume() {
                                         </InfoWrapper>
                                     </ResumeWrapper>
                                 )
-                            }else {
+                            } else {
                                 return (
                                     <ResumeWrapper key={i}>
-                                        <InfoWrapper>
+                                        <InfoWrapper odd>
                                             <ResumeInfo>
-                                                <Heading text={`${item.jobTitle}`} />
+                                                <Heading text={item.jobTitle} />
                                                 <JobLocation>
                                                     {item.jobLocation}
                                                 </JobLocation>
@@ -196,8 +248,8 @@ export default function Resume() {
                                                 </JobDescription>
                                             </ResumeInfo>
                                         </InfoWrapper>
-                                        <ResumeCircle src={Circle} />
-                                        <ResumeYear>
+                                        <ResumeCircle odd src={Circle} />
+                                        <ResumeYear odd>
                                             {item.year}
                                         </ResumeYear>
                                     </ResumeWrapper>

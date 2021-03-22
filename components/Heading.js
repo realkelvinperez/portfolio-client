@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import media from "../utilities/mediaQueries";
 
 const Underline = styled.div`
@@ -7,11 +7,16 @@ const Underline = styled.div`
   width: 40%;
   bottom: 7px;
   left: -0.9rem;
-  z-index: -1;
+  z-index: 9;
   height: 20px;
   
   @media(min-width: ${media.desktop2k}){
     
+  }
+  
+  @media (max-width: ${media.laptop}){
+    left: -0.2rem;
+    height: 13px;
   }
 
   @media (max-width: ${media.tablet}){
@@ -42,9 +47,12 @@ const HeadingText = styled.span`
   transform: translate(10px, -9px);
   font-size: 2vw;
   text-transform: uppercase;
+  position: relative;
+  z-index: 99;
   @media (max-width: ${media.tablet}){
     font-size: 4vw;
   }
+
   @media (max-width: ${media.mobileL}){
     font-size: 7vw;
   }

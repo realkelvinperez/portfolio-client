@@ -12,6 +12,19 @@ const QuoteSection = styled.section`
   @media (max-width: ${media.tablet}) {
     padding: 0;
   }
+  @media (max-width: ${media.laptopL}) {
+    padding: 0 13rem;
+  }
+  @media (max-width: ${media.laptop}) {
+    padding: 0 10rem;
+  }
+  @media (max-width: ${media.tablet}) {
+    padding: 0 7rem;
+  }
+  @media (max-width: ${media.mobileL}) {
+    padding: 0 3rem;
+    margin-bottom: 10rem;
+  }
 `
 
 const QuoteWrapper = styled.div`
@@ -19,9 +32,17 @@ const QuoteWrapper = styled.div`
   color: white;
   font-size: 3.5vw;
   position: relative;
+  @media (max-width: ${media.tablet}) {
+    font-size: 6vw;
+  }
+  @media (max-width: ${media.tablet}) {
+    font-size: 10vw;
+  }
 `
 
-const QuoteText = styled.div``
+const QuoteText = styled.div`
+  
+`
 
 const QuoteHighlighted = styled.span`
     display: inline-block;
@@ -49,13 +70,23 @@ const AuthorName = styled.span`
 
 const Quotes = styled.img`
   position: absolute;
-    &.up {
-      top: -80px;
-      left: -90px;
+  @media (max-width: ${media.mobileL}) {
+    width: 35%;
+  }
+  &.up {
+    top: -80px;
+    left: -90px;
+      @media (max-width: ${media.mobileL}) {
+        top: -30px;
+        left: -30px;
+      }
     }
     &.down {
-      top: 0;
+      bottom: 0;
       right: -40px;
+      @media (max-width: ${media.tablet}) {
+        right: 0;
+      }
     }
 `
 

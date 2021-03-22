@@ -2,6 +2,7 @@ import { useState } from 'react'
 import styled from "styled-components"
 import SectionHeading from "../elements/SectionHeading";
 import EmailBtn from '../public/assets/svg/lets-talk/send-email-btn.svg'
+import media from "../utilities/mediaQueries";
 
 const LetsTalkWrapper = styled.section`
   margin: 16rem 0;
@@ -10,6 +11,9 @@ const LetsTalkWrapper = styled.section`
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  @media (max-width: ${media.mobileL}){
+    margin: 3rem 0;
+  }
 `
 
 const Input = styled.input`
@@ -57,7 +61,7 @@ const SubmitBtn = styled.button`
   background: transparent;
   border: none;
   cursor: pointer;
-  width: 27%;
+  width: 100%;
   margin: 2rem auto;
   &:focus {
     outline: none;
@@ -69,6 +73,9 @@ const LetsTalkForm = styled.form`
   justify-content: center;
   flex-direction: column;
   width: 50%;
+  @media (max-width: ${media.tablet}){
+    width: 90%;
+  }
 `
 
 const FormWrapper = styled.div`
@@ -77,6 +84,9 @@ const FormWrapper = styled.div`
   justify-content: center;
   margin-top: 14rem;
   width: 100%;
+  @media (max-width: ${media.laptop}){
+    margin-top: 7rem;
+  }
 `
 
 const InputWrapper = styled.div`
@@ -112,12 +122,11 @@ const InputInnerWrap = styled.div`
 `
 
 const initialFormState = {
-    subject: '🚨 Let\'s Talk Form Submission',
+    subject: `🚨 Let's Talk Form Submission`,
     name: '',
     email: '',
     message: ''
 }
-
 
 export default function LetsTalk() {
 
@@ -144,7 +153,6 @@ export default function LetsTalk() {
             // Adding body or contents to send
             body: JSON.stringify(sendData),
         }
-
 
         try {
             debugger;
