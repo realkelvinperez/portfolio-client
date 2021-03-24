@@ -1,6 +1,7 @@
 import styled from "styled-components";
-import {useState, useRef, useEffect} from 'react'
+import {useState, useEffect} from 'react'
 import media from "../utilities/mediaQueries";
+import { trigger } from "../utilities/events";
 
 const Bar = styled.div`
   height: 13px;
@@ -18,11 +19,10 @@ const Bar = styled.div`
 export default function ScrollProgress({ isLoading }) {
 
     const [progressWidth, setProgressWidth] = useState(0)
-    const loadingEl = useRef()
     const sleep = (delay) => new Promise((resolve) => setTimeout(resolve, delay))
 
     useEffect(async () => {
-        if(isLoading) await loadingProgressBar()
+        if (isLoading) await loadingProgressBar()
     }, [])
 
     useEffect( () => {
@@ -30,16 +30,18 @@ export default function ScrollProgress({ isLoading }) {
     })
 
     const loadingProgressBar = async () => {
-        console.log(loadingEl.current)
         for(let i = 1; i <= 100; i++){
             await sleep(100)
             setProgressWidth(i)
         }
+        trigger('progressBar:done', { progressWidth })
+        setProgressWidth(0)
+        // trigger event
     }
 
     return (
         <>
-            <Bar ref={loadingEl} style={{width: `${progressWidth}%`}} />
+            <Bar style={{width: `${progressWidth}%`}} />
         </>
     );
 }

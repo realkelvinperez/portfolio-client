@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react'
 import Head from 'next/head'
 import styled, { createGlobalStyle, css } from 'styled-components'
 import Vanta from "../components/Vanta";
-import media from "../utilities/mediaQueries";
+// import media from "../utilities/mediaQueries";
 import About from "../components/About";
 import Projects from "../components/Projects";
 import SectionHeading from "../elements/SectionHeading";
@@ -14,6 +14,7 @@ import TheEnd from "../components/TheEnd";
 import Footer from "../components/FooterText";
 import Loading from "../components/Loading";
 import ScrollProgress from "../components/ScrollProgress";
+import { on } from "../utilities/events";
 
 const HeaderFlexWrap = styled.div`
   height: 100vh;
@@ -58,10 +59,12 @@ export default function Home() {
     useEffect(() => {
         if (typeof window !== 'undefined') {
             console.log('window is defined')
+            on('progressBar:done', (event) => {
+                setIsLoading(false)
+                console.log('Progress bar done', { event })
+            })
         }
     }, [])
-
-
 
     const loadingController = () => {
         // check if the dom has finished loading
@@ -111,9 +114,13 @@ export default function Home() {
             </ResumeWrapper>
             {/* Let's Talk Section */}
             <LetsTalk/>
+            {/* The End Section */}
             <TheEnd/>
+            {/* Footer Section */}
             <Footer/>
+            {/* Top Progress Bar */}
             <ScrollProgress isLoading={isLoading} />
+            {/* first Visit Loading Animation */}
             <Loading isLoading={isLoading}/>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"/>
         </div>

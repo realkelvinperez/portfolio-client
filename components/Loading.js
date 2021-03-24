@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import Lottie from 'react-lottie'
 import animationData from '../public/assets/lottie/loading-disc.json'
 import ReactTypingEffect from 'react-typing-effect'
@@ -11,6 +11,11 @@ const LoadingWrapper = styled.div`
   left: 0;
   background: linear-gradient(115deg,#AC38D4,#4CF0F0);
   z-index: 999;
+  opacity: 1;
+  transition: all .3s ease-in-out;
+  ${props => !props.isLoading && css`
+    opacity: 0;
+  `}
 `
 
 const InnerWrapper = styled.div`
@@ -36,16 +41,39 @@ const LoadingText = styled.div`
   transform: translate(-50%, 50%);
 `
 
-
 export default function Loading({ isLoading }) {
 
     const loadingView = () => {
         if(isLoading) return (
+            <>
             <Lottie
                 options={defaultOptions}
                 height={'100%'}
                 width={'100%'}
             />
+            <ReactTypingEffect
+                text={["Loading..."]}
+                speed={200}
+                eraseSpeed={100}
+                eraseDelay={500}
+                displayTextRenderer={(text, i) => {
+                    return (
+                        <LoadingText>
+                            {text.split('').map((char, i) => {
+                                const key = `${i}`;
+                                return (
+                                    <span
+                                        key={key}
+                                    >
+                                                    {char}
+                                                </span>
+                                );
+                            })}
+                        </LoadingText>
+                    );
+                }}
+            />
+            </>
         )
     }
 
@@ -56,32 +84,11 @@ export default function Loading({ isLoading }) {
     }
 
     return (
-        <LoadingWrapper>
+        <LoadingWrapper isLoading={isLoading}>
             <InnerWrapper>
                 {
                     loadingView()
                 }
-                    <ReactTypingEffect
-                        text={["Loading..."]}
-                        speed={200}
-                        eraseSpeed={100}
-                        eraseDelay={1000}
-                        cursorRenderer={cursor => <h1>{cursor}</h1>}
-                        displayTextRenderer={(text, i) => {
-                            return (
-                                <LoadingText>
-                                    {text.split('').map((char, i) => {
-                                        const key = `${i}`;
-                                        return (
-                                            <span
-                                                key={key}
-                                            >{char}</span>
-                                        );
-                                    })}
-                                </LoadingText>
-                            );
-                        }}
-                    />
             </InnerWrapper>
         </LoadingWrapper>
     );
