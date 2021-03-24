@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import {useState, useEffect} from 'react'
 import media from "../utilities/mediaQueries";
 import { trigger } from "../utilities/events";
@@ -10,10 +10,19 @@ const Bar = styled.div`
   top: 0;
   left: 0;
   z-index: 9999;
-  transition: width ease-in-out 0.3s;
+  transition: all ease-in-out 0.3s;
   @media (min-width: ${media.desktop2k}) {
     height: .8vw;
   }
+  
+  ${props => props.progressWidth && css`
+    width: ${props.progressWidth + '%'}
+  `}
+  
+  ${props => props.progressWidth >= 100 && css`
+    opacity: 0;
+  `}
+  
 `
 
 export default function ScrollProgress({ isLoading }) {
@@ -35,13 +44,14 @@ export default function ScrollProgress({ isLoading }) {
             setProgressWidth(i)
         }
         trigger('progressBar:done', { progressWidth })
-        setProgressWidth(0)
         // trigger event
     }
 
     return (
         <>
-            <Bar style={{width: `${progressWidth}%`}} />
+            <Bar
+                progressWidth={progressWidth}
+            />
         </>
     );
 }
