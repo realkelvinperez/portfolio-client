@@ -9,7 +9,7 @@ const LoadingWrapper = styled.div`
   position: absolute;
   top: 0;
   left: 0;
-  background: linear-gradient(115deg,#AC38D4,#4CF0F0);
+  background: #141A43;
   z-index: 999;
   opacity: 1;
   transition: all .3s ease-in-out;
