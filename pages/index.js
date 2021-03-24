@@ -13,25 +13,13 @@ import LetsTalk from "../components/LetsTalk";
 import TheEnd from "../components/TheEnd";
 import Footer from "../components/FooterText";
 import Loading from "../components/Loading";
+import ScrollProgress from "../components/ScrollProgress";
 
 const HeaderFlexWrap = styled.div`
   height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-`
-
-const ScrollProgress = styled.div`
-  width: 50%;
-  height: 13px;
-  background: linear-gradient(270deg, rgba(113, 57, 185, 1) 0%, rgb(30, 170, 231) 100%);
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 9999;
-  @media (min-width: ${media.desktop2k}) {
-    height: .8vw;
-  }
 `
 
 const MyGlobalStyle = createGlobalStyle`
@@ -66,7 +54,6 @@ const ResumeLine = styled.div`
 
 export default function Home() {
     const [isLoading, setIsLoading] = useState(true)
-    const progressWidth = useRef(0)
 
     useEffect(() => {
         if (typeof window !== 'undefined') {
@@ -74,23 +61,7 @@ export default function Home() {
         }
     }, [])
 
-    const loadingEl = useRef()
-    const sleep = (delay) => new Promise((resolve) => setTimeout(resolve, delay))
 
-    const loadingProgressBar = async () => {
-        console.log(loadingEl.current)
-        for(let i = 1; i <= 100; i++){
-            await sleep(100)
-            progressWidth.current += 1
-            // setProgressBarHeight(i)
-            console.log(`${i}%`)
-            loadingEl.current.style.width = progressWidth.current
-        }
-    }
-
-    (async () => {
-        await loadingProgressBar()
-    })()
 
     const loadingController = () => {
         // check if the dom has finished loading
@@ -142,7 +113,7 @@ export default function Home() {
             <LetsTalk/>
             <TheEnd/>
             <Footer/>
-            <ScrollProgress ref={loadingEl}/>
+            <ScrollProgress isLoading={isLoading} />
             <Loading isLoading={isLoading}/>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"/>
         </div>
