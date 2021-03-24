@@ -1,5 +1,6 @@
+import { useState, useEffect, useRef } from 'react'
 import Head from 'next/head'
-import styled, { createGlobalStyle } from 'styled-components'
+import styled, { createGlobalStyle, css } from 'styled-components'
 import Vanta from "../components/Vanta";
 import media from "../utilities/mediaQueries";
 import About from "../components/About";
@@ -11,23 +12,24 @@ import Resume from "../components/resume";
 import LetsTalk from "../components/LetsTalk";
 import TheEnd from "../components/TheEnd";
 import Footer from "../components/FooterText";
+import Loading from "../components/Loading";
 
 const HeaderFlexWrap = styled.div`
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `
 
 const ScrollProgress = styled.div`
-    width: 50%;
-    height: 13px;
-    background: linear-gradient(270deg, rgba(113,57,185,1) 0%, rgb(30, 170, 231) 100%);
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index:9999;
-  @media (min-width: ${media.desktop2k}){
+  width: 50%;
+  height: 13px;
+  background: linear-gradient(270deg, rgba(113, 57, 185, 1) 0%, rgb(30, 170, 231) 100%);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  @media (min-width: ${media.desktop2k}) {
     height: .8vw;
   }
 `
@@ -35,8 +37,16 @@ const ScrollProgress = styled.div`
 const MyGlobalStyle = createGlobalStyle`
   html {
     background: #141A43;
+    overflow-x: hidden;
+    ${props => props.isLoading && css`
+      overflow-y: hidden;
+    `}
   }
-  body{ margin: 0; }
+
+
+  body {
+    margin: 0;
+  }
 `;
 
 const ResumeWrapper = styled.div`
@@ -49,51 +59,92 @@ const ResumeLine = styled.div`
   left: 50%;
   width: 10px;
   height: 94%;
-  background: linear-gradient(180deg,rgba(172,56,212,0) 0%,rgba(172,56,212,1) 20%,rgba(76,240,240,1) 80%,rgba(76,240,240,0) 100%);
+  background: linear-gradient(180deg, rgba(172, 56, 212, 0) 0%, rgba(172, 56, 212, 1) 20%, rgba(76, 240, 240, 1) 80%, rgba(76, 240, 240, 0) 100%);
   transform: translate(-50%, 3%);
   z-index: -1;
 `
 
 export default function Home() {
-  return (
-    <div>
-      <Head>
-        <title>Kelvin Perez Web Developer Portfolio | UI/UX & Full-Stack | Miami, FL | Figma PHP Laravel React SQL</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-        <MyGlobalStyle />
-        {/* Hero Section */}
-        <HeaderFlexWrap>
-            <Vanta />
-        </HeaderFlexWrap>
-        {/* About Me Section */}
-        <About />
-        {/* My Work Section */}
-        <SectionHeading work>
-            Work
-        </SectionHeading>
-        <Projects />
-        {/* My Skills Section */}
-        <SectionHeading skills>
-            Skills
-        </SectionHeading>
-        <Skills />
-        {/* Quote Section */}
-        <Quote />
-        {/* My Resume Section */}
-        <ResumeWrapper>
-            <SectionHeading>
-                Resume
+    const [isLoading, setIsLoading] = useState(true)
+    const progressWidth = useRef(0)
+
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
+            console.log('window is defined')
+        }
+    }, [])
+
+    const loadingEl = useRef()
+    const sleep = (delay) => new Promise((resolve) => setTimeout(resolve, delay))
+
+    const loadingProgressBar = async () => {
+        console.log(loadingEl.current)
+        for(let i = 1; i <= 100; i++){
+            await sleep(100)
+            progressWidth.current += 1
+            // setProgressBarHeight(i)
+            console.log(`${i}%`)
+            loadingEl.current.style.width = progressWidth.current
+        }
+    }
+
+    (async () => {
+        await loadingProgressBar()
+    })()
+
+    const loadingController = () => {
+        // check if the dom has finished loading
+
+        // if false
+        // block scrolling
+
+        // increment number to 100% until dom has finished loading
+
+        // remove loading element from the dom
+
+    }
+
+    return (
+        <div>
+            <Head>
+                <title>Kelvin Perez Web Developer Portfolio | UI/UX & Full-Stack | Miami, FL | Figma PHP Laravel React
+                    SQL</title>
+                <link rel="icon" href="/favicon.ico"/>
+            </Head>
+            <MyGlobalStyle isLoading={isLoading}/>
+            {/* Hero Section */}
+            <HeaderFlexWrap>
+                <Vanta/>
+            </HeaderFlexWrap>
+            {/* About Me Section */}
+            <About/>
+            {/* My Work Section */}
+            <SectionHeading work>
+                Work
             </SectionHeading>
-            <Resume />
-            <ResumeLine />
-        </ResumeWrapper>
-        {/* Let's Talk Section */}
-        <LetsTalk />
-        <TheEnd />
-        <Footer />
-        <ScrollProgress />
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js" />
-    </div>
-  )
+            <Projects/>
+            {/* My Skills Section */}
+            <SectionHeading skills>
+                Skills
+            </SectionHeading>
+            <Skills/>
+            {/* Quote Section */}
+            <Quote/>
+            {/* My Resume Section */}
+            <ResumeWrapper>
+                <SectionHeading>
+                    Resume
+                </SectionHeading>
+                <Resume/>
+                <ResumeLine/>
+            </ResumeWrapper>
+            {/* Let's Talk Section */}
+            <LetsTalk/>
+            <TheEnd/>
+            <Footer/>
+            <ScrollProgress ref={loadingEl}/>
+            <Loading isLoading={isLoading}/>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"/>
+        </div>
+    )
 }

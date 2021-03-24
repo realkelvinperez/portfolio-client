@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "ngrok": "ngrok http 3000"
   },
   "dependencies": {
     "@babel/runtime": "^7.12.18",
@@ -18,6 +19,9 @@
     "next-transpile-modules": "^6.3.0",
     "react": "17.0.1",
     "react-dom": "17.0.1",
+    "react-lottie": "^1.2.3",
+    "react-pace-progress": "^2.0.0",
+    "react-typing-effect": "^2.0.5",
     "vanta": "^0.5.21"
   },
   "devDependencies": {

@@ -10,17 +10,9 @@ const Underline = styled.div`
   z-index: 9;
   height: 20px;
   
-  @media(min-width: ${media.desktop2k}){
-    
-  }
-  
   @media (max-width: ${media.laptop}){
     left: -0.2rem;
     height: 13px;
-  }
-
-  @media (max-width: ${media.tablet}){
-    
   }
 
   @media (max-width: ${media.mobileL}){
