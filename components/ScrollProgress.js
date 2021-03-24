@@ -10,7 +10,7 @@ const Bar = styled.div`
   top: 0;
   left: 0;
   z-index: 9999;
-  transition: all ease-in-out 0.3s;
+  transition: all ease-in-out 0.2s;
   @media (min-width: ${media.desktop2k}) {
     height: .8vw;
   }
@@ -34,17 +34,12 @@ export default function ScrollProgress({ isLoading }) {
         if (isLoading) await loadingProgressBar()
     }, [])
 
-    useEffect( () => {
-        console.log(`${progressWidth}%`)
-    })
-
     const loadingProgressBar = async () => {
         for(let i = 1; i <= 100; i++){
-            await sleep(100)
+            await sleep(50)
             setProgressWidth(i)
         }
         trigger('progressBar:done', { progressWidth })
-        // trigger event
     }
 
     return (

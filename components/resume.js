@@ -63,10 +63,6 @@ const ResumeInfo = styled.div`
 const ResumeCircle = styled.img`
   align-self: center;
   justify-self: center;
-  ${props => props.odd && css`
-    
-  `}
-  
 `
 
 const ResumeYear = styled.div`

@@ -66,18 +66,6 @@ export default function Home() {
         }
     }, [])
 
-    const loadingController = () => {
-        // check if the dom has finished loading
-
-        // if false
-        // block scrolling
-
-        // increment number to 100% until dom has finished loading
-
-        // remove loading element from the dom
-
-    }
-
     return (
         <div>
             <Head>
