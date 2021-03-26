@@ -35,7 +35,7 @@ export default function ScrollProgress({ isLoading }) {
 
     const loadingProgressBar = async () => {
         for(let i = 1; i <= 100; i++){
-            await sleep(33.5)
+            await sleep(33)
             setProgressWidth(i)
         }
         trigger('progressBar:done', { progressWidth })
