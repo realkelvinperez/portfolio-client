@@ -29,6 +29,7 @@ const InfoWrapper = styled.div`
   overflow: hidden;
   padding: 6px;
   margin: 0 3rem;
+
   &:before {
     content: "";
     position: absolute;
@@ -36,11 +37,12 @@ const InfoWrapper = styled.div`
     left: 0;
     width: 200%;
     height: 100%;
-    background: linear-gradient(115deg,#AC38D4,#4CF0F0);
+    background: linear-gradient(115deg, #ac38d4, #4cf0f0);
     background-size: 50% 100%;
     z-index: -1;
   }
-  @media (max-width: ${media.laptopL}){
+
+  @media (max-width: ${media.laptopL}) {
     font-size: 11rem;
     margin: 0 1rem;
   }

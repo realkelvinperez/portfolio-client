@@ -19,7 +19,7 @@ const HeaderNav = styled.nav`
   }
 `
 
-export default function Nav() {
+const Nav = () => {
     return (
         <HeaderNav>
             <Logo />
@@ -27,3 +27,5 @@ export default function Nav() {
         </HeaderNav>
     );
 }
+
+export default Nav

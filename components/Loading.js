@@ -1,7 +1,6 @@
 import styled, { css } from 'styled-components'
 import Lottie from 'react-lottie'
 import animationData from '../public/assets/lottie/loading-disc.json'
-import ReactTypingEffect from 'react-typing-effect'
 
 const LoadingWrapper = styled.div`
   width: 100vw;
@@ -24,7 +23,7 @@ const InnerWrapper = styled.div`
     width: 100%;
     height: 100%;
 `
-
+/*
 const LoadingText = styled.div`
   margin: 0;
   font-family: Soulmaze,sans-serif;
@@ -46,6 +45,7 @@ const LoadingText = styled.div`
   opacity: .1;
   z-index: -1;
 `
+*/
 
 export default function Loading({ isLoading }) {
 

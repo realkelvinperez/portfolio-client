@@ -1,6 +1,5 @@
 const withImages = require('next-images')
 const withPlugins = require('next-compose-plugins');
-const plugins = [withImages]
 
 const nextConfiguration = {
     webpack(config) {
@@ -8,4 +7,4 @@ const nextConfiguration = {
     }
 }
 
-module.exports = withPlugins([...plugins], nextConfiguration);
+module.exports = withPlugins([withImages], nextConfiguration);

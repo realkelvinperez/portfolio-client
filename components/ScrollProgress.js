@@ -22,7 +22,6 @@ const Bar = styled.div`
   ${props => props.progressWidth >= 100 && css`
     opacity: 0;
   `}
-  
 `
 
 export default function ScrollProgress({ isLoading }) {

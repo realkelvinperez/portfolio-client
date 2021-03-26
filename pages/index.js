@@ -1,8 +1,7 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useMemo, createContext } from 'react'
 import Head from 'next/head'
 import styled, { createGlobalStyle, css } from 'styled-components'
 import Vanta from "../components/Vanta";
-// import media from "../utilities/mediaQueries";
 import About from "../components/About";
 import Projects from "../components/Projects";
 import SectionHeading from "../elements/SectionHeading";
@@ -15,6 +14,7 @@ import Footer from "../components/FooterText";
 import Loading from "../components/Loading";
 import ScrollProgress from "../components/ScrollProgress";
 import { on } from "../utilities/events";
+import LoginContext from "../context/LoginContext";
 
 const HeaderFlexWrap = styled.div`
   height: 100vh;
@@ -55,6 +55,7 @@ const ResumeLine = styled.div`
 
 export default function Home() {
     const [isLoading, setIsLoading] = useState(true)
+    const loadingState = useMemo(() => ({isLoading, setIsLoading}), [isLoading, setIsLoading])
 
     useEffect(() => {
         if (typeof window !== 'undefined') {
@@ -67,50 +68,52 @@ export default function Home() {
     }, [])
 
     return (
-        <div>
-            <Head>
-                <title>Kelvin Perez Web Developer Portfolio | UI/UX & Full-Stack | Miami, FL | Figma PHP Laravel React
-                    SQL</title>
-                <link rel="icon" href="/favicon.ico"/>
-            </Head>
-            <MyGlobalStyle isLoading={isLoading}/>
-            {/* Hero Section */}
-            <HeaderFlexWrap>
-                <Vanta/>
-            </HeaderFlexWrap>
-            {/* About Me Section */}
-            <About/>
-            {/* My Work Section */}
-            <SectionHeading work>
-                Work
-            </SectionHeading>
-            <Projects/>
-            {/* My Skills Section */}
-            <SectionHeading skills>
-                Skills
-            </SectionHeading>
-            <Skills/>
-            {/* Quote Section */}
-            <Quote/>
-            {/* My Resume Section */}
-            <ResumeWrapper>
-                <SectionHeading>
-                    Resume
+        <LoginContext.Provider value={loadingState}>
+            <div>
+                <Head>
+                    <title>Kelvin Perez Web Developer Portfolio | UI/UX & Full-Stack | Miami, FL | Figma PHP Laravel React
+                        SQL</title>
+                    <link rel="icon" href="/favicon.ico"/>
+                </Head>
+                <MyGlobalStyle isLoading={isLoading}/>
+                {/* Hero Section */}
+                <HeaderFlexWrap>
+                    <Vanta/>
+                </HeaderFlexWrap>
+                {/* About Me Section */}
+                <About/>
+                {/* My Work Section */}
+                <SectionHeading work>
+                    Work
                 </SectionHeading>
-                <Resume/>
-                <ResumeLine/>
-            </ResumeWrapper>
-            {/* Let's Talk Section */}
-            <LetsTalk/>
-            {/* The End Section */}
-            <TheEnd/>
-            {/* Footer Section */}
-            <Footer/>
-            {/* Top Progress Bar */}
-            <ScrollProgress isLoading={isLoading} />
-            {/* first Visit Loading Animation */}
-            <Loading isLoading={isLoading}/>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"/>
-        </div>
+                <Projects/>
+                {/* My Skills Section */}
+                <SectionHeading skills>
+                    Skills
+                </SectionHeading>
+                <Skills/>
+                {/* Quote Section */}
+                <Quote/>
+                {/* My Resume Section */}
+                <ResumeWrapper>
+                    <SectionHeading>
+                        Resume
+                    </SectionHeading>
+                    <Resume/>
+                    <ResumeLine/>
+                </ResumeWrapper>
+                {/* Let's Talk Section */}
+                <LetsTalk/>
+                {/* The End Section */}
+                <TheEnd/>
+                {/* Footer Section */}
+                <Footer/>
+                {/* Top Progress Bar */}
+                <ScrollProgress isLoading={isLoading} />
+                {/* first Visit Loading Animation */}
+                <Loading isLoading={isLoading}/>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"/>
+            </div>
+        </LoginContext.Provider>
     )
 }
