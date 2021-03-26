@@ -42,8 +42,8 @@ export default function Home() {
 
     useEffect(() => {
         if (typeof window !== 'undefined') {
-            console.log('window is defined')
             window.scrollTo(0, 0)
+            console.log('window is defined')
             on('progressBar:done', (event) => {
                 setIsLoading(false)
                 console.log('Progress bar done', { event })

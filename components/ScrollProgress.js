@@ -10,7 +10,7 @@ const Bar = styled.div`
   top: 0;
   left: 0;
   z-index: 9999;
-  transition: all ease-in-out 0.2s;
+  transition: all ease-in-out 0.05s;
   @media (min-width: ${media.desktop2k}) {
     height: .8vw;
   }
@@ -35,7 +35,7 @@ export default function ScrollProgress({ isLoading }) {
 
     const loadingProgressBar = async () => {
         for(let i = 1; i <= 100; i++){
-            await sleep(35)
+            await sleep(33.5)
             setProgressWidth(i)
         }
         trigger('progressBar:done', { progressWidth })

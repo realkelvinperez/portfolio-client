@@ -98,8 +98,8 @@ export default function Projects() {
             scrollTrigger: {
                 trigger: title,
                 toggleActions: 'restart reverse restart reverse',
-                start: '20% 80%',
-                end: '80% 20%',
+                start: 'top 80%',
+                end: '500px 20%',
                 markers: true,
             },
             y: -200,
@@ -110,8 +110,8 @@ export default function Projects() {
             scrollTrigger: {
                 trigger: project1,
                 toggleActions: 'restart reverse restart reverse',
-                start: '20% 80%',
-                end: '80% 20%',
+                start: 'top 80%',
+                end: '500px 20%',
                 markers: true,
             }
         })
@@ -129,7 +129,31 @@ export default function Projects() {
             .from([laptop1], {
                 opacity: 0,
                 x: 100,
+            })
+
+        const t2 = gsap.timeline({
+            scrollTrigger: {
+                trigger: project2,
+                toggleActions: 'restart reverse restart reverse',
+                start: 'top 80%',
+                end: 'top 500px',
+                markers: true,
+            }
+        })
+
+        t2
+            .from(number2, {
+                opacity: 0,
+                x: -100
+            })
+            .from([textHeading2, textBody2], {
+                opacity: 0,
+                x: 100,
                 stagger: .2,
+            })
+            .from([laptop2], {
+                opacity: 0,
+                x: -100,
             })
     }, [])
 

@@ -182,8 +182,8 @@ const backendDevList = [
 export default function Skills() {
     return (
         <>
-        <SectionHeading work>
-            Work
+        <SectionHeading skills>
+            Skills
         </SectionHeading>
         <SkillsWrapper>
             <SkillCardWrapper>
