@@ -5,6 +5,7 @@ import LearningIcon from '../public/assets/svg/learning-icon.svg'
 import FrontEndIcon from '../public/assets/svg/frontend-dev-icon.svg'
 import BackEndIcon from '../public/assets/svg/backend-dev-icon.svg'
 import media from "../utilities/mediaQueries";
+import SectionHeading from "../elements/SectionHeading";
 
 const SkillsWrapper = styled.section`
   margin-top: 4rem;
@@ -180,6 +181,10 @@ const backendDevList = [
 
 export default function Skills() {
     return (
+        <>
+        <SectionHeading work>
+            Work
+        </SectionHeading>
         <SkillsWrapper>
             <SkillCardWrapper>
                <SkillCard className="first">
@@ -240,5 +245,6 @@ export default function Skills() {
                 </SkillCard>
             </SkillCardWrapper>
         </SkillsWrapper>
+        </>
     );
 }

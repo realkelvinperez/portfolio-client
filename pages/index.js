@@ -4,10 +4,8 @@ import styled, { createGlobalStyle, css } from 'styled-components'
 import Vanta from "../components/Vanta";
 import About from "../components/About";
 import Projects from "../components/Projects";
-import SectionHeading from "../elements/SectionHeading";
 import Skills from "../components/Skills";
 import Quote from "../components/Quote";
-import Resume from "../components/resume";
 import LetsTalk from "../components/LetsTalk";
 import TheEnd from "../components/TheEnd";
 import Footer from "../components/FooterText";
@@ -15,6 +13,7 @@ import Loading from "../components/Loading";
 import ScrollProgress from "../components/ScrollProgress";
 import { on } from "../utilities/events";
 import LoginContext from "../context/LoginContext";
+import ResumeSection from "../components/ResumeSection";
 
 const HeaderFlexWrap = styled.div`
   height: 100vh;
@@ -32,26 +31,10 @@ const MyGlobalStyle = createGlobalStyle`
     `}
   }
 
-
   body {
     margin: 0;
   }
 `;
-
-const ResumeWrapper = styled.div`
-  position: relative;
-`
-
-const ResumeLine = styled.div`
-  position: absolute;
-  top: 0;
-  left: 50%;
-  width: 10px;
-  height: 94%;
-  background: linear-gradient(180deg, rgba(172, 56, 212, 0) 0%, rgba(172, 56, 212, 1) 20%, rgba(76, 240, 240, 1) 80%, rgba(76, 240, 240, 0) 100%);
-  transform: translate(-50%, 3%);
-  z-index: -1;
-`
 
 export default function Home() {
     const [isLoading, setIsLoading] = useState(true)
@@ -60,6 +43,7 @@ export default function Home() {
     useEffect(() => {
         if (typeof window !== 'undefined') {
             console.log('window is defined')
+            window.scrollTo(0, 0)
             on('progressBar:done', (event) => {
                 setIsLoading(false)
                 console.log('Progress bar done', { event })
@@ -82,26 +66,14 @@ export default function Home() {
                 </HeaderFlexWrap>
                 {/* About Me Section */}
                 <About/>
-                {/* My Work Section */}
-                <SectionHeading work>
-                    Work
-                </SectionHeading>
+                {/* Projects Section */}
                 <Projects/>
                 {/* My Skills Section */}
-                <SectionHeading skills>
-                    Skills
-                </SectionHeading>
                 <Skills/>
                 {/* Quote Section */}
                 <Quote/>
                 {/* My Resume Section */}
-                <ResumeWrapper>
-                    <SectionHeading>
-                        Resume
-                    </SectionHeading>
-                    <Resume/>
-                    <ResumeLine/>
-                </ResumeWrapper>
+                <ResumeSection />
                 {/* Let's Talk Section */}
                 <LetsTalk/>
                 {/* The End Section */}

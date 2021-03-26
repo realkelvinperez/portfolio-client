@@ -8,6 +8,11 @@ import AboutHeading from "../elements/about/AboutHeading";
 import TitleUnderline from "../elements/TitleUnderline";
 import AboutBioText from "../elements/about/AboutBioText";
 import media from "../utilities/mediaQueries";
+import SectionHeading from "../elements/SectionHeading";
+import { useRef, useEffect } from 'react'
+import { gsap } from 'gsap';
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger"
+gsap.registerPlugin(ScrollTrigger);
 
 const AngledBG = styled.div`
   clip-path: polygon(0 15%,100% 0,100% 85%,0% 100%);
@@ -72,42 +77,104 @@ const ProjectText = styled.div`
 `
 
 export default function Projects() {
+    let title = useRef(null);
+
+    let workSection = useRef(null);
+
+    let project1 = useRef(null)
+    let number1 = useRef(null)
+    let laptop1 = useRef(null)
+    let textHeading1 = useRef(null)
+    let textBody1 = useRef(null)
+
+    let project2 = useRef(null)
+    let number2 = useRef(null)
+    let laptop2 = useRef(null)
+    let textHeading2 = useRef(null)
+    let textBody2 = useRef(null)
+
+    useEffect(() => {
+        gsap.from(title, {
+            scrollTrigger: {
+                trigger: title,
+                toggleActions: 'restart reverse restart reverse',
+                start: '20% 80%',
+                end: '80% 20%',
+                markers: true,
+            },
+            y: -200,
+            opacity: 0
+        })
+
+        const tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: project1,
+                toggleActions: 'restart reverse restart reverse',
+                start: '20% 80%',
+                end: '80% 20%',
+                markers: true,
+            }
+        })
+
+        tl
+            .from(number1, {
+                opacity: 0,
+                x: 100
+            })
+            .from([textHeading1, textBody1], {
+                opacity: 0,
+                x: -100,
+                stagger: .2,
+            })
+            .from([laptop1], {
+                opacity: 0,
+                x: 100,
+                stagger: .2,
+            })
+    }, [])
+
+
     return (
-        <AngledBG>
+        <>
+        <SectionHeading ref={el => title = el} work>
+            Work
+        </SectionHeading>
+        <AngledBG ref={el => workSection = el}>
             <Container>
-                <ProjectWrap>
+                <ProjectWrap ref={el => project1 = el}>
                     <NumberWrap right>
-                        <NumberImg src={Number1} />
+                        <NumberImg ref={el => number1 = el} src={Number1} />
                     </NumberWrap>
                     <ProjectText>
-                        <AboutHeading>
+                        <AboutHeading ref={el => textHeading1 = el}>
                             ViViFi App
                             <TitleUnderline />
                         </AboutHeading>
-                        <AboutBioText>
+                        <AboutBioText ref={el => textBody1 = el}>
                             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem, dolorem et? A delectus fuga, nam natus necessitatibus pariatur quod. Accusamus alias dolore officia reprehenderit similique?
                         </AboutBioText>
                     </ProjectText>
                     <LaptopImgWrap right>
-                        <LaptopImg src={Laptop1}/>
+                        <LaptopImg ref={el => laptop1 = el} src={Laptop1}/>
                     </LaptopImgWrap>
                 </ProjectWrap>
-                <ProjectWrap>
+                <ProjectWrap ref={el => project2 = el}>
                     <NumberWrap>
-                        <NumberImg src={Number2} />
+                        <NumberImg ref={el => number2 = el} src={Number2} />
                     </NumberWrap>
                     <ProjectText right>
-                        <AboutHeading>
+                        <AboutHeading ref={el => textHeading2 = el}>
                                 Financial Freedom
                             <TitleUnderline />
                         </AboutHeading>
-                        <AboutBioText>
+                        <AboutBioText ref={el => textBody2 = el}>
                             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem, dolorem et? A delectus fuga, nam natus necessitatibus pariatur quod. Accusamus alias dolore officia reprehenderit similique?
                         </AboutBioText>
                     </ProjectText>
-                    <LaptopImg src={Laptop2}/>
+                    <LaptopImg ref={el => laptop2 = el} src={Laptop2}/>
                 </ProjectWrap>
             </Container>
         </AngledBG>
+        </>
     );
 }

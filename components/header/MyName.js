@@ -1,5 +1,8 @@
+import { useContext, useRef, useEffect } from 'react';
 import styled from "styled-components";
 import media from "../../utilities/mediaQueries";
+import LoginContext from "../../context/LoginContext";
+import { gsap } from "gsap";
 
 const Kelvin = styled.div`
   color:white;
@@ -41,12 +44,29 @@ const Perez = styled.div`
 `
 
 export default function MyName() {
+    const { isLoading } = useContext(LoginContext)
+    let kelvin = useRef(null);
+    let perez = useRef(null)
+    useEffect(() => {
+        console.log({ isLoading })
+        if(!isLoading){
+            gsap.from(
+                [kelvin, perez], {
+                    x: -100,
+                    opacity: 0,
+                    ease: 'power2.inOut',
+                    duration: 1,
+                    stagger: .2
+                })
+        }
+    },[isLoading])
+
     return (
         <>
-            <Kelvin>
+            <Kelvin ref={el => kelvin = el}>
                 Kelvin
             </Kelvin>
-            <Perez>
+            <Perez ref={el => perez = el}>
                 Perez
             </Perez>
         </>

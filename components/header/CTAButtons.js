@@ -2,6 +2,9 @@ import MyWorkBtn from "../../public/assets/svg/MyWorkBtn.svg";
 import LetsTalk from "../../public/assets/svg/LetsTalkBtn.svg";
 import styled from "styled-components";
 import media from "../../utilities/mediaQueries";
+import { useContext, useRef, useEffect } from 'react';
+import LoginContext from "../../context/LoginContext";
+import { gsap } from "gsap";
 
 const CTABtnWrap = styled.div`
     margin-top: 2rem;
@@ -46,12 +49,33 @@ const LetsTalkWrap = styled.div`
 `
 
 export default function CtaButtons() {
+
+    const { isLoading} = useContext(LoginContext)
+
+    let btn1 = useRef(null);
+    let btn2 = useRef(null);
+
+    useEffect(() => {
+        console.log({ isLoading })
+        if(!isLoading){
+            gsap.from(
+                [btn1, btn2], {
+                    x: -50,
+                    opacity: 0,
+                    ease: 'power2.inOut',
+                    delay: 1.2,
+                    duration: 1,
+                    stagger: .2
+                })
+        }
+    },[isLoading])
+
     return (
         <CTABtnWrap>
-            <MyWorkWrap>
+            <MyWorkWrap ref={el => btn1 = el}>
                 <MyWorkImg src={MyWorkBtn} />
             </MyWorkWrap>
-            <LetsTalkWrap>
+            <LetsTalkWrap ref={el => btn2 = el}>
                 <LetsTalkImg src={LetsTalk} />
             </LetsTalkWrap>
         </CTABtnWrap>

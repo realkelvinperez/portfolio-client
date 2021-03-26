@@ -1,3 +1,6 @@
+import { useContext, useRef, useEffect } from 'react';
+import LoginContext from "../../context/LoginContext";
+import { gsap } from "gsap";
 import styled from "styled-components";
 import media from "../../utilities/mediaQueries";
 
@@ -47,8 +50,25 @@ const Underline = styled.div`
 `
 
 export default function HeroTextTagline() {
+
+    const { isLoading } = useContext(LoginContext)
+    let text = useRef(null);
+    useEffect(() => {
+        console.log({ isLoading })
+        if(!isLoading){
+            gsap.from(
+                text, {
+                    x: -100,
+                    opacity: 0,
+                    ease: 'power2.inOut',
+                    duration: 1,
+                    delay: .4
+               })
+        }
+    },[isLoading])
+
     return (
-        <HeroTextWrap>
+        <HeroTextWrap ref={el => text = el}>
             <HeroText>I love Building Beautiful <br /> Digital Experiences</HeroText>
             <Underline />
         </HeroTextWrap>
