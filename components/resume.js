@@ -3,6 +3,11 @@ import Heading from "./Heading";
 import Circle from '../public/assets/svg/resume/resume-circle.svg'
 import ResumeCTA from '../components/ResumeCTA'
 import media from "../utilities/mediaQueries";
+import { useRef, useEffect } from 'react'
+import { gsap } from 'gsap';
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger"
+import SectionHeading from "../elements/SectionHeading";
+gsap.registerPlugin(ScrollTrigger);
 
 const ResumeSection = styled.section`
   width: 90%;
@@ -21,6 +26,17 @@ const ResumeWrapper = styled.div`
     margin-bottom: 5rem;
     margin-top: 5rem;
   }
+`
+
+const ResumeLine = styled.div`
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 10px;
+  height: 94%;
+  background: linear-gradient(180deg, rgba(172, 56, 212, 0) 0%, rgba(172, 56, 212, 1) 20%, rgba(76, 240, 240, 1) 80%, rgba(76, 240, 240, 0) 100%);
+  transform: translate(-50%, 3%);
+  z-index: -1;
 `
 
 const InfoWrapper = styled.div`
@@ -206,20 +222,42 @@ const resumeData = [
 ]
 
 export default function Resume() {
+    let resumeSection = useRef(null)
+    let resumeYear = useRef(null)
+    let resumeCircle = useRef(null)
+    let resumeCard = useRef(null)
+    let resumeTitle = useRef(null)
+
+    useEffect(() => {
+        gsap.from(resumeTitle, {
+            scrollTrigger: {
+                trigger: resumeTitle,
+                toggleActions: 'restart reverse restart pause',
+                start: 'top center',
+                end: '0px top',
+                markers: true
+            },
+            y: -200,
+            opacity: 0
+        })
+    }, [])
     return (
         <>
-            <ResumeRelative>
+            <ResumeRelative ref={el => resumeSection = el}>
+                <SectionHeading ref={el => resumeTitle = el}>
+                    Resume
+                </SectionHeading>
                 <ResumeSection>
                     {
                         resumeData.map(( item, i ) => {
                             if(i % 2 === 0 ){
                                 return (
                                     <ResumeWrapper key={i}>
-                                        <ResumeYear>
+                                        <ResumeYear ref={el => resumeYear = el}>
                                             {item.year}
                                         </ResumeYear>
-                                        <ResumeCircle src={Circle} />
-                                        <InfoWrapper>
+                                        <ResumeCircle ref={el => resumeCircle = el} src={Circle} />
+                                        <InfoWrapper ref={el => resumeCard = el}>
                                             <ResumeInfo>
                                                 <Heading text={item.jobTitle} />
                                                 <JobLocation>
@@ -235,7 +273,7 @@ export default function Resume() {
                             } else {
                                 return (
                                     <ResumeWrapper key={i}>
-                                        <InfoWrapper odd>
+                                        <InfoWrapper ref={el => resumeCard = el} odd>
                                             <ResumeInfo>
                                                 <Heading text={item.jobTitle} />
                                                 <JobLocation>
@@ -246,8 +284,8 @@ export default function Resume() {
                                                 </JobDescription>
                                             </ResumeInfo>
                                         </InfoWrapper>
-                                        <ResumeCircle odd src={Circle} />
-                                        <ResumeYear odd>
+                                        <ResumeCircle odd ref={el => resumeCircle = el} src={Circle} />
+                                        <ResumeYear ref={el => resumeYear = el} odd>
                                             {item.year}
                                         </ResumeYear>
                                     </ResumeWrapper>
@@ -259,6 +297,7 @@ export default function Resume() {
                 <ResumeCTAwrapper>
                     <ResumeCTA style={{cursor: 'pointer'}} />
                 </ResumeCTAwrapper>
+                <ResumeLine/>
             </ResumeRelative>
         </>
     );

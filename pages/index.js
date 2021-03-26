@@ -13,7 +13,8 @@ import Loading from "../components/Loading";
 import ScrollProgress from "../components/ScrollProgress";
 import { on } from "../utilities/events";
 import LoginContext from "../context/LoginContext";
-import ResumeSection from "../components/ResumeSection";
+// import ResumeSection from "../components/ResumeSection";
+import Resume from "../components/resume";
 
 const HeaderFlexWrap = styled.div`
   height: 100vh;
@@ -73,7 +74,7 @@ export default function Home() {
                 {/* Quote Section */}
                 <Quote/>
                 {/* My Resume Section */}
-                <ResumeSection />
+                <Resume/>
                 {/* Let's Talk Section */}
                 <LetsTalk/>
                 {/* The End Section */}

@@ -2,13 +2,17 @@ import styled from 'styled-components'
 import UpQuotes from '../public/assets/svg/UpQuotes.svg'
 import DownQuotes from '../public/assets/svg/DownQuotes.svg'
 import media from '../utilities/mediaQueries'
+import { useRef, useEffect } from 'react'
+import { gsap } from 'gsap';
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger"
+gsap.registerPlugin(ScrollTrigger);
 
 const QuoteSection = styled.section`
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 0 18rem;
-  margin-bottom: 20rem;
+  margin-bottom: 25rem;
   @media (max-width: ${media.tablet}) {
     padding: 0;
   }
@@ -91,18 +95,39 @@ const Quotes = styled.img`
 `
 
 export default function Quote() {
+
+    let quote = useRef(null)
+    let quoteUp = useRef(null)
+    let quoteDown = useRef(null)
+    let quoteText = useRef(null)
+    let quoteAuthor = useRef(null)
+
+    useEffect(() => {
+        gsap.from([quoteUp, quoteDown, quoteText, quoteAuthor], {
+            scrollTrigger: {
+                trigger: quote,
+                toggleActions: 'restart reverse restart reverse',
+                start: 'top 70%',
+                end: 'bottom top',
+            },
+            opacity: 0,
+            x: 50,
+            stagger: .15
+        })
+    }, [])
+
     return (
-        <QuoteSection>
+        <QuoteSection ref={el => quote = el}>
             <QuoteWrapper>
-                <Quotes className="up" src={UpQuotes} />
-                <QuoteText>
+                <Quotes ref={el => quoteUp = el} className="up" src={UpQuotes} />
+                <QuoteText ref={el => quoteText = el}>
                     Design is not just what it looks like & feels like. Design is how it <QuoteHighlighted>Works!</QuoteHighlighted>
                 </QuoteText>
-                <QuoteAuthor>
+                <QuoteAuthor ref={el => quoteAuthor = el}>
                     <AuthorLine/>
                     <AuthorName>Steve Jobs</AuthorName>
                 </QuoteAuthor>
-                <Quotes className="down" src={DownQuotes} />
+                <Quotes ref={el => quoteDown = el} className="down" src={DownQuotes} />
             </QuoteWrapper>
         </QuoteSection>
     );

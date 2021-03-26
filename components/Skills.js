@@ -6,6 +6,10 @@ import FrontEndIcon from '../public/assets/svg/frontend-dev-icon.svg'
 import BackEndIcon from '../public/assets/svg/backend-dev-icon.svg'
 import media from "../utilities/mediaQueries";
 import SectionHeading from "../elements/SectionHeading";
+import { useRef, useEffect } from 'react'
+import { gsap } from 'gsap';
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger"
+gsap.registerPlugin(ScrollTrigger);
 
 const SkillsWrapper = styled.section`
   margin-top: 4rem;
@@ -180,14 +184,55 @@ const backendDevList = [
 ]
 
 export default function Skills() {
+    let title = useRef(null)
+    let card1 = useRef(null)
+    let card2 = useRef(null)
+    let card3 = useRef(null)
+
+    useEffect(() => {
+        const tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: card1,
+                toggleActions: 'restart reverse restart pause',
+                start: 'top 80%',
+                end: 'bottom top',
+            },
+            repeat: -1,
+            yoyo: true,
+            ease: 'power1.inOut'
+        })
+        gsap.from(title, {
+            scrollTrigger: {
+                trigger: title,
+                toggleActions: 'restart reverse restart reverse',
+                start: 'top center',
+                end: 'bottom top',
+            },
+            y: -200,
+            opacity: 0
+        })
+
+        gsap.from([card1, card2, card3], {
+            scrollTrigger: {
+                trigger: card1,
+                toggleActions: 'restart reverse restart pause',
+                start: 'top 80%',
+                end: 'bottom top',
+            },
+            y: -200,
+            opacity: 0,
+            stagger: 0.5
+        })
+    }, [])
+
     return (
         <>
-        <SectionHeading skills>
+        <SectionHeading ref={el => title = el} skills>
             Skills
         </SectionHeading>
         <SkillsWrapper>
             <SkillCardWrapper>
-               <SkillCard className="first">
+               <SkillCard ref={el => card1 = el} className="first">
                    <InnerCardWrap>
                        <SkillCardContentWrap>
                            <Heading text='UI/UX' />
@@ -213,7 +258,7 @@ export default function Skills() {
                        </SkillCardContentWrap>
                    </InnerCardWrap>
                </SkillCard>
-                <SkillCard className="second">
+                <SkillCard ref={el => card2 = el} className="second">
                     <InnerCardWrap>
                         <SkillCardContentWrap>
                             <Heading text='Front-End' />
@@ -228,7 +273,7 @@ export default function Skills() {
                         </SkillCardContentWrap>
                     </InnerCardWrap>
                 </SkillCard>
-                <SkillCard className="third">
+                <SkillCard ref={el => card3 = el} className="third">
                     <InnerCardWrap>
                         <SkillCardContentWrap>
                             <Heading text='Backend' />

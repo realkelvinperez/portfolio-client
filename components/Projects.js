@@ -100,7 +100,6 @@ export default function Projects() {
                 toggleActions: 'restart reverse restart reverse',
                 start: 'top 80%',
                 end: '500px 20%',
-                markers: true,
             },
             y: -200,
             opacity: 0
@@ -111,8 +110,7 @@ export default function Projects() {
                 trigger: project1,
                 toggleActions: 'restart reverse restart reverse',
                 start: 'top 80%',
-                end: 'center 200px',
-                markers: true,
+                end: 'center 0px',
             }
         })
 
@@ -136,8 +134,7 @@ export default function Projects() {
                 trigger: project2,
                 toggleActions: 'restart reverse restart reverse',
                 start: 'top 80%',
-                end: 'center 200px',
-                markers: true,
+                end: 'center 0px',
             }
         })
 
