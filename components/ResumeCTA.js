@@ -4,7 +4,7 @@ const SVG = styled.svg`
   cursor: pointer;
 `
 
-export default function ResumeCta(props) {
+export default function ResumeCta() {
     return (
         <>
             <SVG width="223" height="75" viewBox="0 0 223 75" fill="none" xmlns="http://www.w3.org/2000/svg">

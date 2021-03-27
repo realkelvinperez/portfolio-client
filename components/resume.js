@@ -3,10 +3,10 @@ import Heading from "./Heading";
 import Circle from '../public/assets/svg/resume/resume-circle.svg'
 import ResumeCTA from '../components/ResumeCTA'
 import media from "../utilities/mediaQueries";
+import SectionHeading from "../elements/SectionHeading";
 import { useRef, useEffect } from 'react'
 import { gsap } from 'gsap';
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger"
-import SectionHeading from "../elements/SectionHeading";
 gsap.registerPlugin(ScrollTrigger);
 
 const ResumeSection = styled.section`
@@ -253,16 +253,9 @@ export default function Resume() {
     let Circle2021 = useRef(null)
     let Card2021 = useRef(null)
 
-    useEffect(() => {
+    let ResumeBtn = useRef(null)
 
-        const tl = gsap.timeline({
-            scrollTrigger: {
-                trigger: Card2015,
-                toggleActions: 'restart reverse restart reverse',
-                start: 'center center',
-                end: 'center top',
-            }
-        })
+    useEffect(() => {
 
         gsap.from(Title, {
             scrollTrigger: {
@@ -279,6 +272,7 @@ export default function Resume() {
             scrollTrigger: {
                 trigger: Card2015,
                 toggleActions: 'restart reverse restart reverse',
+                start: 'center center'
             },
             x: -200,
             opacity: 0,
@@ -287,8 +281,9 @@ export default function Resume() {
 
         gsap.from([Card2016, Year2016, Circle2016], {
             scrollTrigger: {
-                trigger: Card2015,
+                trigger: Card2016,
                 toggleActions: 'restart reverse restart reverse',
+                start: 'center center'
             },
             x: 200,
             opacity: 0,
@@ -298,6 +293,7 @@ export default function Resume() {
             scrollTrigger: {
                 trigger: Card2017,
                 toggleActions: 'restart reverse restart reverse',
+                start: 'center center'
             },
             x: -200,
             opacity: 0,
@@ -308,6 +304,7 @@ export default function Resume() {
             scrollTrigger: {
                 trigger: Card2018,
                 toggleActions: 'restart reverse restart reverse',
+                start: 'center center'
             },
             x: 200,
             opacity: 0,
@@ -317,6 +314,7 @@ export default function Resume() {
             scrollTrigger: {
                 trigger: Card2019,
                 toggleActions: 'restart reverse restart reverse',
+                start: 'center center'
             },
             x: -200,
             opacity: 0,
@@ -327,20 +325,23 @@ export default function Resume() {
             scrollTrigger: {
                 trigger: Card2020,
                 toggleActions: 'restart reverse restart reverse',
+                start: 'center center'
             },
             x: 200,
             opacity: 0,
             stagger: 0.2
         })
-        gsap.from([Card2021, Year2021, Circle2021], {
+        gsap.from([Card2021, Year2021, Circle2021, ResumeBtn], {
             scrollTrigger: {
                 trigger: Card2021,
                 toggleActions: 'restart reverse restart reverse',
+                start: 'center center'
             },
             x: -200,
             opacity: 0,
             stagger: 0.2
         })
+
     }, [])
     return (
         <>
@@ -493,7 +494,7 @@ export default function Resume() {
                         </InfoWrapper>
                     </ResumeWrapper>
                 </ResumeSection>
-                <ResumeCTAwrapper>
+                <ResumeCTAwrapper ref={el => ResumeBtn = el}>
                     <ResumeCTA style={{cursor: 'pointer'}} />
                 </ResumeCTAwrapper>
                 <ResumeLine/>

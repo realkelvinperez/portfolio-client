@@ -1,8 +1,11 @@
-import { useState } from 'react'
+import { useRef, useEffect, useState } from 'react'
 import styled from "styled-components"
 import SectionHeading from "../elements/SectionHeading";
 import EmailBtn from '../public/assets/svg/lets-talk/send-email-btn.svg'
 import media from "../utilities/mediaQueries";
+import { gsap } from 'gsap';
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger"
+gsap.registerPlugin(ScrollTrigger);
 
 const LetsTalkWrapper = styled.section`
   margin: 16rem 0;
@@ -134,6 +137,22 @@ export default function LetsTalk() {
     const [email, setEmail] = useState('');
     const [message, setMessage] = useState('');
 
+    let Heading = useRef(null)
+
+    useEffect(() => {
+
+        gsap.from(Heading, {
+            scrollTrigger: {
+                trigger: Heading,
+                toggleActions: 'restart reverse restart reverse',
+                start: '80% 20%',
+                markers: 1
+            },
+            y: -200,
+            opacity: 0
+        })
+    })
+
     const handleForm = async (e) => {
         e.preventDefault();
 
@@ -168,7 +187,7 @@ export default function LetsTalk() {
     return (
         <LetsTalkWrapper>
 
-            <SectionHeading>
+            <SectionHeading ref={el => Heading = el}>
                 Let's Talk
             </SectionHeading>
 
