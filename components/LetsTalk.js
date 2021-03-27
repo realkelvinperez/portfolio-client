@@ -138,18 +138,32 @@ export default function LetsTalk() {
     const [message, setMessage] = useState('');
 
     let Heading = useRef(null)
+    let nameInput = useRef(null)
+    let emailInput = useRef(null)
+    let messageInput = useRef(null)
+    let submitBtn = useRef(null)
+    let form = useRef(null)
 
     useEffect(() => {
-
         gsap.from(Heading, {
             scrollTrigger: {
                 trigger: Heading,
-                toggleActions: 'restart reverse restart reverse',
-                start: '80% 20%',
-                markers: 1
+                toggleActions: 'restart play restart reverse',
+                start: 'top center',
             },
             y: -200,
             opacity: 0
+        })
+        gsap.from([nameInput, emailInput, messageInput, submitBtn], {
+            scrollTrigger: {
+                trigger: form,
+                toggleActions: 'restart reverse restart reverse',
+                start: 'top center',
+                markers: true
+            },
+            x: -150,
+            opacity: 0,
+            stagger: 0.3
         })
     })
 
@@ -185,7 +199,7 @@ export default function LetsTalk() {
     }
 
     return (
-        <LetsTalkWrapper>
+        <LetsTalkWrapper ref={el => form = el}>
 
             <SectionHeading ref={el => Heading = el}>
                 Let's Talk
@@ -193,7 +207,9 @@ export default function LetsTalk() {
 
             <FormWrapper>
                 <LetsTalkForm onSubmit={handleForm}>
-                    <InputWrapper>
+                    <InputWrapper
+                        ref={el => nameInput = el}
+                    >
                         <InputInnerWrap>
                             <Input
                                 placeholder="Name"
@@ -203,7 +219,9 @@ export default function LetsTalk() {
                             />
                         </InputInnerWrap>
                     </InputWrapper>
-                    <InputWrapper>
+                    <InputWrapper
+                        ref={el => emailInput = el}
+                    >
                         <InputInnerWrap>
                             <Input
                                 placeholder="Email"
@@ -213,7 +231,9 @@ export default function LetsTalk() {
                             />
                         </InputInnerWrap>
                     </InputWrapper>
-                    <InputWrapper>
+                    <InputWrapper
+                        ref={el => messageInput = el}
+                    >
                         <InputInnerWrap>
                             <TextArea
                                 value={message}
@@ -224,7 +244,7 @@ export default function LetsTalk() {
                         </InputInnerWrap>
                     </InputWrapper>
 
-                    <SubmitBtn type="submit">
+                    <SubmitBtn type="submit" ref={el => submitBtn = el}>
                         <img src={EmailBtn} alt="Email Btn" />
                     </SubmitBtn>
 

@@ -349,8 +349,8 @@ export default function Resume() {
                 <SectionHeading ref={el => Title = el}>
                     Resume
                 </SectionHeading>
-                {/* Even */}
                 <ResumeSection>
+                    {/* ODD - 2015 */}
                     <ResumeWrapper>
                         <ResumeYear ref={el => Year2015 = el}>
                             2015
@@ -372,7 +372,7 @@ export default function Resume() {
                             </ResumeInfo>
                         </InfoWrapper>
                     </ResumeWrapper>
-                    {/* ODD */}
+                    {/* EVEN - 2016 */}
                     <ResumeWrapper>
                         <InfoWrapper ref={el => Card2016 = el} odd>
                             <ResumeInfo>
@@ -393,87 +393,87 @@ export default function Resume() {
                             2016
                         </ResumeYear>
                     </ResumeWrapper>
-                    {/* Even */}
-                        <ResumeWrapper>
-                            <ResumeYear ref={el => Year2017 = el}>
-                                2017
-                            </ResumeYear>
-                            <ResumeCircle ref={el => Circle2017 = el} src={Circle} />
-                            <InfoWrapper ref={el => Card2017 = el}>
-                                <ResumeInfo>
-                                    <Heading text='WordPress Developer' />
-                                    <JobLocation>
-                                        Digital Age Marketing Group
-                                    </JobLocation>
-                                    <JobDescription>
-                                        Now with some real world experience under my belt I was ready to get paid for my work and
-                                        actually provide value to a company. Here I learned the power of PHP and WordPress and I fell in love.
-                                        Equipped with this power I helped the agency built and maintain countless websites.😎
-                                    </JobDescription>
-                                </ResumeInfo>
-                            </InfoWrapper>
-                        </ResumeWrapper>
-                        {/* ODD - 2018 */}
-                        <ResumeWrapper>
-                            <InfoWrapper ref={el => Card2018 = el} odd>
-                                <ResumeInfo>
-                                    <Heading text='WordPress Developer' />
-                                    <JobLocation>
-                                        iGreen Marketing
-                                    </JobLocation>
-                                    <JobDescription>
-                                        After Learning the power of WordPress and working on many clients websites i wanted a new
-                                        challenge and to grow. I reached out to another company and began to work with them to create custom designed
-                                        WordPress sites and JavaScript Apps with their team.
-                                    </JobDescription>
-                                </ResumeInfo>
-                            </InfoWrapper>
-                            <ResumeCircle odd ref={el => Circle2018 = el} src={Circle} />
-                            <ResumeYear ref={el => Year2018 = el} odd>
-                                2018
-                            </ResumeYear>
-                        </ResumeWrapper>
-                        {/* Even - 2019 */}
-                            <ResumeWrapper>
-                                <ResumeYear ref={el => Year2019 = el}>
-                                    2019
-                                </ResumeYear>
-                                <ResumeCircle ref={el => Circle2019 = el} src={Circle} />
-                                <InfoWrapper ref={el => Card2019 = el}>
-                                    <ResumeInfo>
-                                        <Heading text='ViViFi LLC' />
-                                        <JobLocation>
-                                            Freelancer
-                                        </JobLocation>
-                                        <JobDescription>
-                                            Now with 3 years as a Developer & a burning curiosity for entrepreneurship, I want to venture out on my
-                                            own and see what it was like to start and run my own agency name ViViFi. With my own agency I would design,
-                                            build and market business websites.
-                                        </JobDescription>
-                                    </ResumeInfo>
-                                </InfoWrapper>
-                            </ResumeWrapper>
-                            {/* ODD */}
-                            <ResumeWrapper>
-                                <InfoWrapper ref={el => Card2020 = el} odd>
-                                    <ResumeInfo>
-                                        <Heading text='ViViFi LLC' />
-                                        <JobLocation>
-                                            Freelancer
-                                        </JobLocation>
-                                        <JobDescription>
-                                            After working and managing clients websites and applications I came the realization that as much as I
-                                            like working on web projects my passion with in the ideation and execution of idea’s. I choose to finish
-                                            my remaining contracts and no longer take on client work.
-                                        </JobDescription>
-                                    </ResumeInfo>
-                                </InfoWrapper>
-                                <ResumeCircle odd ref={el => Circle2020 = el} src={Circle} />
-                                <ResumeYear ref={el => Year2020 = el} odd>
-                                    2020
-                                </ResumeYear>
-                            </ResumeWrapper>
-                    {/* Even */}
+                    {/* ODD - 2017 */}
+                    <ResumeWrapper>
+                              <ResumeYear ref={el => Year2017 = el}>
+                              2017
+                              </ResumeYear>
+                              <ResumeCircle ref={el => Circle2017 = el} src={Circle} />
+                              <InfoWrapper ref={el => Card2017 = el}>
+                              <ResumeInfo>
+                              <Heading text='WordPress Developer' />
+                              <JobLocation>
+                              Digital Age Marketing Group
+                              </JobLocation>
+                              <JobDescription>
+                              Now with some real world experience under my belt I was ready to get paid for my work and
+                              actually provide value to a company. Here I learned the power of PHP and WordPress and I fell in love.
+                              Equipped with this power I helped the agency built and maintain countless websites.😎
+                              </JobDescription>
+                              </ResumeInfo>
+                              </InfoWrapper>
+                              </ResumeWrapper>
+                    {/* EVEN - 2018 */}
+                    <ResumeWrapper>
+                              <InfoWrapper ref={el => Card2018 = el} odd>
+                              <ResumeInfo>
+                              <Heading text='WordPress Developer' />
+                              <JobLocation>
+                              iGreen Marketing
+                              </JobLocation>
+                              <JobDescription>
+                              After Learning the power of WordPress and working on many clients websites i wanted a new
+                              challenge and to grow. I reached out to another company and began to work with them to create custom designed
+                              WordPress sites and JavaScript Apps with their team.
+                              </JobDescription>
+                              </ResumeInfo>
+                              </InfoWrapper>
+                              <ResumeCircle odd ref={el => Circle2018 = el} src={Circle} />
+                              <ResumeYear ref={el => Year2018 = el} odd>
+                              2018
+                              </ResumeYear>
+                              </ResumeWrapper>
+                    {/* ODD- 2019 */}
+                    <ResumeWrapper>
+                              <ResumeYear ref={el => Year2019 = el}>
+                              2019
+                              </ResumeYear>
+                              <ResumeCircle ref={el => Circle2019 = el} src={Circle} />
+                              <InfoWrapper ref={el => Card2019 = el}>
+                              <ResumeInfo>
+                              <Heading text='ViViFi LLC' />
+                              <JobLocation>
+                              Freelancer
+                              </JobLocation>
+                              <JobDescription>
+                              Now with 3 years as a Developer & a burning curiosity for entrepreneurship, I want to venture out on my
+                              own and see what it was like to start and run my own agency name ViViFi. With my own agency I would design,
+                              build and market business websites.
+                              </JobDescription>
+                              </ResumeInfo>
+                              </InfoWrapper>
+                              </ResumeWrapper>
+                    {/* EVEN - 2020 */}
+                    <ResumeWrapper>
+                              <InfoWrapper ref={el => Card2020 = el} odd>
+                              <ResumeInfo>
+                              <Heading text='ViViFi LLC' />
+                              <JobLocation>
+                              Freelancer
+                              </JobLocation>
+                              <JobDescription>
+                              After working and managing clients websites and applications I came the realization that as much as I
+                              like working on web projects my passion with in the ideation and execution of idea’s. I choose to finish
+                              my remaining contracts and no longer take on client work.
+                              </JobDescription>
+                              </ResumeInfo>
+                              </InfoWrapper>
+                              <ResumeCircle odd ref={el => Circle2020 = el} src={Circle} />
+                              <ResumeYear ref={el => Year2020 = el} odd>
+                              2020
+                              </ResumeYear>
+                              </ResumeWrapper>
+                    {/* ODD - 2021 */}
                     <ResumeWrapper>
                         <ResumeYear ref={el => Year2021 = el}>
                             2021
