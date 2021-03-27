@@ -159,7 +159,6 @@ export default function LetsTalk() {
                 trigger: form,
                 toggleActions: 'restart reverse restart reverse',
                 start: 'top center',
-                markers: true
             },
             x: -150,
             opacity: 0,

@@ -261,7 +261,7 @@ export default function Resume() {
             scrollTrigger: {
                 trigger: Title,
                 toggleActions: 'restart reverse restart reverse',
-                start: 'center center',
+                start: 'top center',
                 end: 'center top',
             },
             y: -200,
