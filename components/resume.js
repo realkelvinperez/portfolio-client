@@ -223,77 +223,276 @@ const resumeData = [
 
 export default function Resume() {
     let resumeSection = useRef(null)
-    let resumeYear = useRef(null)
-    let resumeCircle = useRef(null)
-    let resumeCard = useRef(null)
-    let resumeTitle = useRef(null)
+    let Title = useRef(null)
+
+    let Year2015 = useRef(null)
+    let Circle2015 = useRef(null)
+    let Card2015 = useRef(null)
+
+    let Year2016 = useRef(null)
+    let Circle2016 = useRef(null)
+    let Card2016 = useRef(null)
+
+    let Year2017 = useRef(null)
+    let Circle2017 = useRef(null)
+    let Card2017 = useRef(null)
+
+    let Year2018 = useRef(null)
+    let Circle2018 = useRef(null)
+    let Card2018 = useRef(null)
+
+    let Year2019 = useRef(null)
+    let Circle2019 = useRef(null)
+    let Card2019 = useRef(null)
+
+    let Year2020 = useRef(null)
+    let Circle2020 = useRef(null)
+    let Card2020 = useRef(null)
+
+    let Year2021 = useRef(null)
+    let Circle2021 = useRef(null)
+    let Card2021 = useRef(null)
 
     useEffect(() => {
-        gsap.from(resumeTitle, {
+
+        const tl = gsap.timeline({
             scrollTrigger: {
-                trigger: resumeTitle,
-                toggleActions: 'restart reverse restart pause',
-                start: 'top center',
-                end: '0px top',
-                markers: true
+                trigger: Card2015,
+                toggleActions: 'restart reverse restart reverse',
+                start: 'center center',
+                end: 'center top',
+            }
+        })
+
+        gsap.from(Title, {
+            scrollTrigger: {
+                trigger: Title,
+                toggleActions: 'restart reverse restart reverse',
+                start: 'center center',
+                end: 'center top',
             },
             y: -200,
             opacity: 0
+        })
+
+       gsap.from([Card2015, Year2015, Circle2015], {
+            scrollTrigger: {
+                trigger: Card2015,
+                toggleActions: 'restart reverse restart reverse',
+            },
+            x: -200,
+            opacity: 0,
+            stagger: 0.2
+        })
+
+        gsap.from([Card2016, Year2016, Circle2016], {
+            scrollTrigger: {
+                trigger: Card2015,
+                toggleActions: 'restart reverse restart reverse',
+            },
+            x: 200,
+            opacity: 0,
+            stagger: 0.2
+        })
+        gsap.from([Card2017, Year2017, Circle2017], {
+            scrollTrigger: {
+                trigger: Card2017,
+                toggleActions: 'restart reverse restart reverse',
+            },
+            x: -200,
+            opacity: 0,
+            stagger: 0.2
+        })
+
+        gsap.from([Card2018, Year2018, Circle2018], {
+            scrollTrigger: {
+                trigger: Card2018,
+                toggleActions: 'restart reverse restart reverse',
+            },
+            x: 200,
+            opacity: 0,
+            stagger: 0.2
+        })
+        gsap.from([Card2019, Year2019, Circle2019], {
+            scrollTrigger: {
+                trigger: Card2019,
+                toggleActions: 'restart reverse restart reverse',
+            },
+            x: -200,
+            opacity: 0,
+            stagger: 0.2
+        })
+
+        gsap.from([Card2020, Year2020, Circle2020], {
+            scrollTrigger: {
+                trigger: Card2020,
+                toggleActions: 'restart reverse restart reverse',
+            },
+            x: 200,
+            opacity: 0,
+            stagger: 0.2
+        })
+        gsap.from([Card2021, Year2021, Circle2021], {
+            scrollTrigger: {
+                trigger: Card2021,
+                toggleActions: 'restart reverse restart reverse',
+            },
+            x: -200,
+            opacity: 0,
+            stagger: 0.2
         })
     }, [])
     return (
         <>
             <ResumeRelative ref={el => resumeSection = el}>
-                <SectionHeading ref={el => resumeTitle = el}>
+                <SectionHeading ref={el => Title = el}>
                     Resume
                 </SectionHeading>
+                {/* Even */}
                 <ResumeSection>
-                    {
-                        resumeData.map(( item, i ) => {
-                            if(i % 2 === 0 ){
-                                return (
-                                    <ResumeWrapper key={i}>
-                                        <ResumeYear ref={el => resumeYear = el}>
-                                            {item.year}
-                                        </ResumeYear>
-                                        <ResumeCircle ref={el => resumeCircle = el} src={Circle} />
-                                        <InfoWrapper ref={el => resumeCard = el}>
-                                            <ResumeInfo>
-                                                <Heading text={item.jobTitle} />
-                                                <JobLocation>
-                                                    {item.jobLocation}
-                                                </JobLocation>
-                                                <JobDescription>
-                                                    {item.jobDescription}
-                                                </JobDescription>
-                                            </ResumeInfo>
-                                        </InfoWrapper>
-                                    </ResumeWrapper>
-                                )
-                            } else {
-                                return (
-                                    <ResumeWrapper key={i}>
-                                        <InfoWrapper ref={el => resumeCard = el} odd>
-                                            <ResumeInfo>
-                                                <Heading text={item.jobTitle} />
-                                                <JobLocation>
-                                                    {item.jobLocation}
-                                                </JobLocation>
-                                                <JobDescription>
-                                                    {item.jobDescription}
-                                                </JobDescription>
-                                            </ResumeInfo>
-                                        </InfoWrapper>
-                                        <ResumeCircle odd ref={el => resumeCircle = el} src={Circle} />
-                                        <ResumeYear ref={el => resumeYear = el} odd>
-                                            {item.year}
-                                        </ResumeYear>
-                                    </ResumeWrapper>
-                                )
-                            }
-                        })
-                    }
-                </ ResumeSection>
+                    <ResumeWrapper>
+                        <ResumeYear ref={el => Year2015 = el}>
+                            2015
+                        </ResumeYear>
+                        <ResumeCircle ref={el => Circle2015 = el} src={Circle} />
+                        <InfoWrapper ref={el => Card2015 = el}>
+                            <ResumeInfo>
+                                <Heading text='Student' />
+                                <JobLocation>
+                                    YouTube University + MOOC's
+                                </JobLocation>
+                                <JobDescription>
+                                    I opened up YouTube and I searched “How do I Code....”,
+                                    and I was greeted with a slew of information, and I was like “What in the
+                                    world is this? I have to learn all of this stuff?” 😱 Luckily.... I found
+                                    a few Channels that taught me the basics and the topics that where the most
+                                    important... So the journey began 😎
+                                </JobDescription>
+                            </ResumeInfo>
+                        </InfoWrapper>
+                    </ResumeWrapper>
+                    {/* ODD */}
+                    <ResumeWrapper>
+                        <InfoWrapper ref={el => Card2016 = el} odd>
+                            <ResumeInfo>
+                                <Heading text='Intern' />
+                                <JobLocation>
+                                    Doctors Best Weight Loss
+                                </JobLocation>
+                                <JobDescription>
+                                    After a few months of training and study my butt off i
+                                    wanted to gain real world experience, and so I decided the best option was
+                                    to get an internship. I searched on craigs list and saw an ad for an
+                                    internship and applied, and I’m grateful that I was able to get that opportunity.
+                                </JobDescription>
+                            </ResumeInfo>
+                        </InfoWrapper>
+                        <ResumeCircle odd ref={el => Circle2016 = el} src={Circle} />
+                        <ResumeYear ref={el => Year2016 = el} odd>
+                            2016
+                        </ResumeYear>
+                    </ResumeWrapper>
+                    {/* Even */}
+                        <ResumeWrapper>
+                            <ResumeYear ref={el => Year2017 = el}>
+                                2017
+                            </ResumeYear>
+                            <ResumeCircle ref={el => Circle2017 = el} src={Circle} />
+                            <InfoWrapper ref={el => Card2017 = el}>
+                                <ResumeInfo>
+                                    <Heading text='WordPress Developer' />
+                                    <JobLocation>
+                                        Digital Age Marketing Group
+                                    </JobLocation>
+                                    <JobDescription>
+                                        Now with some real world experience under my belt I was ready to get paid for my work and
+                                        actually provide value to a company. Here I learned the power of PHP and WordPress and I fell in love.
+                                        Equipped with this power I helped the agency built and maintain countless websites.😎
+                                    </JobDescription>
+                                </ResumeInfo>
+                            </InfoWrapper>
+                        </ResumeWrapper>
+                        {/* ODD - 2018 */}
+                        <ResumeWrapper>
+                            <InfoWrapper ref={el => Card2018 = el} odd>
+                                <ResumeInfo>
+                                    <Heading text='WordPress Developer' />
+                                    <JobLocation>
+                                        iGreen Marketing
+                                    </JobLocation>
+                                    <JobDescription>
+                                        After Learning the power of WordPress and working on many clients websites i wanted a new
+                                        challenge and to grow. I reached out to another company and began to work with them to create custom designed
+                                        WordPress sites and JavaScript Apps with their team.
+                                    </JobDescription>
+                                </ResumeInfo>
+                            </InfoWrapper>
+                            <ResumeCircle odd ref={el => Circle2018 = el} src={Circle} />
+                            <ResumeYear ref={el => Year2018 = el} odd>
+                                2018
+                            </ResumeYear>
+                        </ResumeWrapper>
+                        {/* Even - 2019 */}
+                            <ResumeWrapper>
+                                <ResumeYear ref={el => Year2019 = el}>
+                                    2019
+                                </ResumeYear>
+                                <ResumeCircle ref={el => Circle2019 = el} src={Circle} />
+                                <InfoWrapper ref={el => Card2019 = el}>
+                                    <ResumeInfo>
+                                        <Heading text='ViViFi LLC' />
+                                        <JobLocation>
+                                            Freelancer
+                                        </JobLocation>
+                                        <JobDescription>
+                                            Now with 3 years as a Developer & a burning curiosity for entrepreneurship, I want to venture out on my
+                                            own and see what it was like to start and run my own agency name ViViFi. With my own agency I would design,
+                                            build and market business websites.
+                                        </JobDescription>
+                                    </ResumeInfo>
+                                </InfoWrapper>
+                            </ResumeWrapper>
+                            {/* ODD */}
+                            <ResumeWrapper>
+                                <InfoWrapper ref={el => Card2020 = el} odd>
+                                    <ResumeInfo>
+                                        <Heading text='ViViFi LLC' />
+                                        <JobLocation>
+                                            Freelancer
+                                        </JobLocation>
+                                        <JobDescription>
+                                            After working and managing clients websites and applications I came the realization that as much as I
+                                            like working on web projects my passion with in the ideation and execution of idea’s. I choose to finish
+                                            my remaining contracts and no longer take on client work.
+                                        </JobDescription>
+                                    </ResumeInfo>
+                                </InfoWrapper>
+                                <ResumeCircle odd ref={el => Circle2020 = el} src={Circle} />
+                                <ResumeYear ref={el => Year2020 = el} odd>
+                                    2020
+                                </ResumeYear>
+                            </ResumeWrapper>
+                    {/* Even */}
+                    <ResumeWrapper>
+                        <ResumeYear ref={el => Year2021 = el}>
+                            2021
+                        </ResumeYear>
+                        <ResumeCircle ref={el => Circle2021 = el} src={Circle} />
+                        <InfoWrapper ref={el => Card2021 = el}>
+                            <ResumeInfo>
+                                <Heading text='Full Stack Developer' />
+                                <JobLocation>
+                                    Free Agent
+                                </JobLocation>
+                                <JobDescription>
+                                    The present Day. In my journey as a developer I’ve had high’s and lows. I have learned my fair share from
+                                    massive failures and success but now, I am ready to bring my experience and expertise as a Full Stack Developer
+                                    and Entrepreneur to your team and add massive value. I can’t wait to begin.😎
+                                </JobDescription>
+                            </ResumeInfo>
+                        </InfoWrapper>
+                    </ResumeWrapper>
+                </ResumeSection>
                 <ResumeCTAwrapper>
                     <ResumeCTA style={{cursor: 'pointer'}} />
                 </ResumeCTAwrapper>

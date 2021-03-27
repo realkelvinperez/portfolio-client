@@ -3,12 +3,14 @@ import LoginContext from "../../context/LoginContext";
 import { gsap } from "gsap";
 import styled from "styled-components";
 import media from "../../utilities/mediaQueries";
+import Tilt from "react-parallax-tilt";
 
 const HeroText = styled.div`
     font-family: Coolvetica, sans-serif;
     color: white;
     letter-spacing: .3rem;
     font-size: 2rem;
+    cursor: pointer;
   @media (min-width: ${media.desktop2k}){
     font-size: 3vw;
   }
@@ -21,6 +23,7 @@ const HeroTextWrap = styled.div`
     position: relative;
     margin-top: 1rem;
     z-index: 10;
+    width: 70%;
 `
 
 const Underline = styled.div`
@@ -68,9 +71,11 @@ export default function HeroTextTagline() {
     },[isLoading])
 
     return (
-        <HeroTextWrap ref={el => text = el}>
-            <HeroText>I love Building Beautiful <br /> Digital Experiences</HeroText>
-            <Underline />
-        </HeroTextWrap>
+            <HeroTextWrap ref={el => text = el}>
+                <Tilt scale={0.9} transitionSpeed={2500}>
+                    <HeroText>I love Building Beautiful <br /> Digital Experiences</HeroText>
+                    <Underline />
+                </Tilt>
+            </HeroTextWrap>
     );
 }

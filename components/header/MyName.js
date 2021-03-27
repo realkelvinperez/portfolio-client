@@ -3,6 +3,7 @@ import styled from "styled-components";
 import media from "../../utilities/mediaQueries";
 import LoginContext from "../../context/LoginContext";
 import { gsap } from "gsap";
+import Tilt from "react-parallax-tilt";
 
 const Kelvin = styled.div`
   color:white;
@@ -10,6 +11,7 @@ const Kelvin = styled.div`
   font-size: 8rem;
   margin: 0;
   line-height: 7rem;
+  cursor: pointer;
   @media (min-width: ${media.desktop2k}){
     font-size: 8vw;
     line-height: 11vw;
@@ -30,6 +32,7 @@ const Perez = styled.div`
   filter: drop-shadow(0px 0px 9px white);
   line-height: 7rem;
   letter-spacing: 1.7rem;
+  cursor: pointer;
   
   @media (min-width: ${media.desktop2k}){
     font-size: 8vw;
@@ -62,13 +65,17 @@ export default function MyName() {
     },[isLoading])
 
     return (
-        <>
-            <Kelvin ref={el => kelvin = el}>
-                Kelvin
-            </Kelvin>
-            <Perez ref={el => perez = el}>
-                Perez
-            </Perez>
-        </>
+        <div>
+            <Tilt scale={0.9} transitionSpeed={2500}>
+                <Kelvin ref={el => kelvin = el}>
+                    Kelvin
+                </Kelvin>
+            </Tilt>
+            <Tilt scale={0.9} transitionSpeed={2500}>
+                <Perez ref={el => perez = el}>
+                    Perez
+                </Perez>
+            </Tilt>
+        </div>
 );
 }

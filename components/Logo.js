@@ -5,6 +5,7 @@ import media from "../utilities/mediaQueries";
 import { useRef, useEffect, useContext } from 'react'
 import LoginContext from "../context/LoginContext";
 import { gsap } from 'gsap';
+import Tilt from 'react-parallax-tilt'
 
 const HeaderLogoWrap = styled.div`
     position: relative;
@@ -42,10 +43,12 @@ export default function Logo() {
     },[isLoading])
 
     return (
-        <HeaderLogoWrap ref={ el => { logo = el } }>
-            <LogoImg src={LogoSVG}  alt='KP Logo'/>
-            {/*<LogoSVG style={{width: '100%'}} />*/}
-            <LogoBGBlur src={LogoBG} alt="Logo Background Blur"/>
-        </HeaderLogoWrap>
+        <Tilt scale={0.9} transitionSpeed={2500} >
+            <HeaderLogoWrap ref={ el => { logo = el } }>
+                <LogoImg src={LogoSVG}  alt='KP Logo'/>
+                {/*<LogoSVG style={{width: '100%'}} />*/}
+                <LogoBGBlur src={LogoBG} alt="Logo Background Blur"/>
+            </HeaderLogoWrap>
+        </Tilt>
     );
 }

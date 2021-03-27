@@ -24,19 +24,19 @@ const HeaderWrap = styled.div`
 `
 
 const HeroContentWrap = styled.div`
-    width: 100%;
+    width: 50%;
 `
 
 export default function Header() {
     return (
-        <HeaderWrap>
-            <Nav />
-            <HeroContentWrap>
-                <MyName />
-                <HeroTextTagline />
-                <CtaButtons />
-            </HeroContentWrap>
-            <ScrollDown />
-        </HeaderWrap>
+            <HeaderWrap>
+                <Nav />
+                <HeroContentWrap>
+                    <MyName />
+                    <HeroTextTagline />
+                    <CtaButtons />
+                </HeroContentWrap>
+                <ScrollDown />
+            </HeaderWrap>
     );
 }

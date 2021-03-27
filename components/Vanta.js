@@ -20,7 +20,9 @@ export default function Vanta() {
             if (vantaEffect) vantaEffect.destroy()
         }
     }, [vantaEffect])
-    return <div ref={myRef}>
-        <Header />
-    </div>
+    return (
+        <div ref={myRef}>
+            <Header />
+        </div>
+    )
 }

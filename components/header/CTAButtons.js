@@ -5,6 +5,7 @@ import media from "../../utilities/mediaQueries";
 import { useContext, useRef, useEffect } from 'react';
 import LoginContext from "../../context/LoginContext";
 import { gsap } from "gsap";
+import Tilt from 'react-parallax-tilt';
 
 const CTABtnWrap = styled.div`
     margin-top: 2rem;
@@ -72,12 +73,16 @@ export default function CtaButtons() {
 
     return (
         <CTABtnWrap>
-            <MyWorkWrap ref={el => btn1 = el}>
-                <MyWorkImg src={MyWorkBtn} />
-            </MyWorkWrap>
-            <LetsTalkWrap ref={el => btn2 = el}>
-                <LetsTalkImg src={LetsTalk} />
-            </LetsTalkWrap>
+            <Tilt scale={1.1} transitionSpeed={2500} >
+                <MyWorkWrap ref={el => btn1 = el}>
+                    <MyWorkImg src={MyWorkBtn} />
+                </MyWorkWrap>
+            </Tilt>
+            <Tilt scale={1.1} transitionSpeed={2500} >
+                <LetsTalkWrap ref={el => btn2 = el}>
+                    <LetsTalkImg src={LetsTalk} />
+                </LetsTalkWrap>
+            </Tilt>
         </CTABtnWrap>
     );
 }
