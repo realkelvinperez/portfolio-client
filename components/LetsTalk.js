@@ -7,6 +7,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger"
 gsap.registerPlugin(ScrollTrigger);
 
+
 const LetsTalkWrapper = styled.section`
   margin: 16rem 0;
   height: 100vh;
@@ -145,26 +146,26 @@ export default function LetsTalk() {
     let form = useRef(null)
 
     useEffect(() => {
-        gsap.from(Heading, {
-            scrollTrigger: {
-                trigger: Heading,
-                toggleActions: 'restart play restart reverse',
-                start: 'top center',
-            },
+        const tl = gsap.timeline(
+            {
+                scrollTrigger: {
+                    trigger: form,
+                    toggleActions: 'restart reverse restart reverse',
+                    start: 'top center',
+                    markers: true
+                },
+            }
+        )
+        tl.from(Heading, {
             y: -200,
             opacity: 0
         })
-        gsap.from([nameInput, emailInput, messageInput, submitBtn], {
-            scrollTrigger: {
-                trigger: form,
-                toggleActions: 'restart reverse restart reverse',
-                start: 'top center',
-            },
+        .from([nameInput, emailInput, messageInput, submitBtn], {
             x: -150,
             opacity: 0,
             stagger: 0.3
         })
-    })
+    }, [])
 
     const handleForm = async (e) => {
         e.preventDefault();
@@ -198,58 +199,60 @@ export default function LetsTalk() {
     }
 
     return (
-        <LetsTalkWrapper ref={el => form = el}>
+        <>
+            <LetsTalkWrapper ref={el => form = el}>
 
-            <SectionHeading ref={el => Heading = el}>
-                Let's Talk
-            </SectionHeading>
+                <SectionHeading ref={el => Heading = el}>
+                    Let's Talk
+                </SectionHeading>
 
-            <FormWrapper>
-                <LetsTalkForm onSubmit={handleForm}>
-                    <InputWrapper
-                        ref={el => nameInput = el}
-                    >
-                        <InputInnerWrap>
-                            <Input
-                                placeholder="Name"
-                                value={name}
-                                onChange={e => setName(e.target.value)}
-                                required
-                            />
-                        </InputInnerWrap>
-                    </InputWrapper>
-                    <InputWrapper
-                        ref={el => emailInput = el}
-                    >
-                        <InputInnerWrap>
-                            <Input
-                                placeholder="Email"
-                                value={email}
-                                onChange={e => setEmail(e.target.value)}
-                                required
-                            />
-                        </InputInnerWrap>
-                    </InputWrapper>
-                    <InputWrapper
-                        ref={el => messageInput = el}
-                    >
-                        <InputInnerWrap>
-                            <TextArea
-                                value={message}
-                                onChange={e => setMessage(e.target.value)}
-                                placeholder="Message"
-                                required
-                            />
-                        </InputInnerWrap>
-                    </InputWrapper>
+                <FormWrapper>
+                    <LetsTalkForm onSubmit={handleForm}>
+                        <InputWrapper
+                            ref={el => nameInput = el}
+                        >
+                            <InputInnerWrap>
+                                <Input
+                                    placeholder="Name"
+                                    value={name}
+                                    onChange={e => setName(e.target.value)}
+                                    required
+                                />
+                            </InputInnerWrap>
+                        </InputWrapper>
+                        <InputWrapper
+                            ref={el => emailInput = el}
+                        >
+                            <InputInnerWrap>
+                                <Input
+                                    placeholder="Email"
+                                    value={email}
+                                    onChange={e => setEmail(e.target.value)}
+                                    required
+                                />
+                            </InputInnerWrap>
+                        </InputWrapper>
+                        <InputWrapper
+                            ref={el => messageInput = el}
+                        >
+                            <InputInnerWrap>
+                                <TextArea
+                                    value={message}
+                                    onChange={e => setMessage(e.target.value)}
+                                    placeholder="Message"
+                                    required
+                                />
+                            </InputInnerWrap>
+                        </InputWrapper>
 
-                    <SubmitBtn type="submit" ref={el => submitBtn = el}>
-                        <img src={EmailBtn} alt="Email Btn" />
-                    </SubmitBtn>
+                        <SubmitBtn type="submit" ref={el => submitBtn = el}>
+                            <img src={EmailBtn} alt="Email Btn" />
+                        </SubmitBtn>
 
-                </LetsTalkForm>
+                    </LetsTalkForm>
 
-            </FormWrapper>
-        </LetsTalkWrapper>
+                </FormWrapper>
+            </LetsTalkWrapper>
+        </>
     );
 }

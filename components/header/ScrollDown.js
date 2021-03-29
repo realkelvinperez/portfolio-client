@@ -43,7 +43,6 @@ export default function ScrollDown() {
     let scrollBall = useRef(null)
 
     useEffect(() => {
-        console.log({ isLoading })
         if(!isLoading){
             gsap.from(
                 [scrollText, downText, scroll], {

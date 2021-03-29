@@ -57,7 +57,6 @@ export default function HeroTextTagline() {
     const { isLoading } = useContext(LoginContext)
     let text = useRef(null);
     useEffect(() => {
-        console.log({ isLoading })
         if(!isLoading){
             gsap.from(
                 text, {

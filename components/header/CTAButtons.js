@@ -57,7 +57,6 @@ export default function CtaButtons() {
     let btn2 = useRef(null);
 
     useEffect(() => {
-        console.log({ isLoading })
         if(!isLoading){
             gsap.from(
                 [btn1, btn2], {

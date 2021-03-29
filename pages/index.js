@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo, createContext } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import Head from 'next/head'
 import styled, { createGlobalStyle, css } from 'styled-components'
 import Vanta from "../components/Vanta";
@@ -43,10 +43,8 @@ export default function Home() {
     useEffect(() => {
         if (typeof window !== 'undefined') {
             window.scrollTo(0, 0)
-            console.log('window is defined')
-            on('progressBar:done', (event) => {
+            on('progressBar:done', () => {
                 setIsLoading(false)
-                console.log('Progress bar done', { event })
             })
         }
     }, [])
@@ -58,6 +56,7 @@ export default function Home() {
                     <title>Kelvin Perez Web Developer Portfolio | UI/UX & Full-Stack | Miami, FL | Figma PHP Laravel React
                         SQL</title>
                     <link rel="icon" href="/favicon.ico"/>
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
                 </Head>
                 <MyGlobalStyle isLoading={isLoading}/>
                 {/* Hero Section */}
@@ -77,14 +76,13 @@ export default function Home() {
                 {/* Let's Talk Section */}
                 <LetsTalk/>
                 {/* The End Section */}
-                <TheEnd/>
+                <TheEnd />
                 {/* Footer Section */}
                 <Footer/>
                 {/* Top Progress Bar */}
                 <ScrollProgress isLoading={isLoading} />
                 {/* first Visit Loading Animation */}
                 <Loading isLoading={isLoading}/>
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"/>
             </div>
         </LoginContext.Provider>
     )

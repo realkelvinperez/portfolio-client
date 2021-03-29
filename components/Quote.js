@@ -44,9 +44,7 @@ const QuoteWrapper = styled.div`
   }
 `
 
-const QuoteText = styled.div`
-  
-`
+const QuoteText = styled.div``
 
 const QuoteHighlighted = styled.span`
     display: inline-block;
@@ -107,7 +105,7 @@ export default function Quote() {
             scrollTrigger: {
                 trigger: quote,
                 toggleActions: 'restart reverse restart reverse',
-                start: 'top 70%',
+                start: 'center 60%',
                 end: 'bottom top',
             },
             opacity: 0,

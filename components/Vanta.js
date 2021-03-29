@@ -4,14 +4,14 @@ import Header from '../components/Header'
 
 export default function Vanta() {
     const [vantaEffect, setVantaEffect] = useState(0)
-    const myRef = useRef(null)
+    let myRef = useRef(null)
     useEffect(() => {
         if (!vantaEffect) {
             setVantaEffect(Halo({
-                el: myRef.current
+                el: myRef,
             }))
         }
-        myRef.current.style.cssText += `
+        myRef.style.cssText += `
               border-radius: 3rem;
               overflow: hidden;
               width: 83%;
@@ -21,7 +21,7 @@ export default function Vanta() {
         }
     }, [vantaEffect])
     return (
-        <div ref={myRef}>
+        <div ref={el => myRef = el}>
             <Header />
         </div>
     )

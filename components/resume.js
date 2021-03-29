@@ -255,6 +255,10 @@ export default function Resume() {
 
     let ResumeBtn = useRef(null)
 
+    const triggerOptions = {
+        start: 'center 60%'
+    }
+
     useEffect(() => {
 
         gsap.from(Title, {
@@ -272,7 +276,7 @@ export default function Resume() {
             scrollTrigger: {
                 trigger: Card2015,
                 toggleActions: 'restart reverse restart reverse',
-                start: 'center center'
+                ...triggerOptions
             },
             x: -200,
             opacity: 0,
@@ -283,7 +287,7 @@ export default function Resume() {
             scrollTrigger: {
                 trigger: Card2016,
                 toggleActions: 'restart reverse restart reverse',
-                start: 'center center'
+                ...triggerOptions
             },
             x: 200,
             opacity: 0,
@@ -293,7 +297,7 @@ export default function Resume() {
             scrollTrigger: {
                 trigger: Card2017,
                 toggleActions: 'restart reverse restart reverse',
-                start: 'center center'
+                ...triggerOptions
             },
             x: -200,
             opacity: 0,
@@ -304,7 +308,7 @@ export default function Resume() {
             scrollTrigger: {
                 trigger: Card2018,
                 toggleActions: 'restart reverse restart reverse',
-                start: 'center center'
+                ...triggerOptions
             },
             x: 200,
             opacity: 0,
@@ -314,7 +318,7 @@ export default function Resume() {
             scrollTrigger: {
                 trigger: Card2019,
                 toggleActions: 'restart reverse restart reverse',
-                start: 'center center'
+                ...triggerOptions
             },
             x: -200,
             opacity: 0,
@@ -325,7 +329,7 @@ export default function Resume() {
             scrollTrigger: {
                 trigger: Card2020,
                 toggleActions: 'restart reverse restart reverse',
-                start: 'center center'
+                ...triggerOptions
             },
             x: 200,
             opacity: 0,
@@ -335,7 +339,7 @@ export default function Resume() {
             scrollTrigger: {
                 trigger: Card2021,
                 toggleActions: 'restart reverse restart reverse',
-                start: 'center center'
+                ...triggerOptions
             },
             x: -200,
             opacity: 0,

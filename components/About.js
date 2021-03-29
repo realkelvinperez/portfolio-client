@@ -36,7 +36,6 @@ export default function About() {
 
     useEffect(() => {
 
-        console.log({ isLoading })
         const tl = gsap.timeline({repeat: -1, yoyo: true })
         tl.to(wavyHand,{
             transform: 'rotateZ(0)',

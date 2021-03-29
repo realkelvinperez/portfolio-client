@@ -30,7 +30,6 @@ export default function Logo() {
     const { isLoading } = useContext(LoginContext)
     let logo = useRef(null);
     useEffect(() => {
-        console.log({ isLoading })
         if(!isLoading){
             gsap.from(
                 logo, {

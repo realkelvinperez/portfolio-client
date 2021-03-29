@@ -51,7 +51,6 @@ export default function MyName() {
     let kelvin = useRef(null);
     let perez = useRef(null)
     useEffect(() => {
-        console.log({ isLoading })
         if(!isLoading){
             gsap.from(
                 [kelvin, perez], {

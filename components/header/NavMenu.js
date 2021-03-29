@@ -22,7 +22,6 @@ export default function NavMenu() {
     let menu = useRef(null);
 
     useEffect(() => {
-        console.log({ isLoading })
         if(!isLoading){
             gsap.from(
                 menu, {
