@@ -35,17 +35,16 @@ export default function About() {
     let wavyHand = useRef(null);
 
     useEffect(() => {
-
-        const tl = gsap.timeline({repeat: -1, yoyo: true })
-        tl.to(wavyHand,{
-            transform: 'rotateZ(0)',
-            duration: .3,
-            ease: 'power2.inOut'
-        }).to(wavyHand,{
-            transform: 'rotateZ(20deg)',
-            duration: .3
-        })
         if(!isLoading){
+            const tl = gsap.timeline({repeat: -1, yoyo: true })
+            tl.to(wavyHand,{
+                transform: 'rotateZ(0)',
+                duration: .3,
+                ease: 'power2.inOut'
+            }).to(wavyHand,{
+                transform: 'rotateZ(20deg)',
+                duration: .3
+            })
             gsap.from(
                 aboutPhoto, {
                     scrollTrigger:{
