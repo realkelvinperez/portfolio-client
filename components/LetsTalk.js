@@ -5,6 +5,7 @@ import EmailBtn from '../public/assets/svg/lets-talk/send-email-btn.svg'
 import media from "../utilities/mediaQueries";
 import { gsap } from 'gsap';
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger"
+import axios from "axios";
 gsap.registerPlugin(ScrollTrigger);
 
 
@@ -168,6 +169,7 @@ export default function LetsTalk() {
     }, [])
 
     const handleForm = async (e) => {
+        debugger;
         e.preventDefault();
 
         const url = 'https://api.web3forms.com/submit';
@@ -177,25 +179,20 @@ export default function LetsTalk() {
             name,
             email,
             message,
+            subject: 'Insomnia Form Submission',
         }
+        const options = {
+            method: 'POST',
+            url: 'https://api.web3forms.com/submit',
+            headers: {'Content-Type': 'application/json'},
+            data: sendData
+        };
 
-        const fetchData = {
-            // Adding method type
-            method: "POST",
-
-            // Adding body or contents to send
-            body: JSON.stringify(sendData),
-        }
-
-        try {
-            debugger;
-            const res = await fetch(url, fetchData)
-            const data = await res.json()
-            console.log('Success', { data })
-        } catch (e) {
-            alert('Message Failed to send');
-            console.log(e)
-        }
+        axios.request(options).then(function (response) {
+            console.log(response.data);
+        }).catch(function (error) {
+            console.error(error);
+        });
     }
 
     return (
