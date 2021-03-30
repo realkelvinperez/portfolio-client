@@ -153,6 +153,7 @@ export default function LetsTalk() {
                     trigger: form,
                     toggleActions: 'restart reverse restart reverse',
                     start: 'top center',
+                    markers: true
                 },
             }
         )
@@ -180,7 +181,6 @@ export default function LetsTalk() {
             message,
             subject: 'Insomnia Form Submission',
         }
-
         const options = {
             method: 'POST',
             url: 'https://api.web3forms.com/submit',
@@ -193,7 +193,6 @@ export default function LetsTalk() {
         }).catch(function (error) {
             console.error(error);
         });
-
     }
 
     return (
