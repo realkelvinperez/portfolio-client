@@ -1,5 +1,5 @@
-import { useRef, useEffect, useContext } from 'react'
-import { Howl, Howler } from 'howler'
+import { useRef, useEffect, useContext, useState } from 'react'
+import { Howl} from 'howler'
 import MiamiMP3 from '../public/assets/sounds/miami-seguals.mp3'
 import Container from "../elements/Container";
 import styled from "styled-components";
@@ -27,6 +27,8 @@ const WavyHand = styled.span`
 
 export default function About() {
     const { isLoading } = useContext(LoginContext)
+    const [currentSound, setCurrentSound] = useState(null)
+    const [soundID, setSoundID] = useState(null)
 
     let aboutPhoto = useRef(null);
     let heading = useRef(null);
@@ -37,7 +39,6 @@ export default function About() {
     let wavyHand = useRef(null);
 
     useEffect(() => {
-        console.log({MiamiMP3})
         const tl = gsap.timeline({repeat: -1, yoyo: true })
         tl.to(wavyHand,{
             transform: 'rotateZ(0)',
@@ -78,9 +79,25 @@ export default function About() {
         }
     },[isLoading])
 
-    const handleMiami = (e) => {
-       console.log('Welcome To Miami')
+
+    const createHowler = (src) => {
+        const sound = new Howl({
+            src
+        });
+
+        const soundID = sound.play();
+        setCurrentSound(sound)
+        setSoundID(soundID)
     }
+
+    const Miami = () => {
+        createHowler(MiamiMP3)
+    }
+
+    const handleStopSound = () => {
+       currentSound.stop(soundID)
+    }
+
 
     return (
         <Container>
@@ -101,7 +118,7 @@ export default function About() {
                            Thank you for stopping by. I appreciate your time.
                        </AboutBioText>
                        <AboutBioText ref={el => text2 = el}>
-                           I'm a UI/UX Designer & Full-Stack Web Developer from <UnderlinedLink callBack={handleMiami} text='🌴 Miami, Fl' /> that loves creating digital experiences for businesses that align with their brand.
+                           I'm a UI/UX Designer & Full-Stack Web Developer from <UnderlinedLink stopSound={handleStopSound} playSound={Miami} text='🌴 Miami, Fl' /> that loves creating digital experiences for businesses that align with their brand.
                        </AboutBioText>
                        <AboutBioText ref={el => text3 = el}>
                            I love collaborating and working on teams and building really dope projects together.

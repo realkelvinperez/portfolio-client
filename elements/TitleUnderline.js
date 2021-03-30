@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import media from "../utilities/mediaQueries";
 
 const TitleUnderline = styled.div`
@@ -23,7 +23,7 @@ const TitleUnderline = styled.div`
   @media (max-width: ${media.mobileL}){
     width: 60%;
     left: -0.5rem;
-    bottom: 0px;
+    bottom: 0;
     height: 17px;
   }
 `

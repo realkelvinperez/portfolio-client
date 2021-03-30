@@ -1,6 +1,7 @@
-import { useEffect } from 'react';
+import { useRef } from 'react';
 import styled from "styled-components";
 import media from "../utilities/mediaQueries";
+import gsap from 'gsap'
 
 const UnderlinedWrap = styled.span`
   display: inline-block;
@@ -12,7 +13,7 @@ const Underline = styled.span`
   display: inline-block;
   background: linear-gradient(90deg, rgba(113,57,185,1) 0%, rgb(30, 170, 231) 100%);
   position: absolute;
-  bottom: 0px;
+  bottom: 0;
   left: -10px;
   z-index: -1;
   height: 14px;
@@ -31,20 +32,28 @@ const Underline = styled.span`
   }
 `
 
-export default function UnderlinedLink({text, callBack = () => console.log('No Call Back')}) {
+export default function UnderlinedLink({text, playSound = () => null, stopSound = () => null}) {
 
-    // useEffect(() => {
-    //
-    // }, [])
+    let underline = useRef(null)
 
-    const handleHover = () => {
-        callBack()
+    const handleEnter= () => {
+        gsap.to(underline, {
+            width: '100%'
+        })
+        playSound()
+    }
+
+    const handleLeave = () => {
+        gsap.to(underline, {
+            width: '60%'
+        })
+        stopSound()
     }
 
     return (
-        <UnderlinedWrap onMouseEnter={handleHover}>
+        <UnderlinedWrap onMouseLeave={handleLeave} onMouseEnter={handleEnter}>
             {text}
-            <Underline text />
+            <Underline ref={el => underline = el} text />
         </UnderlinedWrap>
     );
 }
