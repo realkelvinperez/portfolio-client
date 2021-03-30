@@ -87,7 +87,7 @@ const FormWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 14rem;
+  margin-top: 8rem;
   width: 100%;
   @media (max-width: ${media.laptop}){
     margin-top: 7rem;

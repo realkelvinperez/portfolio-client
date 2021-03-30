@@ -2,8 +2,9 @@ import { useRef } from 'react';
 import styled from "styled-components";
 import media from "../utilities/mediaQueries";
 import gsap from 'gsap'
+import HoverImage from "./HoverImage";
 
-const UnderlinedWrap = styled.span`
+const UnderlinedWrap = styled.div`
   display: inline-block;
   position: relative;
   cursor: pointer;
@@ -32,7 +33,7 @@ const Underline = styled.span`
   }
 `
 
-export default function UnderlinedLink({text, playSound = () => null, stopSound = () => null}) {
+export default function UnderlinedLink({text, src, miami, playSound = () => null, stopSound = () => null}) {
 
     let underline = useRef(null)
 
@@ -51,8 +52,12 @@ export default function UnderlinedLink({text, playSound = () => null, stopSound 
     }
 
     return (
-        <UnderlinedWrap onMouseLeave={handleLeave} onMouseEnter={handleEnter}>
-            {text}
+        <UnderlinedWrap
+            onMouseLeave={handleLeave}
+            onMouseEnter={handleEnter}
+        >
+            <span>{text}</span>
+            {miami && <HoverImage src={src} />}
             <Underline ref={el => underline = el} text />
         </UnderlinedWrap>
     );

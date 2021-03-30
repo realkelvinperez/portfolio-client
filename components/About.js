@@ -46,7 +46,8 @@ export default function About() {
             ease: 'power2.inOut'
         }).to(wavyHand,{
             transform: 'rotateZ(20deg)',
-            duration: .3
+            duration: .3,
+            ease: 'power2.inOut'
         })
         if(!isLoading){
             gsap.from(
@@ -118,7 +119,7 @@ export default function About() {
                            Thank you for stopping by. I appreciate your time.
                        </AboutBioText>
                        <AboutBioText ref={el => text2 = el}>
-                           I'm a UI/UX Designer & Full-Stack Web Developer from <UnderlinedLink stopSound={handleStopSound} playSound={Miami} text='🌴 Miami, Fl' /> that loves creating digital experiences for businesses that align with their brand.
+                           I'm a UI/UX Designer & Full-Stack Web Developer from <UnderlinedLink src={StockProfilePic} miami stopSound={handleStopSound} playSound={Miami} text='🌴 Miami, Fl' /> that loves creating digital experiences for businesses that align with their brand.
                        </AboutBioText>
                        <AboutBioText ref={el => text3 = el}>
                            I love collaborating and working on teams and building really dope projects together.
