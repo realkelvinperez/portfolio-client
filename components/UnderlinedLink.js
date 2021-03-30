@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import styled from "styled-components";
 import media from "../utilities/mediaQueries";
 
@@ -30,9 +31,18 @@ const Underline = styled.span`
   }
 `
 
-export default function UnderlinedLink({text}) {
+export default function UnderlinedLink({text, callBack = () => console.log('No Call Back')}) {
+
+    // useEffect(() => {
+    //
+    // }, [])
+
+    const handleHover = () => {
+        callBack()
+    }
+
     return (
-        <UnderlinedWrap>
+        <UnderlinedWrap onMouseEnter={handleHover}>
             {text}
             <Underline text />
         </UnderlinedWrap>

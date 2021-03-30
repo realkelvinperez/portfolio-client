@@ -1,3 +1,5 @@
+import { useRef, useEffect, useContext } from 'react'
+import { Howl, Howler } from 'howler'
 import Container from "../elements/Container";
 import styled from "styled-components";
 import StockProfilePic from '../public/assets/img/stock-profile-picture.png'
@@ -8,7 +10,6 @@ import AboutBioText from "../elements/about/AboutBioText";
 import AboutHeading from "../elements/about/AboutHeading";
 import MyPhoto from "../elements/about/MyPhoto";
 import AboutGrid from "../elements/about/AboutGrid";
-import { useRef, useEffect, useContext } from 'react'
 import LoginContext from "../context/LoginContext";
 import { gsap } from 'gsap';
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger"
@@ -76,6 +77,10 @@ export default function About() {
         }
     },[isLoading])
 
+    const handleMiami = (e) => {
+       console.log('Welcome To Miami')
+    }
+
     return (
         <Container>
             <AboutGrid>
@@ -95,13 +100,13 @@ export default function About() {
                            Thank you for stopping by. I appreciate your time.
                        </AboutBioText>
                        <AboutBioText ref={el => text2 = el}>
-                           I'm a UI/UX Designer & Full-Stack Web Developer from <UnderlinedLink text='Miami, Fl' /> that loves creating digital experiences for businesses that align with their brand
+                           I'm a UI/UX Designer & Full-Stack Web Developer from <UnderlinedLink callBack={handleMiami} text='🌴 Miami, Fl' /> that loves creating digital experiences for businesses that align with their brand.
                        </AboutBioText>
                        <AboutBioText ref={el => text3 = el}>
-                           I love collaborating and working with teams and building really dope projects together.
+                           I love collaborating and working on teams and building really dope projects together.
                        </AboutBioText>
                        <AboutBioText ref={el => text4 = el}>
-                           A bit more about me...Before finding my passion in Tech my interests have been <UnderlinedLink text='Art,' /> <UnderlinedLink text='RPG Games, ' /><UnderlinedLink text='Hip-Hop & Electronic Music,' /> <UnderlinedLink text='Sci-Fi Movies...' />annnnnnnd <UnderlinedLink text='Asian Food 🍱!' />
+                           A bit more about me...Before finding my passion in Tech my interests have been <UnderlinedLink text='🖼 Art,' /> <UnderlinedLink text='⚔️ RPG Games, ' /><UnderlinedLink text='🎹 Hip-Hop & Electronic Music,' /> <UnderlinedLink text='👽 Sci-Fi Movies...' />annnnnnnd <UnderlinedLink text='🍱 Asian Food !' />
                        </AboutBioText>
                    </div>
                </div>
