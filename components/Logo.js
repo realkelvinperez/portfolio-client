@@ -42,7 +42,7 @@ export default function Logo() {
     },[isLoading])
 
     return (
-        <Tilt scale={0.9} transitionSpeed={2500} >
+        <Tilt scale={1.1} transitionSpeed={2500} >
             <HeaderLogoWrap ref={ el => { logo = el } }>
                 <LogoImg src={LogoSVG}  alt='KP Logo'/>
                 {/*<LogoSVG style={{width: '100%'}} />*/}

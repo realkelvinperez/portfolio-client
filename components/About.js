@@ -1,5 +1,6 @@
 import { useRef, useEffect, useContext } from 'react'
 import { Howl, Howler } from 'howler'
+import MiamiMP3 from '../public/assets/sounds/miami-seguals.mp3'
 import Container from "../elements/Container";
 import styled from "styled-components";
 import StockProfilePic from '../public/assets/img/stock-profile-picture.png'
@@ -36,7 +37,7 @@ export default function About() {
     let wavyHand = useRef(null);
 
     useEffect(() => {
-
+        console.log({MiamiMP3})
         const tl = gsap.timeline({repeat: -1, yoyo: true })
         tl.to(wavyHand,{
             transform: 'rotateZ(0)',
