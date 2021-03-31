@@ -46,6 +46,14 @@ export default function Home() {
             on('progressBar:done', () => {
                 setIsLoading(false)
             })
+            on('menu:open', () => {
+                // add Overflow-y hidden => setLoading to true
+                setIsLoading(true)
+            })
+            on('menu:close', () => {
+                // Remove Overflow-y hidden => setLoading to false
+                setIsLoading(false)
+            })
         }
     }, [])
 

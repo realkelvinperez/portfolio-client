@@ -85,7 +85,6 @@ export default function About() {
         const sound = new Howl({
             src
         });
-
         const soundID = sound.play();
         setCurrentSound(sound)
         setSoundID(soundID)

@@ -1,7 +1,7 @@
 import BurgerMenu from "../../public/assets/svg/Burger-Menu.svg";
 import styled from "styled-components";
 import media from "../../utilities/mediaQueries";
-import { useRef, useEffect, useContext } from 'react'
+import { useRef, useEffect, useContext, useState } from 'react'
 import LoginContext from "../../context/LoginContext";
 import { gsap } from 'gsap';
 
@@ -16,8 +16,7 @@ const MenuImg = styled.img`
   }
 `
 
-export default function NavMenu() {
-
+export default function NavMenu({callback}) {
     const { isLoading } = useContext(LoginContext)
     let menu = useRef(null);
 
@@ -33,9 +32,17 @@ export default function NavMenu() {
         }
     },[isLoading])
 
+    const menuClick = () => {
+        console.log(`Clicked the Menu`)
+        if(callback) callback()
+    }
+
     return (
         <HeaderBurgerMenu ref={el => menu = el}>
-            <MenuImg src={BurgerMenu} />
+            <MenuImg
+                onClick={menuClick}
+                src={BurgerMenu}
+            />
         </HeaderBurgerMenu>
     );
 }
