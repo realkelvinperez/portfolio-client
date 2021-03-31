@@ -28,13 +28,7 @@ const HeaderNav = styled.nav`
 `
 
 const Menu = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 99999;
-  background: linear-gradient(127.31deg, #5A0583 -0.04%, #161C49 100%);
+
   display: grid;
   grid-template-columns: 70% 1fr;
 `
@@ -64,7 +58,7 @@ const MenuItem = styled.div`
 `
 
 const ItemWrap = styled.div`
-  padding: 6rem;
+  padding: 3rem 6rem;
 `
 
 const SocialWrap = styled.div`
@@ -102,8 +96,33 @@ const IconText = styled.div`
   }
 `
 
+const NavHeader = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 6rem;
+`
+const SVG = styled.img`
+  cursor: pointer;
+`
+
+const NavWrapper = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 99999;
+  background: linear-gradient(127.31deg, #5A0583 -0.04%, #161C49 100%);
+`
+
 const Nav = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(true)
+    const [tween, setTween] = useState(null)
+
+    const closeMenu = () => {
+        console.log('Close Menu')
+    }
 
     let linkedinEl = useRef(null)
     let twitterEl = useRef(null)
@@ -166,61 +185,35 @@ const Nav = () => {
     }
 
     const onTextHover = (item) => {
-        const styles = `
-            color: white;
-             -webkit-text-fill-color: white; 
-             -webkit-text-fill-color: none;
-        `
-
+        const vars = {
+            webkitTextFillColor: 'white',
+            ease: 'power2.inOut'
+        }
         switch(item){
             case 'home':
-                home.style.cssText = styles
+                setTween(gsap.to(home, vars))
                 break;
             case 'aboutMe':
-                aboutMe.style.cssText = styles
+                setTween(gsap.to(aboutMe, vars))
                 break;
             case 'myWork':
-                myWork.style.cssText = styles
+                setTween(gsap.to(myWork, vars))
                 break;
             case 'mySkills':
-                mySkills.style.cssText = styles
+                setTween(gsap.to(mySkills, vars))
                 break;
             case 'myResume':
-                myResume.style.cssText = styles
+                setTween(gsap.to(myResume, vars))
                 break;
             case 'letsTalk':
-                letsTalk.style.cssText = styles
+                setTween(gsap.to(letsTalk, vars))
                 break;
             default:
                 break;
         }
     }
-    const onTextLeave = (item) => {
-        console.log({item})
-        const styles = ``
-
-        switch(item){
-            case 'home':
-                home.style.cssText = styles
-                break;
-            case 'aboutMe':
-                aboutMe.style.cssText = styles
-                break;
-            case 'myWork':
-                myWork.style.cssText = styles
-                break;
-            case 'mySkills':
-                mySkills.style.cssText = styles
-                break;
-            case 'myResume':
-                myResume.style.cssText = styles
-                break;
-            case 'letsTalk':
-                letsTalk.style.cssText = styles
-                break;
-            default:
-                break;
-        }
+    const onTextLeave = () => {
+        tween.reverse()
     }
 
 
@@ -228,7 +221,12 @@ const Nav = () => {
         if(!isMenuOpen) return
         if(isMenuOpen){
             return (
-                <Menu>
+                <NavWrapper>
+                    <NavHeader>
+                        <Logo />
+                        <SVG onClick={closeMenu} src={CloseMenuIcon} />
+                    </NavHeader>
+                    <Menu>
                     <ItemWrap>
                         <MenuItem
                             ref={el => home = el}
@@ -320,6 +318,7 @@ const Nav = () => {
                         </Wrapper>
                     </SocialWrap>
                 </Menu>
+                </NavWrapper>
             )
         }
     }
