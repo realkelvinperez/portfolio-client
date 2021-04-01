@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import React, { useRef } from 'react';
 import styled from "styled-components";
 import media from "../utilities/mediaQueries";
 import gsap from 'gsap'
@@ -33,9 +33,19 @@ const Underline = styled.span`
   }
 `
 
-export default function UnderlinedLink({text, src, miami, playSound = () => null, stopSound = () => null}) {
+type UnderLine = React.MutableRefObject<null> | HTMLSpanElement
 
-    let underline = useRef(null)
+interface Props {
+    text: string,
+    src?: any,
+    miami?: boolean,
+    playSound?: () => void,
+    stopSound?: () => void,
+}
+
+export default function UnderlinedLink({text, src, miami, playSound = () => null, stopSound = () => null} : Props) {
+
+    let underline: UnderLine = useRef(null)
 
     const handleEnter= () => {
         gsap.to(underline, {
@@ -58,7 +68,7 @@ export default function UnderlinedLink({text, src, miami, playSound = () => null
         >
             <span>{text}</span>
             {miami && <HoverImage src={src} />}
-            <Underline ref={el => underline = el} text />
+            <Underline ref={el => underline = el} />
         </UnderlinedWrap>
     );
 }

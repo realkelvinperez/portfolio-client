@@ -1,23 +1,23 @@
+import React from "react";
 import { useState, useEffect, useRef } from 'react'
 import Halo from 'vanta/dist/vanta.halo.min'
 import Header from '../components/Header'
 
 export default function Vanta() {
     const [vantaEffect, setVantaEffect] = useState(0)
-    let myRef = useRef(null)
+    let myRef: React.MutableRefObject<HTMLDivElement> | HTMLDivElement = useRef<HTMLDivElement>(null)
     useEffect(() => {
         if (!vantaEffect) {
             setVantaEffect(Halo({
                 el: myRef,
             }))
         }
-        myRef.style.cssText += `
+        if ("style" in myRef) {
+            myRef.style.cssText += `
               border-radius: 3rem;
               overflow: hidden;
               width: 83%;
           `
-        return () => {
-            if (vantaEffect) vantaEffect.destroy()
         }
     }, [vantaEffect])
     return (

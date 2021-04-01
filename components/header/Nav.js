@@ -137,9 +137,6 @@ const Nav = () => {
     let myResume = useRef(null)
     let letsTalk = useRef(null)
 
-    useEffect(() => {
-
-    }, [])
 
     const onHover = (iconName) => {
         switch(iconName){
