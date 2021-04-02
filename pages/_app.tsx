@@ -1,8 +1,7 @@
-import { Component } from "react";
+import { AppProps } from 'next/app'
 
-export default class _app extends Component<{ Component: any, pageProps: any }> {
-    render() {
-        let {Component, pageProps} = this.props;
-        return <Component {...pageProps} />
-    }
+function App({ Component, pageProps }: AppProps) {
+    return <Component {...pageProps} />
 }
+
+export default App

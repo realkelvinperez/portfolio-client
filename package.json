@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "ngrok": "ngrok http 3000"
+    "ngrok": "ngrok http 3000",
+    "lint:css":"stylelint './components/**/*.tsx'"
   },
   "dependencies": {
     "@babel/runtime": "^7.12.18",
@@ -25,6 +26,7 @@
     "vanta": "^0.5.21"
   },
   "devDependencies": {
+    "@types/greensock": "^1.15.32",
     "@types/gsap": "^1.20.2",
     "@types/howler": "^2.2.2",
     "@types/node": "^14.14.37",
@@ -32,7 +34,13 @@
     "@types/styled-components": "^5.1.9",
     "babel-plugin-styled-components": "^1.12.0",
     "file-loader": "^6.2.0",
+    "font-loader": "^0.1.2",
+    "font-webpack-loader": "^1.0.2",
     "styled-components": "^5.2.1",
+    "stylelint": "^13.12.0",
+    "stylelint-config-recommended": "^4.0.0",
+    "stylelint-config-styled-components": "^0.1.1",
+    "stylelint-processor-styled-components": "^1.10.0",
     "type-coverage": "^2.17.0",
     "typescript": "^4.2.3"
   }

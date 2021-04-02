@@ -7,6 +7,15 @@
     src: url('../public/fonts/coolvetica.ttf');
 }
 
+body {
+    margin: 0;
+}
+
 .vanta-canvas {
     height: 100% !important;
+}
+
+html {
+    background: #141A43;
+    overflow-x: hidden;
 }

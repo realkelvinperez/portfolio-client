@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect, useRef } from 'react'
 import Halo from 'vanta/dist/vanta.halo.min'
-import Header from '../components/Header'
+import Header from './Header'
 
 export default function Vanta() {
     const [vantaEffect, setVantaEffect] = useState(0)
