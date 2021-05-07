@@ -1,6 +1,6 @@
 import { useContext, useRef, useEffect } from 'react';
 import LoginContext from "../../context/LoginContext";
-import { gsap } from "gsap";
+import gsap from "gsap";
 import styled from "styled-components";
 import media from "../../utilities/mediaQueries";
 import Tilt from "react-parallax-tilt";
