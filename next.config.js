@@ -19,7 +19,6 @@ const nextConfiguration = {
                 },
             ],
         });
-
         return config
     }
 }

@@ -7,15 +7,17 @@
     "build": "next build",
     "start": "next start",
     "ngrok": "ngrok http 3000",
-    "lint:css":"stylelint './components/**/*.tsx'"
+    "lint:css": "stylelint './components/**/*.tsx'"
   },
   "dependencies": {
     "@babel/runtime": "^7.12.18",
+    "@nestjs/typeorm": "^7.1.5",
     "@svgr/webpack": "^5.5.0",
     "axios": "^0.21.1",
     "babel": "^6.23.0",
     "gsap": "^3.6.0",
     "howler": "^2.2.1",
+    "mysql": "^2.18.1",
     "next": "10.0.6",
     "next-compose-plugins": "^2.2.1",
     "next-images": "^1.7.0",
@@ -23,6 +25,7 @@
     "react-dom": "17.0.1",
     "react-lottie": "^1.2.3",
     "react-parallax-tilt": "^1.4.95",
+    "typeorm": "^0.2.32",
     "vanta": "^0.5.21"
   },
   "devDependencies": {

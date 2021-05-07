@@ -172,6 +172,7 @@ const Nav = () => {
                 break;
         }
     }
+
     const onLeave = (iconName : string) => {
         switch(iconName){
             case 'linkedin':
@@ -344,7 +345,7 @@ const Nav = () => {
         <HeaderNav>
             <Logo />
             <NavMenu callback={() => null} />
-            {showMenu()}
+            {/*{showMenu()}*/}
         </HeaderNav>
     );
 }
