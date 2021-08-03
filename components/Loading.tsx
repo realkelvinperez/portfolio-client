@@ -1,6 +1,6 @@
-import styled, { css } from 'styled-components'
-import Lottie from 'react-lottie'
-import animationData from '../public/assets/lottie/loading-disc.json'
+import styled, { css } from "styled-components";
+import Lottie from "react-lottie";
+import animationData from "../public/assets/lottie/loading-disc.json";
 
 const LoadingWrapper = styled.div<{ isLoading: boolean }>`
   width: 100vw;
@@ -8,21 +8,23 @@ const LoadingWrapper = styled.div<{ isLoading: boolean }>`
   position: absolute;
   top: 0;
   left: 0;
-  background: #141A43;
+  background: #141a43;
   z-index: 999;
   opacity: 1;
-  transition: all .3s ease-in-out;
-  ${props => !props.isLoading && css`
-    opacity: 0;
-    visibility: hidden;
-  `}
-`
+  transition: all 0.3s ease-in-out;
+  ${(props) =>
+    !props.isLoading &&
+    css`
+      opacity: 0;
+      visibility: hidden;
+    `}
+`;
 
 const InnerWrapper = styled.div`
-    position: relative;
-    width: 100%;
-    height: 100%;
-`
+  position: relative;
+  width: 100%;
+  height: 100%;
+`;
 /*
 const LoadingText = styled.div`
   margin: 0;
@@ -48,36 +50,28 @@ const LoadingText = styled.div`
 */
 
 interface Props {
-    isLoading: boolean
+  isLoading: boolean;
 }
 
 export default function Loading({ isLoading }: Props) {
+  const loadingView = () => {
+    if (isLoading)
+      return (
+        <>
+          <Lottie options={defaultOptions} height={"100%"} width={"100%"} />
+        </>
+      );
+  };
 
-    const loadingView = () => {
-        if(isLoading) return (
-            <>
-            <Lottie
-                options={defaultOptions}
-                height={'100%'}
-                width={'100%'}
-            />
-            </>
-        )
-    }
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData,
+  };
 
-    const defaultOptions = {
-        loop: true,
-        autoplay: true,
-        animationData,
-    }
-
-    return (
-        <LoadingWrapper isLoading={isLoading}>
-            <InnerWrapper>
-                {
-                    loadingView()
-                }
-            </InnerWrapper>
-        </LoadingWrapper>
-    );
+  return (
+    <LoadingWrapper isLoading={isLoading}>
+      <InnerWrapper>{loadingView()}</InnerWrapper>
+    </LoadingWrapper>
+  );
 }
