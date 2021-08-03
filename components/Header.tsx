@@ -10,9 +10,6 @@ const HeaderWrap = styled.div`
   background: rgb(0 0 0 / 40%);
   padding: 3rem;
   border-radius: 2rem;
-  //&:hover {
-  //  background: blue;
-  //}
   @media (min-width: ${media.desktop2k}) {
     height: 40vw;
     padding: 5rem;

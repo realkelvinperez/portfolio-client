@@ -5,6 +5,7 @@ import { useRef, useEffect, useContext } from "react";
 import LoginContext from "../../context/LoginContext";
 import gsap from "gsap";
 import MyRef from "../../typings/MyRef";
+import { trigger } from "../../utilities/events";
 
 const HeaderBurgerMenu = styled.div`
   filter: drop-shadow(0px 0px 9px #288f8f);
@@ -17,11 +18,11 @@ const MenuImg = styled.img`
   }
 `;
 
-interface Props {
-  callback: () => void;
+interface IProps {
+  callback: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export default function NavMenu({ callback }: Props) {
+export default function NavMenu({ callback }: IProps) {
   const { isLoading } = useContext<{ isLoading: boolean }>(LoginContext);
   let menu: MyRef = useRef(null);
 
@@ -37,8 +38,9 @@ export default function NavMenu({ callback }: Props) {
   }, [isLoading]);
 
   const menuClick = () => {
-    console.log(`Clicked the Menu`);
-    if (callback) callback();
+    console.log(`Clicked the Menu and more`, callback);
+    trigger("menu:open", {status: 'menu closed'});
+    if (callback) callback(true);
   };
 
   return (

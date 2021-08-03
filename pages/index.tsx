@@ -1,19 +1,21 @@
 import { useState, useEffect, useMemo } from 'react'
 import Head from 'next/head'
+import dynamic from 'next/dynamic'
 import styled, { createGlobalStyle, css } from 'styled-components'
 import Vanta from "../components/Vanta";
-import About from "../components/About";
-import Projects from "../components/Projects";
-import Skills from "../components/Skills";
-import Quote from "../components/Quote";
-import LetsTalk from "../components/LetsTalk";
-import TheEnd from "../components/TheEnd";
-import Footer from "../components/FooterText";
 import Loading from "../components/Loading";
 import ScrollProgress from "../components/ScrollProgress";
 import { on } from "../utilities/events";
 import LoginContext from "../context/LoginContext";
-import Resume from "../components/resume";
+
+const About = dynamic(() => import('../components/About'))
+const Resume = dynamic(() => import('../components/Resume'))
+const Projects = dynamic(() => import('../components/Projects'))
+const Skills = dynamic(() => import('../components/Skills'))
+const Quote = dynamic(() => import('../components/Quote'))
+const LetsTalk = dynamic(() => import('../components/LetsTalk'))
+const TheEnd = dynamic(() => import('../components/TheEnd'))
+const Footer = dynamic(() => import('../components/FooterText'))
 
 const HeaderFlexWrap = styled.div`
   height: 100vh;
@@ -23,7 +25,8 @@ const HeaderFlexWrap = styled.div`
 `
 
 interface StyleProps {
-    isLoading: boolean
+    isLoading: boolean,
+    isOverflow: boolean,
 }
 
 const MyGlobalStyle = createGlobalStyle<StyleProps>`
@@ -32,25 +35,34 @@ const MyGlobalStyle = createGlobalStyle<StyleProps>`
           overflow-y: hidden;
       }
     `}
+    ${props => props.isOverflow && css`
+      html {
+          overflow-y: hidden;
+      }
+    `}
 `;
 
 export default function Home() {
     const [isLoading, setIsLoading] = useState<boolean>(true)
+    const [isOverflow, setIsOverflow] = useState<boolean>(false)
     const loadingState = useMemo(() => ({isLoading, setIsLoading}), [isLoading, setIsLoading])
 
     useEffect(() => {
         if (typeof window !== 'undefined') {
             window.scrollTo(0, 0)
-            on('progressBar:done', () => {
+            on('progressBar:done', (payload) => {
+                console.log({payload})
                 setIsLoading(false)
             })
-            on('menu:open', () => {
+            on('menu:open', (payload) => {
                 // add Overflow-y hidden => setLoading to true
-                setIsLoading(true)
+                console.log({payload})
+                setIsOverflow(true)
             })
-            on('menu:close', () => {
+            on('menu:close', (payload) => {
                 // Remove Overflow-y hidden => setLoading to false
-                setIsLoading(false)
+                console.log('close menu' ,{payload})
+                setIsOverflow(false)
             })
         }
     }, [])
@@ -59,12 +71,11 @@ export default function Home() {
         <LoginContext.Provider value={loadingState}>
             <div>
                 <Head>
-                    <title>Kelvin Perez Web Developer Portfolio | UI/UX & Full-Stack | Miami, FL | Figma PHP Laravel React
-                        SQL</title>
-                    <link rel="icon" href={"/favicon.ico"}/>
-                    <script src={"https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"}/>
+                    <title>Kelvin Perez Web Developer Portfolio | UI/UX & Full-Stack | Miami, FL | Figma, React, TypeScript, NodeJS, PostgreSQL </title>
+                    <link rel="icon" href="/favicon.ico"/>
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"/>
                 </Head>
-                <MyGlobalStyle isLoading={isLoading}/>
+                <MyGlobalStyle isLoading={isLoading} isOverflow={isOverflow}/>
                 {/* Hero Section */}
                 <HeaderFlexWrap>
                     <Vanta/>

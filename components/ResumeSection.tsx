@@ -1,6 +1,8 @@
 import SectionHeading from "../elements/SectionHeading";
-import Resume from "./resume";
+import dynamic from "next/dynamic";
 import styled from "styled-components";
+
+const Resume = dynamic(() => import('./Resume'))
 
 const ResumeWrapper = styled.div`
   position: relative;
