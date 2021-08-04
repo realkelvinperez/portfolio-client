@@ -166,7 +166,6 @@ const ResumeRelative = styled.div`
 `;
 
 export default function Resume() {
-  let resumeSection: MyRef = useRef(null);
   let Title: MyRef = useRef(null);
 
   let Year2015: MyRef = useRef(null);
