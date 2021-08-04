@@ -167,6 +167,7 @@ const ResumeRelative = styled.div`
 
 const Resume: React.FC = () => {
   let Title: MyRef = useRef(null);
+  let resumeSectionEl: MyRef = useRef(null);
 
   let Year2015: MyRef = useRef(null);
   let Circle2015: MyRef = useRef(null);
@@ -291,7 +292,7 @@ const Resume: React.FC = () => {
   }, []);
   return (
     <div>
-      <ResumeRelative ref={(el) => (resumeSection = el)}>
+      <ResumeRelative ref={(el) => (resumeSectionEl = el)}>
         <SectionHeading ref={(el) => (Title = el)}>Resume</SectionHeading>
         <ResumeSection>
           {/* ODD - 2015 */}
