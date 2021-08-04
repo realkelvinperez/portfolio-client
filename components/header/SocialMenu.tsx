@@ -15,6 +15,11 @@ const Wrapper = styled.div`
   margin: 1rem 0;
   box-sizing: border-box;
   justify-content: space-between;
+
+  @media (max-width: ${media.mobileL}) {
+    padding: 0rem;
+    display: block;
+  }
 `;
 
 const IconText = styled.div<{ show?: boolean }>`
@@ -39,17 +44,26 @@ const IconText = styled.div<{ show?: boolean }>`
     font-size: 2.3vw;
   }
   @media (max-width: ${media.mobileL}) {
-    font-size: 6vw;
+    display: none;
   }
 `;
 
 const SocialWrap = styled.div`
   padding: 0 1rem;
+  @media (max-width: ${media.mobileL}) {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 2rem;
+  }
 `;
 
 const SocialIcon = styled.img`
   cursor: pointer;
   width: 25%;
+  @media (max-width: ${media.mobileL}) {
+    width: 75%;
+    margin-right: 2rem;
+  }
 `;
 
 export default function SocialMenu() {
@@ -61,11 +75,14 @@ export default function SocialMenu() {
   let youtubeEl: MyRef = useRef(null);
   let emailEl: MyRef = useRef(null);
   let githubEl: MyRef = useRef(null);
+  
 
   useEffect(() => {
+    const isMobileWindow = window.innerWidth < 500 
+
     gsap.from([linkedinEl, twitterEl, youtubeEl, emailEl, githubEl], {
       scrollTrigger: {
-        trigger: linkedinEl as Element,
+        trigger: isMobileWindow ? '.letsTalk' : linkedinEl as Element,
         toggleActions: "restart reverse restart reverse",
         start: "center 60%",
       },
@@ -138,7 +155,7 @@ export default function SocialMenu() {
       <Wrapper>
         <IconText show={showText("linkedin")}>LinkedIn</IconText>
         <SocialIcon
-          onClick={() => window.open('https://linkedin.com')}
+          onClick={() => window.open('https://www.linkedin.com/in/realkelvinperez/')}
           onMouseEnter={() => onHover("linkedin")}
           onMouseLeave={() => onLeave("linkedin")}
           ref={(el) => (linkedinEl = el)}
@@ -151,7 +168,7 @@ export default function SocialMenu() {
         <SocialIcon
           onMouseEnter={() => onHover("twitter")}
           onMouseLeave={() => onLeave("twitter")}
-          onClick={() => window.open('https://twitter.com')}
+          onClick={() => window.open('https://twitter.com/realkelvinperez')}
           ref={(el) => (twitterEl = el)}
           src={TwitterIcon}
         />
@@ -162,7 +179,7 @@ export default function SocialMenu() {
         <SocialIcon
           src={YoutubeIcon}
           ref={(el) => (youtubeEl = el)}
-          onClick={() => window.open('https://youtube.com')}
+          onClick={() => window.open('https://www.youtube.com/channel/UCp8D6FFsZp9hxTicu72VKqAz')}
           onMouseEnter={() => onHover("youtube")}
           onMouseLeave={() => onLeave("youtube")}
         />
@@ -172,7 +189,7 @@ export default function SocialMenu() {
         <IconText show={showText("email")}>Email</IconText>
         <SocialIcon
           ref={(el) => (emailEl = el)}
-          onClick={() => window.open('https://gmail.com')}
+          onClick={() => window.open('https://mail.google.com/mail/u/0/?fs=1&to=realkelvinperez@gmail.com&su=business_inquiery&body=BODY&bcc=&tf=cmm')}
           onMouseEnter={() => onHover("email")}
           onMouseLeave={() => onLeave("email")}
           src={EmailIcon}
@@ -183,7 +200,7 @@ export default function SocialMenu() {
         <IconText show={showText("github")}>Github</IconText>
         <SocialIcon
           ref={(el) => (githubEl = el)}
-          onClick={() => window.open('https://github.com')}
+          onClick={() => window.open('https://github.com/realkelvinperez')}
           onMouseEnter={() => onHover("github")}
           onMouseLeave={() => onLeave("github")}
           src={GithubIcon}

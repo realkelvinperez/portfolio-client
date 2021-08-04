@@ -14,6 +14,9 @@ const MenuWrap = styled.div`
   display: grid;
   grid-template-columns: 70% 1fr;
   overflow: hidden;
+  @media (max-width: ${media.mobileL}) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 const MenuItem = styled.a`
@@ -25,7 +28,7 @@ const MenuItem = styled.a`
   -webkit-text-stroke: 3px white;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  //filter: drop-shadow(0px 0px 6px white);
+  filter: drop-shadow(0px 0px 6px white);
   line-height: 7rem;
   letter-spacing: 1.7rem;
   cursor: pointer;
@@ -40,10 +43,20 @@ const MenuItem = styled.a`
     font-size: 13vw;
     letter-spacing: 0.7rem;
   }
+  @media (max-width: ${media.mobileL}) {
+    -webkit-text-stroke: 1px white;
+    line-height: 1;
+    font-size: 9vw;
+    letter-spacing: 0.7rem;
+  }
 `;
 
 const ItemWrap = styled.div`
   padding: 3rem 6rem;
+  
+  @media (max-width: ${media.mobileL}) {
+    padding: 1rem 2rem;
+  }
 `;
 
 const NavHeader = styled.div`
@@ -51,6 +64,10 @@ const NavHeader = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 1rem 6rem;
+
+  @media (max-width: ${media.mobileL}) {
+    padding: 1rem 2rem;
+  }
 `;
 
 const SVG = styled.img`
@@ -118,8 +135,6 @@ export default function Menu({ callback }: IProps) {
       delay: 2,
     });
   }, []);
-
-  // social media icons
 
   // Menu items
   const onTextHover = (item: string) => {
@@ -223,6 +238,7 @@ export default function Menu({ callback }: IProps) {
             onMouseEnter={() => onTextHover("letsTalk")}
             onMouseLeave={() => onTextLeave()}
             onClick={() => handleClick("letsTalk")}
+            className="letsTalk"
           >
             Let's Talk
           </MenuItem>
