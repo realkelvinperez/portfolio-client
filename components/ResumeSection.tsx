@@ -22,7 +22,7 @@ const ResumeLine = styled.div`
   transform: translate(-50%, 3%);
   z-index: -1;
 `;
-export default function ResumeSection() {
+const ResumeSection: React.FC = () => {
   return (
     <ResumeWrapper>
       <SectionHeading>Resume</SectionHeading>
@@ -30,4 +30,6 @@ export default function ResumeSection() {
       <ResumeLine />
     </ResumeWrapper>
   );
-}
+};
+
+export default ResumeSection;

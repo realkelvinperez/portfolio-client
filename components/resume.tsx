@@ -165,7 +165,7 @@ const ResumeRelative = styled.div`
   position: relative;
 `;
 
-export default function Resume() {
+const Resume: React.FC = () => {
   let Title: MyRef = useRef(null);
 
   let Year2015: MyRef = useRef(null);
@@ -436,3 +436,5 @@ export default function Resume() {
     </div>
   );
 }
+
+export default Resume;
