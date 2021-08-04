@@ -21,6 +21,7 @@ const MenuItem = styled.a`
   font-family: Soulmaze, sans-serif;
   font-size: 7rem;
   display: block;
+  background-clip: text;
   -webkit-text-stroke: 3px white;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;

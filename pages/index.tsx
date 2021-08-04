@@ -105,7 +105,7 @@ export default function Home() {
             <Vanta />
           </HeaderFlexWrap>
           {/* About Me Section */}
-          <About customRef={aboutEl}/>
+          <About />
           {/* Projects Section */}
           <Projects />
           {/* My Skills Section */}

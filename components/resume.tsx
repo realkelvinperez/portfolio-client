@@ -99,6 +99,7 @@ const ResumeYear = styled.div<{ even?: boolean }>`
   font-family: Soulmaze, sans-serif;
   font-size: 14rem;
   opacity: 0.2;
+  background-clip: text;
   -webkit-text-stroke: 5px white;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
