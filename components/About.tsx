@@ -99,52 +99,52 @@ export default function About() {
   };
 
   return (
-    <Container>
-      <AboutGrid>
-        <AboutPicWrapper ref={(el) => (aboutPhoto = el)}>
-          <AboutText>About</AboutText>
-          <MyPhoto src={StockProfilePic} />
-        </AboutPicWrapper>
-        <div>
-          <AboutHeading ref={(el) => (heading = el)}>
-            Hey{" "}
-            <WavyHand className="wavy-hand" ref={(el) => (wavyHand = el)}>
-              👋🏽
-            </WavyHand>
-            , I'm Kelvin Perez
-            <TitleUnderline />
-          </AboutHeading>
+      <Container id="aboutMe">
+        <AboutGrid>
+          <AboutPicWrapper ref={(el) => (aboutPhoto = el)}>
+            <AboutText>About</AboutText>
+            <MyPhoto src={StockProfilePic} />
+          </AboutPicWrapper>
           <div>
-            <AboutBioText ref={(el) => (text1 = el)}>
-              Thank you for stopping by. I appreciate your time.
-            </AboutBioText>
-            <AboutBioText ref={(el) => (text2 = el)}>
-              I'm a UI/UX Designer & Full-Stack Web Developer from{" "}
-              <UnderlinedLink
-                src={StockProfilePic}
-                miami
-                stopSound={handleStopSound}
-                playSound={Miami}
-                text="🌴 Miami, Fl"
-              />{" "}
-              that loves creating digital experiences for businesses that align
-              with their brand.
-            </AboutBioText>
-            <AboutBioText ref={(el) => (text3 = el)}>
-              I love collaborating and working on teams and building really dope
-              projects together.
-            </AboutBioText>
-            <AboutBioText ref={(el) => (text4 = el)}>
-              A bit more about me...Before finding my passion in Tech my
-              interests have been <UnderlinedLink text="🖼 Art," />{" "}
-              <UnderlinedLink text="⚔️ RPG Games, " />
-              <UnderlinedLink text="🎹 Hip-Hop & Electronic Music," />{" "}
-              <UnderlinedLink text="👽 Sci-Fi Movies..." />
-              annnnnnnd <UnderlinedLink text="🍱 Asian Food !" />
-            </AboutBioText>
+            <AboutHeading ref={(el) => (heading = el)}>
+              Hey{" "}
+              <WavyHand className="wavy-hand" ref={(el) => (wavyHand = el)}>
+                👋🏽
+              </WavyHand>
+              , I'm Kelvin Perez
+              <TitleUnderline />
+            </AboutHeading>
+            <div>
+              <AboutBioText ref={(el) => (text1 = el)}>
+                Thank you for stopping by. I appreciate your time.
+              </AboutBioText>
+              <AboutBioText ref={(el) => (text2 = el)}>
+                I'm a UI/UX Designer & Full-Stack Web Developer from{" "}
+                <UnderlinedLink
+                  src={StockProfilePic}
+                  miami
+                  stopSound={handleStopSound}
+                  playSound={Miami}
+                  text="🌴 Miami, Fl"
+                />{" "}
+                that loves creating digital experiences for businesses that
+                align with their brand.
+              </AboutBioText>
+              <AboutBioText ref={(el) => (text3 = el)}>
+                I love collaborating and working on teams and building really
+                dope projects together.
+              </AboutBioText>
+              <AboutBioText ref={(el) => (text4 = el)}>
+                A bit more about me...Before finding my passion in Tech my
+                interests have been <UnderlinedLink text="🖼 Art," />{" "}
+                <UnderlinedLink text="⚔️ RPG Games, " />
+                <UnderlinedLink text="🎹 Hip-Hop & Electronic Music," />{" "}
+                <UnderlinedLink text="👽 Sci-Fi Movies..." />
+                annnnnnnd <UnderlinedLink text="🍱 Asian Food !" />
+              </AboutBioText>
+            </div>
           </div>
-        </div>
-      </AboutGrid>
-    </Container>
+        </AboutGrid>
+      </Container>
   );
 }

@@ -164,7 +164,7 @@ export default function Projects() {
   }, []);
 
   return (
-    <>
+    <div>
       <SectionHeading ref={(el) => (title = el)} work>
         Work
       </SectionHeading>
@@ -208,6 +208,6 @@ export default function Projects() {
           </ProjectWrap>
         </Container>
       </AngledBG>
-    </>
+    </div>
   );
 }

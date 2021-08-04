@@ -28,6 +28,7 @@ const HeroContentWrap = styled.div`
 `;
 
 export default function Header() {
+
   return (
     <HeaderWrap>
       <Nav />

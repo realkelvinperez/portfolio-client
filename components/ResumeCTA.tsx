@@ -6,7 +6,7 @@ const SVG = styled.svg`
 
 export default function ResumeCta() {
   return (
-    <>
+    <a href='https://docs.google.com/document/d/1n0DJwA7_rCEyNQPRFhQuAaX74eM8C3oUWslc9LO8nhQ/edit?usp=sharing' target="_blank">
       <SVG
         width="223"
         height="75"
@@ -54,6 +54,6 @@ export default function ResumeCta() {
           </linearGradient>
         </defs>
       </SVG>
-    </>
+    </a>
   );
 }

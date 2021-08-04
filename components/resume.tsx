@@ -256,6 +256,7 @@ export default function Resume() {
       opacity: 0,
       stagger: 0.2,
     });
+
     gsap.from([Card2019, Year2019, Circle2019], {
       scrollTrigger: {
         trigger: Card2019 as Element,
@@ -289,7 +290,7 @@ export default function Resume() {
     });
   }, []);
   return (
-    <>
+    <div>
       <ResumeRelative ref={(el) => (resumeSection = el)}>
         <SectionHeading ref={(el) => (Title = el)}>Resume</SectionHeading>
         <ResumeSection>
@@ -432,6 +433,6 @@ export default function Resume() {
         </ResumeCTAwrapper>
         <ResumeLine />
       </ResumeRelative>
-    </>
+    </div>
   );
 }

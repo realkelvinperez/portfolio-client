@@ -1,16 +1,14 @@
+import React, { useState, useRef, useEffect } from "react";
 import Logo from "../Logo";
 import styled from "styled-components";
 import media from "../../utilities/mediaQueries";
-import React, { useState, useRef, useEffect } from "react";
 import CloseMenuIcon from "../../public/assets/svg/CloseMenu.svg";
-import EmailIcon from "../../public/assets/svg/email.svg";
-import GithubIcon from "../../public/assets/svg/github.svg";
-import LinkedinIcon from "../../public/assets/svg/linkedin.svg";
-import TwitterIcon from "../../public/assets/svg/twitter.svg";
-import YoutubeIcon from "../../public/assets/svg/youtube.svg";
 import gsap from "gsap";
 import MyRef from "../../typings/MyRef";
+import SocialMenu from "./SocialMenu";
 import { trigger } from "../../utilities/events";
+import Tilt from "react-parallax-tilt";
+import { useRouter } from "next/router";
 
 const MenuWrap = styled.div`
   display: grid;
@@ -18,10 +16,11 @@ const MenuWrap = styled.div`
   overflow: hidden;
 `;
 
-const MenuItem = styled.div`
+const MenuItem = styled.a`
   margin: 0 0 1rem;
   font-family: Soulmaze, sans-serif;
   font-size: 7rem;
+  display: block;
   -webkit-text-stroke: 3px white;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -46,47 +45,13 @@ const ItemWrap = styled.div`
   padding: 3rem 6rem;
 `;
 
-const SocialWrap = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-`;
-
-const SocialIcon = styled.img`
-  cursor: pointer;
-`;
-
-const Wrapper = styled.div`
-  display: grid;
-  padding: 1rem;
-  box-sizing: border-box;
-  justify-content: center;
-  align-items: center;
-`;
-
-const IconText = styled.div`
-  font-family: coolvetica, sans-serif;
-  font-size: 4vw;
-  letter-spacing: 2px;
-  margin: 1.5rem 0;
-  background: linear-gradient(270deg, #9750f2, #4cf0f0);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  opacity: 0;
-  transition: opacity 0.3s ease-in-out;
-  @media (max-width: ${media.tablet}) {
-    font-size: 2.3vw;
-  }
-  @media (max-width: ${media.mobileL}) {
-    font-size: 6vw;
-  }
-`;
-
 const NavHeader = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 1rem 6rem;
 `;
+
 const SVG = styled.img`
   cursor: pointer;
 `;
@@ -106,22 +71,11 @@ interface IProps {
 }
 
 export default function Menu({ callback }: IProps) {
-  const [isTextOnView, setIsTextOnView] = useState<boolean>(false);
-  const [activeTextName, setActiveTextName] = useState<string>("");
   const [tween, setTween] = useState<Tween | null>(null);
+  const router = useRouter()
 
-  const closeMenu = () => {
-    console.log("Close Menu and ", { callback });
-    trigger("menu:close", {status: 'menu closed'});
-    callback(false);
-  };
-
-  let linkedinEl: MyRef = useRef(null);
-  let twitterEl: MyRef = useRef(null);
-  let youtubeEl: MyRef = useRef(null);
-  let emailEl: MyRef = useRef(null);
-  let githubEl: MyRef = useRef(null);
-
+  let menuWrap: MyRef = useRef(null);
+  let closeBtn: MyRef = useRef(null);
   let home: MyRef = useRef(null);
   let aboutMe: MyRef = useRef(null);
   let myWork: MyRef = useRef(null);
@@ -129,101 +83,96 @@ export default function Menu({ callback }: IProps) {
   let myResume: MyRef = useRef(null);
   let letsTalk: MyRef = useRef(null);
 
+  const closeMenu = () => {
+    gsap.to(menuWrap, {
+      x: -3000,
+      opacity: 0,
+    });
+    trigger("menu:close", { status: "menu closed" });
+    callback(false);
+  };
+
+  useEffect(() => {
+    gsap.from([home, aboutMe, myWork, mySkills, myResume, letsTalk], {
+      scrollTrigger: {
+        trigger: home as Element,
+        toggleActions: "restart reverse restart reverse",
+        start: "center 60%",
+      },
+      x: -200,
+      opacity: 0,
+      stagger: 0.2,
+      delay: 2,
+    });
+
+    gsap.from([closeBtn], {
+      scrollTrigger: {
+        trigger: home as Element,
+        toggleActions: "restart reverse restart reverse",
+        start: "center 60%",
+      },
+      x: 200,
+      opacity: 0,
+      stagger: 0.2,
+      delay: 2,
+    });
+  }, []);
+
   // social media icons
-
-  const onHover = (iconName: string) => {
-    switch (iconName) {
-      case "linkedin":
-        setIsTextOnView(true);
-        setActiveTextName("Linkedin");
-        break;
-      case "twitter":
-        setIsTextOnView(true);
-        setActiveTextName("Twitter");
-        break;
-      case "youtube":
-        setIsTextOnView(true);
-        setActiveTextName("YouTube");
-        break;
-      case "email":
-        setIsTextOnView(true);
-        setActiveTextName("Email");
-        break;
-      case "github":
-        setIsTextOnView(true);
-        setActiveTextName("Github");
-        break;
-      default:
-        break;
-    }
-  };
-
-  const onLeave = (iconName: string) => {
-    switch (iconName) {
-      case "linkedin":
-        setIsTextOnView(false);
-        setActiveTextName("Linkedin");
-        break;
-      case "twitter":
-        setIsTextOnView(false);
-        setActiveTextName("Twitter");
-        break;
-      case "youtube":
-        setIsTextOnView(false);
-        setActiveTextName("YouTube");
-        break;
-      case "email":
-        setIsTextOnView(false);
-        setActiveTextName("Email");
-        break;
-      case "github":
-        setIsTextOnView(false);
-        setActiveTextName("Github");
-        break;
-      default:
-        break;
-    }
-  };
 
   // Menu items
   const onTextHover = (item: string) => {
-    const vars = {
+    const options = {
       webkitTextFillColor: "white",
       duration: 0.2,
       ease: "power2.inOut",
     };
     switch (item) {
       case "home":
-        setTween(gsap.to(home, vars));
+        setTween(gsap.to(home, options));
         break;
       case "aboutMe":
-        setTween(gsap.to(aboutMe, vars));
+        setTween(gsap.to(aboutMe, options));
         break;
       case "myWork":
-        setTween(gsap.to(myWork, vars));
+        setTween(gsap.to(myWork, options));
         break;
       case "mySkills":
-        setTween(gsap.to(mySkills, vars));
+        setTween(gsap.to(mySkills, options));
         break;
       case "myResume":
-        setTween(gsap.to(myResume, vars));
+        setTween(gsap.to(myResume, options));
         break;
       case "letsTalk":
-        setTween(gsap.to(letsTalk, vars));
+        setTween(gsap.to(letsTalk, options));
         break;
       default:
         break;
     }
   };
+
   const onTextLeave = () => {
     tween.reverse();
   };
+  
+
+  const handleClick = (menuItem) => {
+    console.log(menuItem);
+    trigger('scrollTo', { menuItem })
+    router.push(`/#${menuItem}`)
+  };
 
   return (
-    <NavWrapper>
+    <NavWrapper ref={(el) => (menuWrap = el)}>
       <NavHeader>
         <Logo />
-        <SVG onClick={closeMenu} src={CloseMenuIcon} />
+        <Tilt scale={1.1}>
+          <SVG
+            ref={(el) => (closeBtn = el)}
+            onClick={closeMenu}
+            src={CloseMenuIcon}
+          />
+        </Tilt>
       </NavHeader>
       <MenuWrap>
         <ItemWrap>
@@ -231,6 +180,7 @@ export default function Menu({ callback }: IProps) {
             ref={(el) => (home = el)}
             onMouseEnter={() => onTextHover("home")}
             onMouseLeave={() => onTextLeave()}
+            onClick={closeMenu}
           >
             Home
           </MenuItem>
@@ -238,6 +188,7 @@ export default function Menu({ callback }: IProps) {
             ref={(el) => (aboutMe = el)}
             onMouseEnter={() => onTextHover("aboutMe")}
             onMouseLeave={() => onTextLeave()}
+            onClick={() => handleClick("aboutMe")}
           >
             About Me
           </MenuItem>
@@ -245,6 +196,7 @@ export default function Menu({ callback }: IProps) {
             ref={(el) => (myWork = el)}
             onMouseEnter={() => onTextHover("myWork")}
             onMouseLeave={() => onTextLeave()}
+            onClick={() => handleClick("myWork")}
           >
             My Work
           </MenuItem>
@@ -252,6 +204,7 @@ export default function Menu({ callback }: IProps) {
             ref={(el) => (mySkills = el)}
             onMouseEnter={() => onTextHover("mySkills")}
             onMouseLeave={() => onTextLeave()}
+            onClick={() => handleClick("mySkills")}
           >
             My Skills
           </MenuItem>
@@ -259,6 +212,7 @@ export default function Menu({ callback }: IProps) {
             ref={(el) => (myResume = el)}
             onMouseEnter={() => onTextHover("myResume")}
             onMouseLeave={() => onTextLeave()}
+            onClick={() => handleClick("myResume")}
           >
             My Resume
           </MenuItem>
@@ -266,46 +220,12 @@ export default function Menu({ callback }: IProps) {
             ref={(el) => (letsTalk = el)}
             onMouseEnter={() => onTextHover("letsTalk")}
             onMouseLeave={() => onTextLeave()}
+            onClick={() => handleClick("letsTalk")}
           >
             Let's Talk
           </MenuItem>
         </ItemWrap>
-        <SocialWrap>
-          <Wrapper>
-            <IconText ref={(el) => (linkedinEl = el)}>LinkedIn</IconText>
-            <IconText ref={(el) => (twitterEl = el)}>Twitter</IconText>
-            <IconText ref={(el) => (youtubeEl = el)}>YouTube</IconText>
-            <IconText ref={(el) => (emailEl = el)}>Email</IconText>
-            <IconText ref={(el) => (githubEl = el)}>Github</IconText>
-          </Wrapper>
-          <Wrapper>
-            <SocialIcon
-              onMouseEnter={() => onHover("linkedin")}
-              onMouseLeave={() => onLeave("linkedin")}
-              src={LinkedinIcon}
-            />
-            <SocialIcon
-              onMouseEnter={() => onHover("twitter")}
-              onMouseLeave={() => onLeave("twitter")}
-              src={TwitterIcon}
-            />
-            <SocialIcon
-              src={YoutubeIcon}
-              onMouseEnter={() => onHover("youtube")}
-              onMouseLeave={() => onLeave("youtube")}
-            />
-            <SocialIcon
-              onMouseEnter={() => onHover("email")}
-              onMouseLeave={() => onLeave("email")}
-              src={EmailIcon}
-            />
-            <SocialIcon
-              onMouseEnter={() => onHover("github")}
-              onMouseLeave={() => onLeave("github")}
-              src={GithubIcon}
-            />
-          </Wrapper>
-        </SocialWrap>
+        <SocialMenu />
       </MenuWrap>
     </NavWrapper>
   );

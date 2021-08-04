@@ -28,8 +28,11 @@ const LogoBGBlur = styled.img`
 `;
 
 export default function Logo() {
+
   const { isLoading } = useContext(LoginContext);
+
   let logo: MyRef = useRef(null);
+
   useEffect(() => {
     if (!isLoading) {
       gsap.from(logo as Element, {

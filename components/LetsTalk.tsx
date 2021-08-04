@@ -157,17 +157,18 @@ export default function LetsTalk() {
   }, []);
 
   const handleForm = async (e) => {
-    debugger;
     e.preventDefault();
+    
+    if(name || email || message == '') return
 
-    const url: string = "https://api.web3forms.com/submit";
+    const url = "https://api.web3forms.com/submit";
 
     const sendData = {
       apikey: "b8b30937-4e64-4333-b999-f3dd6082735e",
       name,
       email,
       message,
-      subject: "Insomnia Form Submission",
+      subject: "KelvinPerez.com Inquiry",
     };
 
     const options: AxiosRequestConfig = {
@@ -180,10 +181,14 @@ export default function LetsTalk() {
     axios(options)
       .then((data) => console.log({ data }))
       .catch((err) => console.log(err));
+      
+      setName('')
+      setEmail('')
+      setMessage('')
   };
 
   return (
-    <>
+    <div>
       <LetsTalkWrapper ref={(el) => (form = el)}>
         <SectionHeading ref={(el) => (Heading = el)}>Let's Talk</SectionHeading>
 
@@ -226,6 +231,6 @@ export default function LetsTalk() {
           </LetsTalkForm>
         </FormWrapper>
       </LetsTalkWrapper>
-    </>
+    </div>
   );
 }
