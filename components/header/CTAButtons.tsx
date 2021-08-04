@@ -31,6 +31,7 @@ const MyWorkWrap = styled.a`
   }
   @media (max-width: ${media.mobileL}) {
     margin-right: 0;
+    display: block;
     margin-bottom: 1rem;
   }
 `;
@@ -53,7 +54,7 @@ const LetsTalkWrap = styled.div`
 
 export default function CtaButtons() {
   const { isLoading } = useContext(LoginContext);
-  const router = useRouter()
+  const router = useRouter();
 
   let btn1: MyRef = useRef(null);
   let btn2: MyRef = useRef(null);
@@ -70,14 +71,14 @@ export default function CtaButtons() {
       });
     }
   }, [isLoading]);
-  
+
   const handleMyWork = () => {
-    router.push('/#myWork')
-  }
-  
+    router.push("/#myWork");
+  };
+
   const handleLetsTalk = () => {
-    router.push('/#letsTalk')
-  }
+    router.push("/#letsTalk");
+  };
 
   return (
     <CTABtnWrap>

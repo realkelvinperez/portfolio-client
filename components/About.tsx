@@ -12,6 +12,7 @@ import AboutHeading from "../elements/about/AboutHeading";
 import MyPhoto from "../elements/about/MyPhoto";
 import AboutGrid from "../elements/about/AboutGrid";
 import LoginContext from "../context/LoginContext";
+import { isMobileWindow } from "../utilities/helpers";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
@@ -42,6 +43,8 @@ export default function About() {
   let wavyHand: SpanRef = useRef(null);
 
   useEffect(() => {
+    const isMobile = isMobileWindow()
+    
     const tl = gsap.timeline({ repeat: -1, yoyo: true });
     tl.to(wavyHand, {
       transform: "rotateZ(0)",
@@ -57,8 +60,8 @@ export default function About() {
         scrollTrigger: {
           trigger: aboutPhoto as HTMLDivElement,
           toggleActions: "restart reverse restart reverse",
-          start: "20% 80%",
-          end: "80% 20%",
+          start: !isMobile ? "20% 80%" : "20% 100%",
+          end: !isMobile ? "80% 20%" : "100% 20%",
         },
         x: -100,
         opacity: 0,
@@ -67,7 +70,7 @@ export default function About() {
       });
       gsap.from([heading, text1, text2, text3, text4], {
         scrollTrigger: {
-          trigger: aboutPhoto as HTMLDivElement,
+          trigger: !isMobile ? aboutPhoto as HTMLDivElement : '.aboutText',
           toggleActions: "restart reverse restart reverse",
           start: "20% 80%",
           end: "80% 20%",
@@ -105,7 +108,7 @@ export default function About() {
             <AboutText>About</AboutText>
             <MyPhoto src={StockProfilePic} />
           </AboutPicWrapper>
-          <div>
+          <div className="aboutText">
             <AboutHeading ref={(el) => (heading = el)}>
               Hey{" "}
               <WavyHand className="wavy-hand" ref={(el) => (wavyHand = el)}>

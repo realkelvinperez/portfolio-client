@@ -8,6 +8,7 @@ import TwitterIcon from "../../public/assets/svg/twitter.svg";
 import YoutubeIcon from "../../public/assets/svg/youtube.svg";
 import MyRef from "../../typings/MyRef";
 import gsap from "gsap";
+import { isMobileWindow } from "../../utilities/helpers";
 
 const Wrapper = styled.div`
   display: flex;
@@ -75,14 +76,12 @@ export default function SocialMenu() {
   let youtubeEl: MyRef = useRef(null);
   let emailEl: MyRef = useRef(null);
   let githubEl: MyRef = useRef(null);
-  
 
   useEffect(() => {
-    const isMobileWindow = window.innerWidth < 500 
 
     gsap.from([linkedinEl, twitterEl, youtubeEl, emailEl, githubEl], {
       scrollTrigger: {
-        trigger: isMobileWindow ? '.letsTalk' : linkedinEl as Element,
+        trigger: isMobileWindow() ? '.letsTalk' : linkedinEl as Element,
         toggleActions: "restart reverse restart reverse",
         start: "center 60%",
       },
