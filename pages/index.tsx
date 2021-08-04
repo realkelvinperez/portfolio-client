@@ -6,6 +6,7 @@ import Loading from "../components/Loading";
 import ScrollProgress from "../components/ScrollProgress";
 import { on } from "../utilities/events";
 import LoginContext from "../context/LoginContext";
+
 const Vanta = dynamic(() => import("../components/Vanta"));
 const About = dynamic(() => import("../components/About"));
 const Resume = dynamic(() => import("../components/Resume"));
@@ -55,7 +56,7 @@ const MyGlobalStyle = createGlobalStyle<StyleProps>`
 export default function Home() {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [isOverflow, setIsOverflow] = useState<boolean>(false);
-  let aboutEl = useRef(null)
+  let aboutEl = useRef(null);
 
   const loadingState = useMemo(
     () => ({ isLoading, setIsLoading }),
@@ -63,7 +64,6 @@ export default function Home() {
   );
 
   useEffect(() => {
-
     if (typeof window !== "undefined") {
       window.scrollTo(0, 0);
       on("progressBar:done", (payload) => {
@@ -82,49 +82,48 @@ export default function Home() {
       });
       on("scrollTo", (payload) => {
         setIsOverflow(false);
-        console.log(aboutEl, payload)
-      })
+        console.log(aboutEl, payload);
+      });
     }
-
   }, []);
 
   return (
     <LoginContext.Provider value={loadingState}>
-        <div>
-          <Head>
-            <title>
-              Kelvin Perez Web Developer Portfolio | UI/UX & Full-Stack | Miami,
-              FL | Figma, React, TypeScript, NodeJS, PostgreSQL{" "}
-            </title>
-            <link rel="icon" href="/favicon.ico" />
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js" />
-          </Head>
-          <MyGlobalStyle isLoading={isLoading} isOverflow={isOverflow} />
-          {/* Hero Section */}
-          <HeaderFlexWrap>
-            <Vanta />
-          </HeaderFlexWrap>
-          {/* About Me Section */}
-          <About />
-          {/* Projects Section */}
-          <Projects />
-          {/* My Skills Section */}
-          <Skills />
-          {/* Quote Section */}
-          <Quote />
-          {/* My Resume Section */}
-          <Resume />
-          {/* Let's Talk Section */}
-          <LetsTalk />
-          {/* The End Section */}
-          <TheEnd />
-          {/* Footer Section */}
-          <Footer />
-          {/* Top Progress Bar */}
-          <ScrollProgress isLoading={isLoading} />
-          {/* first Visit Loading Animation */}
-          <Loading isLoading={isLoading} />
-        </div>
+      <div>
+        <Head>
+          <title>
+            Kelvin Perez Web Developer Portfolio | UI/UX & Full-Stack | Miami,
+            FL | Figma, React, TypeScript, NodeJS, PostgreSQL{" "}
+          </title>
+          <link rel="icon" href="/favicon.ico" />
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js" />
+        </Head>
+        <MyGlobalStyle isLoading={isLoading} isOverflow={isOverflow} />
+        {/* Hero Section */}
+        <HeaderFlexWrap>
+          <Vanta />
+        </HeaderFlexWrap>
+        {/* About Me Section */}
+        <About />
+        {/* Projects Section */}
+        <Projects />
+        {/* My Skills Section */}
+        <Skills />
+        {/* Quote Section */}
+        <Quote />
+        {/* My Resume Section */}
+        <Resume />
+        {/* Let's Talk Section */}
+        <LetsTalk />
+        {/* The End Section */}
+        <TheEnd />
+        {/* Footer Section */}
+        <Footer />
+        {/* Top Progress Bar */}
+        <ScrollProgress isLoading={isLoading} />
+        {/* first Visit Loading Animation */}
+        <Loading isLoading={isLoading} />
+      </div>
     </LoginContext.Provider>
   );
 }

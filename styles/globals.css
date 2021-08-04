@@ -9,6 +9,7 @@
 
 body {
     margin: 0;
+    overflow-x: hidden !important;
 }
 
 .vanta-canvas {
@@ -17,5 +18,5 @@ body {
 
 html {
     background: #141A43;
-    overflow-x: hidden;
+    overflow-x: hidden !important;
 }

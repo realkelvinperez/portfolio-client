@@ -24,7 +24,7 @@ const ResumeLine = styled.div`
 `;
 const ResumeSection: React.FC = () => {
   return (
-    <ResumeWrapper>
+    <ResumeWrapper id="myResume">
       <SectionHeading>Resume</SectionHeading>
       <Resume />
       <ResumeLine />

@@ -188,7 +188,7 @@ export default function LetsTalk() {
   };
 
   return (
-    <div>
+    <div id="letsTalk">
       <LetsTalkWrapper ref={(el) => (form = el)}>
         <SectionHeading ref={(el) => (Heading = el)}>Let's Talk</SectionHeading>
 

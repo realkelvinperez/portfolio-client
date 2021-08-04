@@ -25,6 +25,9 @@ const HeaderWrap = styled.div`
 
 const HeroContentWrap = styled.div`
   width: 50%;
+  @media (max-width: ${media.mobileL}) {
+    width: 100%;
+  }
 `;
 
 export default function Header() {

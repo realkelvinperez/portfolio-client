@@ -212,8 +212,8 @@ export default function Skills() {
   }, []);
 
   return (
-    <div>
-      <SectionHeading ref={(el) => (title = el)} skills>
+    <>
+      <SectionHeading id="mySkills" ref={(el) => (title = el)} skills>
         Skills
       </SectionHeading>
       <SkillsWrapper>
@@ -260,6 +260,6 @@ export default function Skills() {
           </SkillCard>
         </SkillCardWrapper>
       </SkillsWrapper>
-    </div>
+    </>
   );
 }

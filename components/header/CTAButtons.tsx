@@ -7,6 +7,7 @@ import LoginContext from "../../context/LoginContext";
 import gsap from "gsap";
 import Tilt from "react-parallax-tilt";
 import MyRef from "../../typings/MyRef";
+import { useRouter } from "next/router";
 
 const CTABtnWrap = styled.div`
   margin-top: 2rem;
@@ -22,7 +23,7 @@ const CTABtnWrap = styled.div`
   }
 `;
 
-const MyWorkWrap = styled.div`
+const MyWorkWrap = styled.a`
   margin-right: 2rem;
   cursor: pointer;
   @media (max-width: ${media.tablet}) {
@@ -52,6 +53,7 @@ const LetsTalkWrap = styled.div`
 
 export default function CtaButtons() {
   const { isLoading } = useContext(LoginContext);
+  const router = useRouter()
 
   let btn1: MyRef = useRef(null);
   let btn2: MyRef = useRef(null);
@@ -68,16 +70,24 @@ export default function CtaButtons() {
       });
     }
   }, [isLoading]);
+  
+  const handleMyWork = () => {
+    router.push('/#myWork')
+  }
+  
+  const handleLetsTalk = () => {
+    router.push('/#letsTalk')
+  }
 
   return (
     <CTABtnWrap>
       <Tilt scale={1.1} transitionSpeed={2500}>
-        <MyWorkWrap ref={(el) => (btn1 = el)}>
+        <MyWorkWrap onClick={handleMyWork} ref={(el) => (btn1 = el)}>
           <MyWorkImg src={MyWorkBtn} />
         </MyWorkWrap>
       </Tilt>
       <Tilt scale={1.1} transitionSpeed={2500}>
-        <LetsTalkWrap ref={(el) => (btn2 = el)}>
+        <LetsTalkWrap onClick={handleLetsTalk} ref={(el) => (btn2 = el)}>
           <LetsTalkImg src={LetsTalk} />
         </LetsTalkWrap>
       </Tilt>

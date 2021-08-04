@@ -293,7 +293,7 @@ const Resume: React.FC = () => {
   return (
     <div>
       <ResumeRelative ref={(el) => (resumeSectionEl = el)}>
-        <SectionHeading ref={(el) => (Title = el)}>Resume</SectionHeading>
+        <SectionHeading id="myResume" ref={(el) => (Title = el)}>Resume</SectionHeading>
         <ResumeSection>
           {/* ODD - 2015 */}
           <ResumeWrapper>

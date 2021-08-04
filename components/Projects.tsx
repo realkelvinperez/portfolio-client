@@ -2,8 +2,8 @@ import styled, { css } from "styled-components";
 import Container from "../elements/Container";
 import Number1 from "../public/assets/svg/01.svg";
 import Number2 from "../public/assets/svg/02.svg";
-import Laptop1 from "../public/assets/img/01-Project-Laptop.png";
-import Laptop2 from "../public/assets/img/02-Project-Laptop.png";
+import AMZLaptop from "../public/assets/img/amz-snagger-screenshot.png";
+import MyOSLaptop from "../public/assets/img/my-os-screenshot.png";
 import AboutHeading from "../elements/about/AboutHeading";
 import TitleUnderline from "../elements/TitleUnderline";
 import AboutBioText from "../elements/about/AboutBioText";
@@ -14,6 +14,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 import MyRef from "../typings/MyRef";
+import MyWorkCTA from "./MyWorkCTA";
 
 interface StyledProps {
   right?: boolean;
@@ -97,12 +98,14 @@ export default function Projects() {
   let laptop1: MyRef = useRef(null);
   let textHeading1: MyRef = useRef(null);
   let textBody1: MyRef = useRef(null);
+  let project1CTA: MyRef = useRef(null);
 
   let project2: MyRef = useRef(null);
   let number2: MyRef = useRef(null);
   let laptop2: MyRef = useRef(null);
   let textHeading2: MyRef = useRef(null);
   let textBody2: MyRef = useRef(null);
+  let project2CTA: MyRef = useRef(null);
 
   useEffect(() => {
     gsap.from(title, {
@@ -137,6 +140,7 @@ export default function Projects() {
       .from([laptop1], {
         opacity: 0,
         x: 100,
+        stagger: 0.3,
       });
 
     const t2 = gsap.timeline({
@@ -160,12 +164,17 @@ export default function Projects() {
       .from([laptop2], {
         opacity: 0,
         x: -100,
+        stagger: 0.3,
       });
   }, []);
+  
+  const AMZSnaggerLink = 'https://chrome.google.com/webstore/detail/amz-snagger-amazon-dropsh/kdcnbaifjppfkjmichaahffmpbfhacgc'
+  const comingSoonLink = 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwebassets.inman.com%2Fwp-content%2Fuploads%2F2019%2F10%2FUntitled-design-2019-10-29T153346.079-1400x621.jpg&f=1&nofb=1'
+
 
   return (
-    <div>
-      <SectionHeading ref={(el) => (title = el)} work>
+    <>
+      <SectionHeading id="myWork" ref={(el) => (title = el)} work>
         Work
       </SectionHeading>
       <AngledBG ref={(el) => (workSection = el)}>
@@ -176,17 +185,20 @@ export default function Projects() {
             </NumberWrap>
             <ProjectText>
               <AboutHeading ref={(el) => (textHeading1 = el)}>
-                ViViFi App
+                AMZ SNAGGER APP
                 <TitleUnderline />
               </AboutHeading>
               <AboutBioText ref={(el) => (textBody1 = el)}>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem,
-                dolorem et? A delectus fuga, nam natus necessitatibus pariatur
-                quod. Accusamus alias dolore officia reprehenderit similique?
+                An App built to solve the problems of AMZ Dropshippers by
+                providing a streamlined and automated way to source profitable
+                products and save hours of time.
+                <br /> <strong>Tech Used:</strong> Vue.js, Node.js, Chrome
+                Extension API, Stripe API
               </AboutBioText>
+              <MyWorkCTA url={AMZSnaggerLink} />
             </ProjectText>
             <LaptopImgWrap right>
-              <LaptopImg ref={(el) => (laptop1 = el)} src={Laptop1} />
+              <LaptopImg ref={(el) => (laptop1 = el)} src={AMZLaptop} />
             </LaptopImgWrap>
           </ProjectWrap>
           <ProjectWrap ref={(el) => (project2 = el)}>
@@ -195,19 +207,23 @@ export default function Projects() {
             </NumberWrap>
             <ProjectText right>
               <AboutHeading ref={(el) => (textHeading2 = el)}>
-                Financial Freedom
+                MyOS
                 <TitleUnderline />
               </AboutHeading>
               <AboutBioText ref={(el) => (textBody2 = el)}>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem,
-                dolorem et? A delectus fuga, nam natus necessitatibus pariatur
-                quod. Accusamus alias dolore officia reprehenderit similique?
+                An App built to solve the issue of modern day humans where we
+                have a lot of growth resources but little ways to functionally
+                intergrate it into our daily lives, what better way than your
+                own digital personal assistant, a la Jarvis.
+                <br /> <strong>Tech Used:</strong> React, Typescript, Redux,
+                React Query, Node.js, Adonis.js, PostgreSQL, Python
               </AboutBioText>
+              <MyWorkCTA url={comingSoonLink} />
             </ProjectText>
-            <LaptopImg ref={(el) => (laptop2 = el)} src={Laptop2} />
+            <LaptopImg ref={(el) => (laptop2 = el)} src={MyOSLaptop} />
           </ProjectWrap>
         </Container>
       </AngledBG>
-    </div>
+    </>
   );
 }

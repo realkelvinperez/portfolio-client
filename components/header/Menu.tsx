@@ -160,6 +160,7 @@ export default function Menu({ callback }: IProps) {
   const handleClick = (menuItem) => {
     console.log(menuItem);
     trigger('scrollTo', { menuItem })
+    closeMenu()
     router.push(`/#${menuItem}`)
   };
 

@@ -6,7 +6,7 @@ const SVG = styled.svg`
 
 export default function ResumeCta() {
   return (
-    <a href='https://docs.google.com/document/d/1n0DJwA7_rCEyNQPRFhQuAaX74eM8C3oUWslc9LO8nhQ/edit?usp=sharing' target="_blank">
+    <a href='https://drive.google.com/file/d/1Qj_PIW_WrY_1G_maihPI8zJQceH50tIZ/view?usp=sharing' target="_blank">
       <SVG
         width="223"
         height="75"
@@ -38,8 +38,8 @@ export default function ResumeCta() {
             y2="59.2603"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stopColor="#AC38D5" />
-            <stop offset="1" stopColor="#0EE0AE" />
+            <stop stop-color="#AC38D5" />
+            <stop offset="1" stop-color="#0EE0AE" />
           </linearGradient>
           <linearGradient
             id="paint1_linear"
@@ -49,8 +49,8 @@ export default function ResumeCta() {
             y2="74.7772"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stopColor="#944CF0" />
-            <stop offset="1" stopColor="#4CF0F0" />
+            <stop stop-color="#944CF0" />
+            <stop offset="1" stop-color="#4CF0F0" />
           </linearGradient>
         </defs>
       </SVG>

@@ -22,8 +22,8 @@ const LoadingWrapper = styled.div<{ isLoading: boolean }>`
 
 const InnerWrapper = styled.div`
   position: relative;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
 `;
 interface Props {
   isLoading: boolean;
