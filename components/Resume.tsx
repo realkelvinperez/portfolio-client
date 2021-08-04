@@ -435,6 +435,6 @@ const Resume: React.FC = () => {
       </ResumeRelative>
     </div>
   );
-}
+};
 
 export default Resume;
