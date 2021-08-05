@@ -18,6 +18,9 @@ const FooterWrapper = styled.div`
   @media (max-width: ${media.tablet}) {
     margin-top: 7rem;
   }
+  @media (max-width: ${media.mobileL}) {
+    flex-direction: column;
+  }
 `;
 const FooterText = styled.span`
   display: inline-block;
@@ -33,13 +36,26 @@ const FooterText = styled.span`
   }
 `;
 
+const ContentWrap = styled.div`
+  @media (max-width: ${media.mobileL}) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1rem;
+  }
+`;
+
 export default function Footer() {
   return (
     <FooterWrapper>
-      <Img src={CopywriteSVG} />
-      <FooterText>{new Date().getFullYear()} Made With Love</FooterText>
-      <Img src={HeartSVG} />
-      <FooterText>By Kelvin Perez</FooterText>
+      <ContentWrap>
+        <Img src={CopywriteSVG} />
+        <FooterText>{new Date().getFullYear()} Made With Love</FooterText>
+      </ContentWrap>
+      <ContentWrap>
+        <Img src={HeartSVG} />
+        <FooterText>By Kelvin Perez</FooterText>
+      </ContentWrap>
     </FooterWrapper>
   );
 }

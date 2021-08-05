@@ -201,7 +201,6 @@ export default function Skills() {
 
     gsap.from([card1, card2, card3], {
       scrollTrigger: {
-        markers: true,
         trigger: !isMobileWindow() ? card1 as Element : '.skillsSection',
         toggleActions: "restart reverse restart pause",
         start: "top 80%",

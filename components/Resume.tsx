@@ -5,6 +5,7 @@ import ResumeCTA from "./ResumeCTA";
 import media from "../utilities/mediaQueries";
 import SectionHeading from "../elements/SectionHeading";
 import { useRef, useEffect } from "react";
+import { isMobileWindow } from "../utilities/helpers";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
@@ -206,7 +207,7 @@ const Resume: React.FC = () => {
   useEffect(() => {
     gsap.from(Title, {
       scrollTrigger: {
-        trigger: Title as Element,
+        trigger: !isMobileWindow() ? (Title as Element) : ".resumeSection",
         toggleActions: "restart reverse restart reverse",
         start: "top center",
         end: "center top",
@@ -217,7 +218,9 @@ const Resume: React.FC = () => {
 
     gsap.from([Card2015, Year2015, Circle2015], {
       scrollTrigger: {
-        trigger: Card2015 as Element,
+        trigger: !isMobileWindow()
+          ? (Card2015 as Element)
+          : (Year2015 as Element),
         toggleActions: "restart reverse restart reverse",
         ...triggerOptions,
       },
@@ -228,7 +231,10 @@ const Resume: React.FC = () => {
 
     gsap.from([Card2016, Year2016, Circle2016], {
       scrollTrigger: {
-        trigger: Card2016 as Element,
+        // markers: true,
+        trigger: !isMobileWindow()
+          ? (Card2016 as Element)
+          : (Year2016 as Element),
         toggleActions: "restart reverse restart reverse",
         ...triggerOptions,
       },
@@ -238,7 +244,9 @@ const Resume: React.FC = () => {
     });
     gsap.from([Card2017, Year2017, Circle2017], {
       scrollTrigger: {
-        trigger: Card2017 as Element,
+        trigger: !isMobileWindow()
+          ? (Card2017 as Element)
+          : (Year2017 as Element),
         toggleActions: "restart reverse restart reverse",
         ...triggerOptions,
       },
@@ -249,7 +257,9 @@ const Resume: React.FC = () => {
 
     gsap.from([Card2018, Year2018, Circle2018], {
       scrollTrigger: {
-        trigger: Card2018 as Element,
+        trigger: !isMobileWindow()
+          ? (Card2018 as Element)
+          : (Year2018 as Element),
         toggleActions: "restart reverse restart reverse",
         ...triggerOptions,
       },
@@ -260,7 +270,9 @@ const Resume: React.FC = () => {
 
     gsap.from([Card2019, Year2019, Circle2019], {
       scrollTrigger: {
-        trigger: Card2019 as Element,
+        trigger: !isMobileWindow()
+          ? (Card2019 as Element)
+          : (Year2019 as Element),
         toggleActions: "restart reverse restart reverse",
         ...triggerOptions,
       },
@@ -271,7 +283,9 @@ const Resume: React.FC = () => {
 
     gsap.from([Card2020, Year2020, Circle2020], {
       scrollTrigger: {
-        trigger: Card2020 as Element,
+        trigger: !isMobileWindow()
+          ? (Card2020 as Element)
+          : (Year2020 as Element),
         toggleActions: "restart reverse restart reverse",
         ...triggerOptions,
       },
@@ -279,10 +293,25 @@ const Resume: React.FC = () => {
       opacity: 0,
       stagger: 0.2,
     });
-    gsap.from([Card2021, Year2021, Circle2021, ResumeBtn], {
+    gsap.from([Card2021, Year2021, Circle2021], {
       scrollTrigger: {
+        trigger: !isMobileWindow()
+          ? (Card2021 as Element)
+          : (Circle2021 as Element),
+        toggleActions: "restart reverse restart reverse",
+        end: !isMobileWindow() ? '' : 'bottom top',
+        ...triggerOptions,
+      },
+      x: -200,
+      opacity: 0,
+      stagger: 0.2,
+    });
+    gsap.from([ResumeBtn], {
+      scrollTrigger: {
+        markers: true,
         trigger: Card2021 as Element,
         toggleActions: "restart reverse restart reverse",
+        end: !isMobileWindow() ? '' : 'bottom top',
         ...triggerOptions,
       },
       x: -200,
@@ -291,9 +320,11 @@ const Resume: React.FC = () => {
     });
   }, []);
   return (
-    <div>
+    <div className="resumeSection">
       <ResumeRelative ref={(el) => (resumeSectionEl = el)}>
-        <SectionHeading id="myResume" ref={(el) => (Title = el)}>Resume</SectionHeading>
+        <SectionHeading id="myResume" ref={(el) => (Title = el)}>
+          Resume
+        </SectionHeading>
         <ResumeSection>
           {/* ODD - 2015 */}
           <ResumeWrapper>
