@@ -6,6 +6,11 @@ import Loading from "../components/Loading";
 import ScrollProgress from "../components/ScrollProgress";
 import { on } from "../utilities/events";
 import LoginContext from "../context/LoginContext";
+import { hotjar } from 'react-hotjar';
+import ReactGA from 'react-ga';
+
+
+
 
 const Vanta = dynamic(() => import("../components/Vanta"));
 const About = dynamic(() => import("../components/About"));
@@ -66,6 +71,15 @@ export default function Home() {
   useEffect(() => {
     if (typeof window !== "undefined") {
       window.scrollTo(0, 0);
+
+      // Hotjar Analytics
+      hotjar.initialize(2540489, 6);
+      hotjar.identify('USER_ID', { userProperty: 'value' });
+
+      // Google Analytics  
+      ReactGA.initialize('G-V7MWYPNM0E1');
+      ReactGA.pageview(window.location.pathname + window.location.search);
+      
       on("progressBar:done", (payload) => {
         console.log({ payload });
         setIsLoading(false);
