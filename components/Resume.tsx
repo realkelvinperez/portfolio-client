@@ -231,7 +231,6 @@ const Resume: React.FC = () => {
 
     gsap.from([Card2016, Year2016, Circle2016], {
       scrollTrigger: {
-        // markers: true,
         trigger: !isMobileWindow()
           ? (Card2016 as Element)
           : (Year2016 as Element),
@@ -308,7 +307,6 @@ const Resume: React.FC = () => {
     });
     gsap.from([ResumeBtn], {
       scrollTrigger: {
-        markers: true,
         trigger: Card2021 as Element,
         toggleActions: "restart reverse restart reverse",
         end: !isMobileWindow() ? '' : 'bottom top',
