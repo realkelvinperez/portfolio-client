@@ -7,6 +7,7 @@ import BackEndIcon from "../public/assets/svg/backend-dev-icon.svg";
 import media from "../utilities/mediaQueries";
 import SectionHeading from "../elements/SectionHeading";
 import { useRef, useEffect } from "react";
+import { isMobileWindow } from "../utilities/helpers";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
@@ -200,10 +201,11 @@ export default function Skills() {
 
     gsap.from([card1, card2, card3], {
       scrollTrigger: {
-        trigger: card1 as Element,
+        markers: true,
+        trigger: !isMobileWindow() ? card1 as Element : '.skillsSection',
         toggleActions: "restart reverse restart pause",
         start: "top 80%",
-        end: "bottom top",
+        end: !isMobileWindow() ? "bottom top" : "bottom 20%",
       },
       y: -200,
       opacity: 0,
@@ -212,7 +214,7 @@ export default function Skills() {
   }, []);
 
   return (
-    <>
+    <div className="skillsSection">
       <SectionHeading id="mySkills" ref={(el) => (title = el)} skills>
         Skills
       </SectionHeading>
@@ -260,6 +262,6 @@ export default function Skills() {
           </SkillCard>
         </SkillCardWrapper>
       </SkillsWrapper>
-    </>
+    </div>
   );
 }
