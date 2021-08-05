@@ -20,7 +20,6 @@ const HeaderWrap = styled.div`
   }
   @media (max-width: ${media.mobileL}) {
     padding: 2rem;
-    height: 40vw;
   }
 `;
 
