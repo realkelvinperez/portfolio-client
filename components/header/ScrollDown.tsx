@@ -112,8 +112,8 @@ export default function ScrollDown() {
               y2="83.4955"
               gradientUnits="userSpaceOnUse"
             >
-              <stop stop-color="#AC38D5" />
-              <stop offset="1" stop-color="#4CF0F0" />
+              <stop stopColor="#AC38D5" />
+              <stop offset="1" stopColor="#4CF0F0" />
             </linearGradient>
             <linearGradient
               id="paint1_linear"
@@ -123,8 +123,8 @@ export default function ScrollDown() {
               y2="29.4633"
               gradientUnits="userSpaceOnUse"
             >
-              <stop stop-color="#AC38D5" />
-              <stop offset="1" stop-color="#1EAAE7" />
+              <stop stopColor="#AC38D5" />
+              <stop offset="1" stopColor="#1EAAE7" />
             </linearGradient>
           </defs>
         </ScrollDownSVG>

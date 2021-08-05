@@ -5,9 +5,12 @@ import media from "../utilities/mediaQueries";
 
 const Img = styled.img`
   margin: 0 0.5rem;
-  width: 1.8%;
+  width: auto;
   @media (max-width: ${media.tablet}) {
     width: 4%;
+  }
+  @media (max-width: ${media.mobileL}) {
+    width: 1.8%;
   }
 `;
 const FooterWrapper = styled.div`
