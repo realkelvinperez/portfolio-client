@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useContext, useState } from "react";
 import { Howl } from "howler";
 import MiamiMP3 from "../public/assets/sounds/miami-seguals.mp3";
-import StockProfilePic from "../public/assets/img/stock-profile-picture.png";
+import KelvinPerezPhoto from "../public/assets/img/realkelvinperez-social-1.png"
 import Container from "../elements/Container";
 import styled from "styled-components";
 import UnderlinedLink from "./UnderlinedLink";
@@ -106,7 +106,7 @@ export default function About() {
         <AboutGrid>
           <AboutPicWrapper ref={(el) => (aboutPhoto = el)}>
             <AboutText>About</AboutText>
-            <MyPhoto src={StockProfilePic} />
+            <MyPhoto src={KelvinPerezPhoto} />
           </AboutPicWrapper>
           <div className="aboutText">
             <AboutHeading ref={(el) => (heading = el)}>
@@ -124,7 +124,6 @@ export default function About() {
               <AboutBioText ref={(el) => (text2 = el)}>
                 I'm a UI/UX Designer & Full-Stack Web Developer from{" "}
                 <UnderlinedLink
-                  src={StockProfilePic}
                   miami
                   stopSound={handleStopSound}
                   playSound={Miami}

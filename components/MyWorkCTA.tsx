@@ -38,8 +38,8 @@ const MyWorkCTA: React.FC<any> = ({url}) => {
             y2="59.2603"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#AC38D5" />
-            <stop offset="1" stop-color="#0EE0AE" />
+            <stop stopColor="#AC38D5" />
+            <stop offset="1" stopColor="#0EE0AE" />
           </linearGradient>
           <linearGradient
             id="paint1_linear"
