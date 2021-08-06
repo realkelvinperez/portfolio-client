@@ -106,7 +106,7 @@ export default function Home() {
       <div>
         <Head>
           <title>
-            Kelvin Perez Web Developer Portfolio | UI/UX & Full-Stack | Miami,
+            Kelvin Perez Full Stack Web Developer Portfolio | UI/UX & Full-Stack | Miami,
             FL | Figma, React, TypeScript, NodeJS, PostgreSQL{" "}
           </title>
           <link rel="icon" href="/favicon.ico" />
@@ -118,6 +118,25 @@ export default function Home() {
           <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
           <meta name="msapplication-TileColor" content="#603cba" />
           <meta name="theme-color" content="#14193B"></meta>
+          <meta charSet="utf-8" />
+          <title>Kelvin Perez Full Stack Web Developer Portfolio | UI/UX & Full-Stack | Miami, FL | Figma, React, TypeScript, NodeJS, PostgreSQL</title>
+          <meta name="description" content="With over 5+ years of experience i love helping brands and companies build products that align with there vision and users." />
+          <meta name="image" content="https://i.ibb.co/J3fq36P/Screen-Shot-2021-08-05-at-5-51-38-PM.png" />
+          <meta itemProp="name" content="Kelvin Perez Full Stack Web Developer Portfolio | UI/UX & Full-Stack | Miami, FL | Figma, React, TypeScript, NodeJS, PostgreSQL" />
+          <meta itemProp="description" content="With over 5+ years of experience i love helping brands and companies build products that align with there vision and users." />
+          <meta itemProp="image" content="https://i.ibb.co/J3fq36P/Screen-Shot-2021-08-05-at-5-51-38-PM.png" />
+          <meta name="twitter:card" content="summary" />
+          <meta name="twitter:title" content="Kelvin Perez Full Stack Web Developer Portfolio | UI/UX & Full-Stack | Miami, FL | Figma, React, TypeScript, NodeJS, PostgreSQL" />
+          <meta name="twitter:description" content="With over 5+ years of experience i love helping brands and companies build products that align with there vision and users." />
+          <meta name="twitter:site" content="@realkelvinperez" />
+          <meta name="twitter:creator" content="@realkelvinperez" />
+          <meta name="twitter:image:src" content="https://i.ibb.co/J3fq36P/Screen-Shot-2021-08-05-at-5-51-38-PM.png" />
+          <meta name="og:title" content="Kelvin Perez Full Stack Web Developer Portfolio | UI/UX & Full-Stack | Miami, FL | Figma, React, TypeScript, NodeJS, PostgreSQL" />
+          <meta name="og:description" content="With over 5+ years of experience i love helping brands and companies build products that align with there vision and users." />
+          <meta name="og:image" content="https://i.ibb.co/J3fq36P/Screen-Shot-2021-08-05-at-5-51-38-PM.png" />
+          <meta name="og:url" content="https://kelvinperez.com" />
+          <meta name="og:site_name" content="Kelvin Perez Full Stack Web Developer Portfolio | UI/UX & Full-Stack | Miami, FL | Figma, React, TypeScript, NodeJS, PostgreSQL" />
+          <meta name="og:type" content="website" />
         </Head>
         <MyGlobalStyle isLoading={isLoading} isOverflow={isOverflow} />
         {/* Hero Section */}
