@@ -10,8 +10,6 @@ import { hotjar } from 'react-hotjar';
 import ReactGA from 'react-ga';
 
 
-
-
 const Vanta = dynamic(() => import("../components/Vanta"));
 const About = dynamic(() => import("../components/About"));
 const Resume = dynamic(() => import("../components/Resume"));
@@ -30,7 +28,6 @@ const HeaderFlexWrap = styled.div`
 `;
 
 interface StyleProps {
-  isLoading: boolean;
   isOverflow: boolean;
 }
 
@@ -39,14 +36,6 @@ const MyGlobalStyle = createGlobalStyle<StyleProps>`
     html {
         scroll-behavior: smooth;
     }
-
-    ${(props) =>
-      props.isLoading &&
-      css`
-        html {
-          overflow-y: hidden;
-        }
-      `}
 
     ${(props) =>
       props.isOverflow &&
@@ -138,7 +127,7 @@ export default function Home() {
           <meta name="og:site_name" content="Kelvin Perez Full Stack Web Developer Portfolio | UI/UX & Full-Stack | Miami, FL | Figma, React, TypeScript, NodeJS, PostgreSQL" />
           <meta name="og:type" content="website" />
         </Head>
-        <MyGlobalStyle isLoading={isLoading} isOverflow={isOverflow} />
+        <MyGlobalStyle isOverflow={isOverflow} />
         {/* Hero Section */}
         <HeaderFlexWrap>
           <Vanta />
@@ -160,9 +149,7 @@ export default function Home() {
         {/* Footer Section */}
         <Footer />
         {/* Top Progress Bar */}
-        <ScrollProgress isLoading={isLoading} />
         {/* first Visit Loading Animation */}
-        <Loading isLoading={isLoading} />
       </div>
     </LoginContext.Provider>
   );
