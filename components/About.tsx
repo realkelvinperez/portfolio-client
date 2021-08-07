@@ -11,7 +11,6 @@ import AboutBioText from "../elements/about/AboutBioText";
 import AboutHeading from "../elements/about/AboutHeading";
 import MyPhoto from "../elements/about/MyPhoto";
 import AboutGrid from "../elements/about/AboutGrid";
-import LoginContext from "../context/LoginContext";
 import { isMobileWindow } from "../utilities/helpers";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
