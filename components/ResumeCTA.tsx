@@ -6,7 +6,7 @@ const SVG = styled.svg`
 
 export default function ResumeCta() {
   return (
-    <a href='https://drive.google.com/file/d/1Qj_PIW_WrY_1G_maihPI8zJQceH50tIZ/view?usp=sharing' target="_blank">
+    <a href='https://drive.google.com/file/d/1duPsTutMXkYoteVRMY5YjtUsASYqpEsl/view?usp=sharing' target="_blank">
       <SVG
         width="223"
         height="75"
