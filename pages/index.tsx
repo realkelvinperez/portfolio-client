@@ -2,13 +2,9 @@ import { useState, useEffect, useMemo, useRef } from "react";
 import Head from "next/head";
 import dynamic from "next/dynamic";
 import styled, { createGlobalStyle, css } from "styled-components";
-import Loading from "../components/Loading";
-import ScrollProgress from "../components/ScrollProgress";
 import { on } from "../utilities/events";
-import LoginContext from "../context/LoginContext";
 import { hotjar } from 'react-hotjar';
 import ReactGA from 'react-ga';
-
 
 const Vanta = dynamic(() => import("../components/Vanta"));
 const About = dynamic(() => import("../components/About"));
@@ -91,7 +87,6 @@ export default function Home() {
   }, []);
 
   return (
-    <LoginContext.Provider value={loadingState}>
       <div>
         <Head>
           <title>
@@ -151,6 +146,5 @@ export default function Home() {
         {/* Top Progress Bar */}
         {/* first Visit Loading Animation */}
       </div>
-    </LoginContext.Provider>
   );
 }

@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import media from "../../utilities/mediaQueries";
-import React, { useRef, useEffect, useContext } from "react";
-import LoginContext from "../../context/LoginContext";
+import React, { useRef, useEffect } from "react";
 import gsap from "gsap";
 
 const ScrollDownWrap = styled.div`
@@ -41,7 +40,6 @@ type SVGRef =
   | null;
 
 export default function ScrollDown() {
-  const { isLoading } = useContext(LoginContext);
 
   let scrollText: SVGRef = useRef(null);
   let downText: SVGRef = useRef(null);
@@ -49,7 +47,6 @@ export default function ScrollDown() {
   let scrollBall: SVGRef = useRef(null);
 
   useEffect(() => {
-    if (!isLoading) {
       gsap.from([scrollText, downText, scroll], {
         y: -150,
         opacity: 0,
@@ -72,8 +69,7 @@ export default function ScrollDown() {
           repeat: -1,
         }
       );
-    }
-  }, [isLoading]);
+  }, []);
 
   return (
     <ScrollDownWrap>

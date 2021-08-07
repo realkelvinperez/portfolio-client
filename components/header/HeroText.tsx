@@ -1,5 +1,4 @@
-import { useContext, useRef, useEffect } from "react";
-import LoginContext from "../../context/LoginContext";
+import { useRef, useEffect } from "react";
 import styled from "styled-components";
 import media from "../../utilities/mediaQueries";
 import Tilt from "react-parallax-tilt";
@@ -58,12 +57,10 @@ const Underline = styled.div`
 `;
 
 export default function HeroTextTagline() {
-  const { isLoading } = useContext(LoginContext);
 
   let text: MyRef = useRef(null);
 
   useEffect(() => {
-    if (!isLoading) {
       gsap.from(text, {
         x: -100,
         opacity: 0,
@@ -71,8 +68,7 @@ export default function HeroTextTagline() {
         duration: 1,
         delay: 0.4,
       });
-    }
-  }, [isLoading]);
+  }, []);
 
   return (
     <HeroTextWrap ref={(el) => (text = el)}>

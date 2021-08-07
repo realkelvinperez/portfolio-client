@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useContext, useState } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { Howl } from "howler";
 import MiamiMP3 from "../public/assets/sounds/miami-seguals.mp3";
 import KelvinPerezPhoto from "../public/assets/img/realkelvinperez-social-1.png"
@@ -30,7 +30,6 @@ const WavyHand = styled.span`
 `;
 
 export default function About() {
-  const { isLoading } = useContext(LoginContext);
   const [currentSound, setCurrentSound] = useState<Howl | null>(null);
   const [soundID, setSoundID] = useState<number | null>(null);
 
@@ -55,7 +54,6 @@ export default function About() {
       duration: 0.3,
       ease: "power2.inOut",
     });
-    if (!isLoading) {
       gsap.from(aboutPhoto, {
         scrollTrigger: {
           trigger: aboutPhoto as HTMLDivElement,
@@ -81,8 +79,7 @@ export default function About() {
         duration: 1,
         stagger: 0.2,
       });
-    }
-  }, [isLoading]);
+  }, []);
 
   const createHowler = (src) => {
     const sound: Howl = new Howl({

@@ -2,8 +2,7 @@ import MyWorkBtn from "../../public/assets/svg/MyWorkBtn.svg";
 import LetsTalk from "../../public/assets/svg/LetsTalkBtn.svg";
 import styled from "styled-components";
 import media from "../../utilities/mediaQueries";
-import { useContext, useRef, useEffect } from "react";
-import LoginContext from "../../context/LoginContext";
+import { useRef, useEffect } from "react";
 import gsap from "gsap";
 import Tilt from "react-parallax-tilt";
 import MyRef from "../../typings/MyRef";
@@ -53,14 +52,12 @@ const LetsTalkWrap = styled.div`
 `;
 
 export default function CtaButtons() {
-  const { isLoading } = useContext(LoginContext);
   const router = useRouter();
 
   let btn1: MyRef = useRef(null);
   let btn2: MyRef = useRef(null);
 
   useEffect(() => {
-    if (!isLoading) {
       gsap.from([btn1, btn2], {
         x: -50,
         opacity: 0,
@@ -69,8 +66,7 @@ export default function CtaButtons() {
         duration: 1,
         stagger: 0.2,
       });
-    }
-  }, [isLoading]);
+  }, []);
 
   const handleMyWork = () => {
     router.push("/#myWork");

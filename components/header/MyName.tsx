@@ -1,7 +1,6 @@
-import { useContext, useRef, useEffect } from "react";
+import { useRef, useEffect } from "react";
 import styled from "styled-components";
 import media from "../../utilities/mediaQueries";
-import LoginContext from "../../context/LoginContext";
 import gsap from "gsap";
 import Tilt from "react-parallax-tilt";
 import MyRef from "../../typings/MyRef";
@@ -48,13 +47,11 @@ const Perez = styled.div`
 `;
 
 export default function MyName() {
-  const { isLoading } = useContext(LoginContext);
 
   let kelvin: MyRef = useRef(null);
   let perez: MyRef = useRef(null);
 
   useEffect(() => {
-    if (!isLoading) {
       gsap.from([kelvin, perez], {
         x: -100,
         opacity: 0,
@@ -62,8 +59,7 @@ export default function MyName() {
         duration: 1,
         stagger: 0.2,
       });
-    }
-  }, [isLoading]);
+  }, []);
 
   return (
     <div>

@@ -3,7 +3,6 @@ import LogoBG from "../public/assets/img/logo-background-blur.png";
 import styled from "styled-components";
 import media from "../utilities/mediaQueries";
 import { useRef, useEffect, useContext } from "react";
-import LoginContext from "../context/LoginContext";
 import gsap from "gsap";
 import Tilt from "react-parallax-tilt";
 import MyRef from "../typings/MyRef";
@@ -29,20 +28,16 @@ const LogoBGBlur = styled.img`
 
 export default function Logo() {
 
-  const { isLoading } = useContext(LoginContext);
-
   let logo: MyRef = useRef(null);
 
   useEffect(() => {
-    if (!isLoading) {
       gsap.from(logo as Element, {
         x: -100,
         opacity: 0,
         ease: "power2.inOut",
         duration: 1,
       });
-    }
-  }, [isLoading]);
+  }, []);
 
   return (
     <Tilt scale={1.1} transitionSpeed={2500}>
